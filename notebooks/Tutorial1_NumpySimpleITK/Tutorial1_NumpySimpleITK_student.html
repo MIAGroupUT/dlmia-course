@@ -436,7 +436,7 @@ document.write(`
 <h1>Tutorial 1<a class="headerlink" href="#tutorial-1" title="Permalink to this heading">#</a></h1>
 <section id="may-2-2024">
 <h2>May 2, 2024<a class="headerlink" href="#may-2-2024" title="Permalink to this heading">#</a></h2>
-<p>Throughout the course, you will be doing a lot of Python programming and working with medical images. That’s why we have included this tutorial to get you started.</p>
+<p>Throughout the course, you will be doing a lot of Python programming and working with medical images.  We have included this tutorial to get you started with some of the basics. You might find more materials in <a class="reference external" href="https://miagrouput.github.io/intro-programming/">this manual</a> for Python programming, including additional exercises.</p>
 <!-- In the past two lectures, we have looked at medical images, filters, neural networks, and convolutional neural networks. The purpose of this tutorial is to put the concepts that you have learned into practice and to get you acquainted with medical image formats and several useful Python packages to manipulate medical images. Moreover, you will get to train your first neural network for image analysis. -->
 <section id="notebooks">
 <h3>Notebooks<a class="headerlink" href="#notebooks" title="Permalink to this heading">#</a></h3>
@@ -513,7 +513,7 @@ document.write(`
 <p>Python does not require you to explicitly declare the type of a variable. However, under the hood, variables do have a type. If you want to work with variables, be aware that they have to be of the same type.</p>
 <div class="tip admonition">
 <p class="admonition-title">Exercise</p>
-<p>What happens if you try to add variables <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">code</span></code>. Do you understand what it says in the output?</p>
+<p>What happens if you try to add variables <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">course</span></code>. Do you understand what it says in the output?</p>
 </div>
 <p>If you are not sure which type a variable has, you can always check it using <code class="docutils literal notranslate"><span class="pre">type</span></code>, as below.</p>
 <div class="cell docutils container">
@@ -533,9 +533,15 @@ document.write(`
 <p class="admonition-title">Exercise</p>
 <p>What is the type of the variable <code class="docutils literal notranslate"><span class="pre">year</span></code>?</p>
 </div>
-<div style='background-color:rgba(80,255,80,0.4); padding:20px'>
-    ⌨️ <b>Exercise</b>: Some types are compatible with each other. Can you figure out what type the variable has that you get when you add <code>year</code> and <code>b</code>?.
-</div><p>If your variable has one type but you want it to have another type, you can ‘cast’ it to another type as follows</p>
+<div class="tip admonition">
+<p class="admonition-title">Exercise</p>
+<p>types are compatible with each other. Can you figure out what type the variable has that you get when you add <code class="docutils literal notranslate"><span class="pre">year</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>?.</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Answer</p>
+<p><code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">=</span> <span class="pre">b</span> <span class="pre">+</span> <span class="pre">year</span></code> gives a variable of type <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
+</div>
+<p>If your variable has one type but you want it to have another type, you can ‘cast’ it to another type as follows</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
@@ -558,7 +564,7 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_96150</span><span class="o">/</span><span class="mf">2872767934.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_10975</span><span class="o">/</span><span class="mf">2872767934.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">float</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
 
 <span class="ne">ValueError</span>: could not convert string to float: &#39;g&#39;
@@ -576,7 +582,7 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_96150</span><span class="o">/</span><span class="mf">2079371697.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_10975</span><span class="o">/</span><span class="mf">2079371697.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">B</span>
 
 <span class="ne">NameError</span>: name &#39;B&#39; is not defined
@@ -618,9 +624,15 @@ document.write(`
 </div>
 </div>
 </div>
-<div style='background-color:rgba(80,255,80,0.4); padding:20px'>
-    ⌨️ <b>Exercise</b>: Use the <code>add_numbers</code> function to add 45 and 1281.
-</div><p>Of course, functions can be much more complex than this. We can make new variables within a function and call one function from another function. For example</p>
+<div class="tip admonition">
+<p class="admonition-title">Exercise</p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">add_numbers</span></code> function to add 45 and 1281.</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Answer</p>
+<p>Just call <code class="docutils literal notranslate"><span class="pre">add_numbers(45,</span> <span class="pre">1281)</span></code>.</p>
+</div>
+<p>Of course, functions can be much more complex than this. We can make new variables within a function and call one function from another function. For example</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">multiply_numbers</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
@@ -673,7 +685,7 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_96150</span><span class="o">/</span><span class="mf">2791081934.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_10975</span><span class="o">/</span><span class="mf">2791081934.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">u</span> <span class="o">=</span> <span class="mi">8</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> 
 <span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">u</span>
@@ -806,9 +818,20 @@ Toot toot, I am the fastest skoda
 </div>
 </div>
 </div>
-<div style='background-color:rgba(80,255,80,0.4); padding:20px'>
-    ⌨️ <b>Exercise</b>: Write code such that Jelmer's car wins.
-</div><p>There are many nice things you can do with classes, and we’re not going to go into too many details here, but one thing that is useful to know is ‘inheritance’. Let’s say we want to make a very specific class for red Fiat cars and we’re also interested in the year that they were built. We can either make a completely new class, or reuse/inherit from our existing <code class="docutils literal notranslate"><span class="pre">car</span></code> class.</p>
+<div class="tip admonition">
+<p class="admonition-title">Exercise</p>
+<p>Use these classes and methods and change the code such that Jelmer’s car wins.</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Answer</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">120</span><span class="p">):</span>
+    <span class="n">jelmers_car</span><span class="o">.</span><span class="n">accelerate</span><span class="p">()</span>
+    
+<span class="n">racing_time</span><span class="p">(</span><span class="n">jelmers_car</span><span class="p">,</span> <span class="n">dieuwertjes_car</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>There are many nice things you can do with classes, and we’re not going to go into too many details here, but one thing that is useful to know is ‘inheritance’. Let’s say we want to make a very specific class for red Fiat cars and we’re also interested in the year that they were built. We can either make a completely new class, or reuse/inherit from our existing <code class="docutils literal notranslate"><span class="pre">car</span></code> class.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">FiatCar</span><span class="p">(</span><span class="n">Car</span><span class="p">):</span>
@@ -841,9 +864,11 @@ fiat
 </div>
 </div>
 </div>
-<div style='background-color:rgba(80,255,80,0.4); padding:20px'>
-    ⌨️ <b>Exercise</b>: <code>FiatCar</code> is a subclass of <Car>. Write a subclass of <Car> to represent Formula 1 cars, call it <code>FormulaOneCar</code> and give it some fitting attributes and methods.  
-</div></section>
+<div class="tip admonition">
+<p class="admonition-title">Exercise</p>
+<p><code class="docutils literal notranslate"><span class="pre">FiatCar</span></code> is a subclass of <code class="docutils literal notranslate"><span class="pre">Car</span></code>. Write another subclass of <code class="docutils literal notranslate"><span class="pre">Car</span></code> to represent Formula 1 cars, call it <code class="docutils literal notranslate"><span class="pre">FormulaOneCar</span></code> and give it some fitting attributes and methods.</p>
+</div>
+</section>
 <section id="tuples-lists-and-sets">
 <h2>Tuples, lists and sets<a class="headerlink" href="#tuples-lists-and-sets" title="Permalink to this heading">#</a></h2>
 <p>Sometimes (or actually quite often), we want to store multiple values in one variable. In that case, Python has several options. We can make either a <code class="docutils literal notranslate"><span class="pre">tuple</span></code>, a <code class="docutils literal notranslate"><span class="pre">list</span></code> or a <code class="docutils literal notranslate"><span class="pre">set</span></code>. It’s good to realize that these are just built-in classes, which means that they also have attributed and methods. There are some important differences between tuples, lists and sets, and depending on the situation you might want to use one or the other. Differences are nicely explained in the figure below:</p>
@@ -899,7 +924,7 @@ fiat
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_96150</span><span class="o">/</span><span class="mf">292420057.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_10975</span><span class="o">/</span><span class="mf">292420057.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">a_list</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">a_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">a_set</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
@@ -988,9 +1013,11 @@ fiat
 </div>
 </div>
 </div>
-<div style='background-color:rgba(80,255,80,0.4); padding:20px'>
-    ⌨️ <b>Exercise</b>: Ask the three people closest to you right now which study programme they're in. Make a Python dictionary in which there name is the key, and their study programme the value. 
-</div></section>
+<div class="tip admonition">
+<p class="admonition-title">Exercise</p>
+<p>Ask the three people closest to you right now which study programme they’re in. Make a Python dictionary in which there name is the key, and their study programme the value.</p>
+</div>
+</section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="working-with-medical-images">
 <h1>Working with medical images<a class="headerlink" href="#working-with-medical-images" title="Permalink to this heading">#</a></h1>
@@ -1002,19 +1029,17 @@ fiat
 <li><p>Convert the image to a NumPy <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> object</p></li>
 <li><p>Visualize the image</p></li>
 </ul>
-<p>Let’s first import some of the packages used in this part of the tutorial. A package is just a collection of Python classes and functions that extend the standard built-in Python functions and classes. You will need some medical images to do this tutorial. You can download these from the <a class="reference external" href="https://surfdrive.surf.nl/files/index.php/s/vnA6J0xAhyzoYuz">SURFdrive directory</a>. Once you have downloaded all data for Tutorial 1, add the path in the box below. Note that this is slightly different for Jupyter and Colab. In <strong>Jupyter</strong>, you just add the local path where you’re stored the data. In <strong>Colab</strong>, there are <a class="reference external" href="https://colab.research.google.com/notebooks/io.ipynb">several ways to use files</a>. It might be easiest to put the data on your Google Drive.</p>
-<div style='background-color:rgba(80,255,80,0.4); padding:20px'>
-  ⌨️ <b>Exercise</b>: Add path in Jupyter.
-</div><div class="cell docutils container">
+<p>Let’s first import some of the packages used in this part of the tutorial. A package is just a collection of Python classes and functions that extend the standard built-in Python functions and classes. You will need some medical images to do this tutorial. You can download these from the <a class="reference external" href="https://surfdrive.surf.nl/files/index.php/s/vnA6J0xAhyzoYuz">SURFdrive directory</a>. Once you have downloaded the data for Tutorial 1, add the path in the box below. Note that this is slightly different for Jupyter and Colab. In <strong>Jupyter</strong>, you just add the local path where you’re stored the data. In <strong>Colab</strong>, there are <a class="reference external" href="https://colab.research.google.com/notebooks/io.ipynb">several ways to use files</a>. It might be easiest to put the data on your Google Drive.</p>
+<p>For example, to add a path in Jupyter, do the following</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;/Users/jmwolterink/Downloads/Tutorial_1&#39;</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div style='background-color:rgba(80,255,80,0.4); padding:20px'>
-  ⌨️ <b>Exercise</b>: Add path in Google Colab.
-</div><div class="cell docutils container">
+<p>To add a path in Google Colab, do the following</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
 
@@ -1026,7 +1051,7 @@ fiat
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_96150</span><span class="o">/</span><span class="mf">550177472.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_10975</span><span class="o">/</span><span class="mf">550177472.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> 
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
@@ -1041,7 +1066,7 @@ fiat
 <h2>Python packages<a class="headerlink" href="#python-packages" title="Permalink to this heading">#</a></h2>
 <p>Some of the packages we’ll primarily use in the course tutorials are</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://numpy.org/">NumPy</a>. This is a widely used package for linear algebra, i.e., working with vectors, matrices, and tensors in Python. These are called <i>arrays</i> in NumPy and you’ll see them all over the place.</p></li>
+<li><p><a class="reference external" href="https://numpy.org/">NumPy</a>. This is a widely used package for linear algebra, i.e., working with vectors, matrices, and tensors in Python. These are called arrays in NumPy and you’ll see them all over the place.</p></li>
 <li><p><a class="reference external" href="https://simpleitk.org/">SimpleITK</a>. While there are many Python packages that will let you read a medical image or apply some functions to the image, none of them have the versatility that SimpleITK has. This is because it is based on ITK (Insight ToolKit), one of the oldest and most widely used image processing toolkits.</p></li>
 <li><p><a class="reference external" href="https://matplotlib.org/">Matplotlib</a>. This package allows you to make plots and visualize images.</p></li>
 <li><p><a class="reference external" href="https://pytorch.org/">PyTorch</a>. PyTorch is one of the primary and most popular Python packages used for deep learning. It has all kinds of nice features that make it (relatively) easy to design and train a neural network.</p></li>
@@ -1050,808 +1075,13 @@ fiat
 <p>Because not all of these packages might be installed by default (depending on your Python distribution),  you first need to install some packages.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install SimpleITK
-<span class="o">!</span>pip install matplotlib
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install SimpleITK</span>
+<span class="c1"># !pip install matplotlib</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting SimpleITK
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Using cached SimpleITK-2.3.0.tar.gz (2.1 MB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Installing build dependencies ... ?25l-
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> done
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>?25h  Getting requirements to build wheel ... ?25l-
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> done
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>?25h  Preparing metadata (pyproject.toml) ... ?25l-
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> done
-?25hBuilding wheels for collected packages: SimpleITK
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for SimpleITK (pyproject.toml) ... ?25l-
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> |
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> /
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>^C
-?25h canceled
-<span class=" -Color -Color-Red">ERROR: Operation cancelled by user</span>
-
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: matplotlib in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (3.5.3)
-Requirement already satisfied: python-dateutil&gt;=2.7 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from matplotlib) (2.8.2)
-Requirement already satisfied: pyparsing&gt;=2.2.1 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from matplotlib) (3.0.9)
-Requirement already satisfied: packaging&gt;=20.0 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from matplotlib) (22.0)
-Requirement already satisfied: pillow&gt;=6.2.0 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from matplotlib) (9.4.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: kiwisolver&gt;=1.0.1 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from matplotlib) (1.4.4)
-Requirement already satisfied: cycler&gt;=0.10 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from matplotlib) (0.11.0)
-Requirement already satisfied: fonttools&gt;=4.22.0 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from matplotlib) (4.25.0)
-Requirement already satisfied: numpy&gt;=1.17 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from matplotlib) (1.21.5)
-Requirement already satisfied: typing-extensions in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from kiwisolver&gt;=1.0.1-&gt;matplotlib) (4.4.0)
-Requirement already satisfied: six&gt;=1.5 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.16.0)
-</pre></div>
-</div>
-</div>
 </div>
-<p>After that, we can import each pakage. This allows us to (significantly) extend the functionality of Python. Instead of just using its built-in functions, we now have access to a whole range of additional classes and functions.</p>
+<p>After that, we can import each package. This allows us to (significantly) extend the functionality of Python. Instead of just using its built-in functions, we now have access to a whole range of additional classes and functions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">SimpleITK</span> <span class="k">as</span> <span class="nn">sitk</span>
@@ -1876,6 +1106,25 @@ Requirement already satisfied: six&gt;=1.5 in /Users/jmwolterink/opt/anaconda3/e
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ObjectType = Image
+NDims = 3
+BinaryData = True
+BinaryDataByteOrderMSB = False
+CompressedData = True
+CompressedDataSize = 16868163
+TransformMatrix = 1 0 0 0 1 0 0 0 1
+Offset = 0 0 0
+CenterOfRotation = 0 0 0
+AnatomicalOrientation = RAI
+ElementSpacing = 0.48828100000000002 0.48828100000000002 2.5
+ITK_InputFilterName = MetaImageIO
+DimSize = 512 512 64
+ElementType = MET_SHORT
+ElementDataFile = TEV1P1CTI.zraw
+</pre></div>
+</div>
+</div>
 </div>
 <div style='background-color:rgba(80,255,80,0.4); padding:20px'>
   ❓ <b>Question</b>:  Can you infer from this header information if this a 2D or 3D image?
@@ -1897,11 +1146,24 @@ Requirement already satisfied: six&gt;=1.5 in /Users/jmwolterink/opt/anaconda3/e
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(512, 512, 64)
+(0.0, 0.0, 0.0)
+(0.488281, 0.488281, 2.5)
+(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now we know that the image has a particular size, we can also find the value of a pixel in that image. For this, we can use the <code>GetPixel</code> method, and we can use <code>SetPixel</code> to change values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">GetPixel</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-49
 </pre></div>
 </div>
 </div>
@@ -1925,6 +1187,11 @@ Requirement already satisfied: six&gt;=1.5 in /Users/jmwolterink/opt/anaconda3/e
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">image_array</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(64, 512, 512)
 </pre></div>
 </div>
 </div>
@@ -1968,6 +1235,9 @@ Requirement already satisfied: six&gt;=1.5 in /Users/jmwolterink/opt/anaconda3/e
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/ca3e0cc020a01ba1ef3ec53e039d62229d4293df55c42bf1e9c5d6b5da48a06a.png" src="../../_images/ca3e0cc020a01ba1ef3ec53e039d62229d4293df55c42bf1e9c5d6b5da48a06a.png" />
+</div>
 </div>
 <p>Matplotlib has many functions to display data. For images as 2D matrices, it doesn’t use the <code>plot</code> function, but the <code>imshow</code> function. If we visualize the 21st slice in our 64-slice CT image, we get the following image.</p>
 <div class="cell docutils container">
@@ -1977,6 +1247,9 @@ Requirement already satisfied: six&gt;=1.5 in /Users/jmwolterink/opt/anaconda3/e
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/0b2ac74cd60bf4cbd2a44bf57bf0186f540f3b60b32e9d0306b06a00a15ff11a.png" src="../../_images/0b2ac74cd60bf4cbd2a44bf57bf0186f540f3b60b32e9d0306b06a00a15ff11a.png" />
 </div>
 </div>
 <p>Now we see what’s actually in the image. It’s a CT scan of a heart, where we see (on the left) the chest wall, in the center the heart, and on the right the spine. Surrounding the heart is lung tissue. However, if you would show the image like this to a radiologist, they would be confused. First of all, they are used to seeing CT images in grayscale. We can fix that by changing the <a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">Matplotlib colormap</a> to <code>gray</code>.</p>
@@ -1988,6 +1261,9 @@ Requirement already satisfied: six&gt;=1.5 in /Users/jmwolterink/opt/anaconda3/e
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/9f8a5602912cedbab57fd0d29f8f47482eb3a4e0eff2713c403465d992c46fe9.png" src="../../_images/9f8a5602912cedbab57fd0d29f8f47482eb3a4e0eff2713c403465d992c46fe9.png" />
+</div>
 </div>
 <p>A second problem is that the image is rotated 90 degrees counterclockwise. This is because when talking about images, we typically use different axes than when talking about plots. For example, coordinate (20, 10) in an image means 21st row (remember we start counting at 0), 11th column. In a plot, it would mean 21st <em>column</em>, 11th <em>row</em>. So to fix that, we need to swap axes in our visualization. Because the image slice is a 2D matrix, we can just use <code>transpose</code></p>
 <div class="cell docutils container">
@@ -1997,6 +1273,9 @@ Requirement already satisfied: six&gt;=1.5 in /Users/jmwolterink/opt/anaconda3/e
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/37781fb09713b28622b20aebe81ff4b0fb3fad132ac8051ca7723b2e72def9e7.png" src="../../_images/37781fb09713b28622b20aebe81ff4b0fb3fad132ac8051ca7723b2e72def9e7.png" />
 </div>
 </div>
 <p>That’s more like it! Now, you may notice that the image does not show a lot of contrast. First of all, let’s see which image values are present in the image.</p>
@@ -2009,6 +1288,9 @@ Requirement already satisfied: six&gt;=1.5 in /Users/jmwolterink/opt/anaconda3/e
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/69209d5708e55a69102c660df28bbb330ddad12f837521d4a7e329d56582d9ed.png" src="../../_images/69209d5708e55a69102c660df28bbb330ddad12f837521d4a7e329d56582d9ed.png" />
 </div>
 </div>
 <section id="image-intensities">
@@ -2026,6 +1308,9 @@ The latter option is preferable as it doesn’t change the data.</p></li>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/167bed62f9d388bf5f538bd28668cd9a1cb64721ff982085ecce66654ba358c6.png" src="../../_images/167bed62f9d388bf5f538bd28668cd9a1cb64721ff982085ecce66654ba358c6.png" />
 </div>
 </div>
 <div style='background-color:rgba(80,255,80,0.4); padding:20px'>
