@@ -1,0 +1,67 @@
+# Book settings
+title: Deep Learning in 3D Medical Image Analysis # To change
+author: Jelmer Wolterink
+copyright: "2024"  
+logo: 'images/UT_logo.png'
+description: Tutorials for course Deep Learning in Medical Image Analysis # To change
+
+exclude_patterns:
+  -  _build
+  - Thumbs.db
+  - .DS_Store
+  - "figures"
+  - "datasets"
+  - "README.md"
+
+repository:
+  url: https://github.com/MIAGroupUT/dlmia-course 
+  path_to_book: jupyter-book/
+  branch: main
+
+# Only work if you repo is on GitHub
+launch_buttons:
+  colab_url: https://colab.research.google.com
+  jupyterhub_url: https://jupyter.utwente.nl
+  notebook_interface: "jupyterlab"  
+
+######################################################################################
+# Execution settings
+execute:
+  execute_notebooks         : "cache" # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
+  cache                     : "_build/.jupyter_cache/"  # A path to the jupyter cache that will be used to store execution artifacs. Defaults to `_build/.jupyter_cache/`
+  exclude_patterns:
+    - 'background' 
+  timeout: 240
+  allow_errors: true
+
+html:
+  favicon: https://www.utwente.nl/.utdesign/img/favicons/favicon-32x32.png
+  home_page_in_navbar: false
+  use_edit_page_button: false # Not working on Gitlab
+  use_repository_button: true
+  use_issues_button: true
+  baseurl: https://utwente.mia.nl/template # To change
+
+
+sphinx:
+  config:
+    nb_custom_formats:
+      .py:
+        - jupytext.reads
+        - fmt: py:percent
+    mathjax3_config:
+      TeX:
+        Macros:
+          "N": "\\mathbb{N}"
+          "floor": ["\\lfloor#1\\rfloor", 1]
+          "bmat": ["\\left[\\begin{array}"]
+          "emat": ["\\end{array}\\right]"]
+  extra_extensions:
+    - sphinx_click.ext
+    - sphinx_tabs.tabs
+
+
+latex:
+  latex_engine                : "xelatex"
+  latex_documents:
+    targetname: book.tex     
