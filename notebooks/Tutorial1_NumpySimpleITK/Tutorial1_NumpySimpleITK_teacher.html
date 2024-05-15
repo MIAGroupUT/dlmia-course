@@ -459,12 +459,7 @@ document.write(`
 <p>What you are looking at right now is called a Jupyter notebook. We will use these for all tutorials in the course. A notebook is a mixture of Markdown cells (with code and figures) and code cells. There is a Python kernel running in the background that can execute your code cells, and keeps track of your variables. This is a bit like a workspace in Matlab. To run a cell, you simply put the cursor in the cell and press <kbd>Shift</kbd> + <kbd>Enter</kbd>. For example, you can run the following cell, and (if all is well) the answer should appear below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span>
 </pre></div>
 </div>
 </div>
@@ -489,7 +484,7 @@ document.write(`
 <p>Like in any programming language, we can store values in containers, which we call variables. For example, we can assign the value <code class="docutils literal notranslate"><span class="pre">5</span></code> to variable <code class="docutils literal notranslate"><span class="pre">a</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
 </pre></div>
 </div>
 </div>
@@ -497,7 +492,7 @@ document.write(`
 <p>Variables can represent a number, a letter, a string, or anything else.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="mf">2.3</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="mf">2.3</span>
 <span class="n">course</span> <span class="o">=</span> <span class="s1">&#39;DLMIA&#39;</span>
 <span class="n">year</span> <span class="o">=</span> <span class="mi">2023</span>
 <span class="n">letter</span> <span class="o">=</span> <span class="s1">&#39;g&#39;</span>
@@ -508,7 +503,7 @@ document.write(`
 <p>You can do anything you want with these variables. For example, you can add two variables to make a new variable</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 </pre></div>
 </div>
 </div>
@@ -516,12 +511,7 @@ document.write(`
 <p>Run the cell below to check what the current value of <code class="docutils literal notranslate"><span class="pre">c</span></code> is</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.3
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span>
 </pre></div>
 </div>
 </div>
@@ -541,12 +531,7 @@ document.write(`
 <p>If you are not sure which type a variable has, you can always check it using <code class="docutils literal notranslate"><span class="pre">type</span></code>, as below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -577,12 +562,7 @@ document.write(`
 <p>If your variable has one type but you want it to have another type, you can ‘cast’ it to another type as follows</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023.0
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -590,17 +570,7 @@ document.write(`
 <p>This doesn’t always work, but only for types that can be cast into each other. For example, the following should give you an error</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_17266</span><span class="o">/</span><span class="mf">2872767934.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">float</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
-
-<span class="ne">ValueError</span>: could not convert string to float: &#39;g&#39;
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -608,17 +578,7 @@ document.write(`
 <p>Variable names are case-sensitive. This means that while <code class="docutils literal notranslate"><span class="pre">b=2.3</span></code>, variable <code class="docutils literal notranslate"><span class="pre">B</span></code> is actually undefined. Try it out yourself</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_17266</span><span class="o">/</span><span class="mf">2079371697.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">B</span>
-
-<span class="ne">NameError</span>: name &#39;B&#39; is not defined
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">B</span>
 </pre></div>
 </div>
 </div>
@@ -629,7 +589,7 @@ document.write(`
 <p>A function is a block of code that only runs when it’s called. The benefit of defining a function is that - if you have to use a piece of code many times - you can easily call it. For example, we can define a function that just says ‘Hello world’.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">greet</span><span class="p">():</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">greet</span><span class="p">():</span>
     <span class="k">return</span> <span class="s1">&#39;Hello world&#39;</span>
 </pre></div>
 </div>
@@ -638,12 +598,7 @@ document.write(`
 <p>If you run the cell above, you’ll notice that there is no output. That is because the function is not called. To actually see some output we need to call the function like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">greet</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Hello world&#39;
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">greet</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -651,7 +606,7 @@ document.write(`
 <p>Functions can also have arguments. For example, the function below takes two arguments <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> and adds these. Note that <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> are just the names of the variables within the function, i.e., within its scope. The function also has a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement, to define what should be its output.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_numbers</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_numbers</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 </pre></div>
 </div>
@@ -667,7 +622,7 @@ document.write(`
 <p>Of course, functions can be much more complex than this. We can make new variables within a function and call one function from another function. For example</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">multiply_numbers</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">multiply_numbers</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
 
 <span class="k">def</span> <span class="nf">my_function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
@@ -678,16 +633,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>42
-</pre></div>
-</div>
-</div>
 </div>
 <p>The sky is the limit. We can put <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">elif</span></code> and <code class="docutils literal notranslate"><span class="pre">else</span></code> statements in a function, make <code class="docutils literal notranslate"><span class="pre">for</span></code> loops and even call a function from within that same function (recursiveness). For example, we can easily write a function that computes the factorial of a number, i.e., <span class="math notranslate nohighlight">\(a!\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
@@ -697,32 +647,15 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>120
-</pre></div>
-</div>
-</div>
 </div>
 <p>One important thing to consider when working with functions (and classes) is the scope of a variable. If you define a variable in a function, it will cease to exist when the function is executed. Let’s look at the simple example below. If we run this cell, we get an error which says that in the global scope, <code class="docutils literal notranslate"><span class="pre">u</span></code> is not defined.</p>
 <p>(Note that the function below does not have a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement. If we leave this out and we don’t want to return anything, Python will just add <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">None</span></code> for us.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">manipulate</span><span class="p">():</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">manipulate</span><span class="p">():</span>
     <span class="n">u</span> <span class="o">=</span> <span class="mi">8</span>
 
 <span class="n">u</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_17266</span><span class="o">/</span><span class="mf">2791081934.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">u</span> <span class="o">=</span> <span class="mi">8</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> 
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">u</span>
-
-<span class="ne">NameError</span>: name &#39;u&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -730,18 +663,13 @@ document.write(`
 <p>Conversely, if you define a variable globally, you can read it from within a function, but you cannot change it. Let’s look at a very simple example to demonstrate this. In principe, the function <code class="docutils literal notranslate"><span class="pre">change_e</span></code> should set the value of variable <code class="docutils literal notranslate"><span class="pre">e</span></code> to that of <code class="docutils literal notranslate"><span class="pre">f</span></code>. However, because <code class="docutils literal notranslate"><span class="pre">e</span></code> is a global variable, we’re not allowed to change it from within this function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="mi">4</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="mi">4</span>
 
 <span class="k">def</span> <span class="nf">change_e</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
     <span class="n">e</span> <span class="o">=</span> <span class="n">f</span>
 
 <span class="n">change_e</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
 <span class="n">e</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
 </pre></div>
 </div>
 </div>
@@ -757,7 +685,7 @@ document.write(`
 <p>We can put this in code:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Car</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Car</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">brand</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span> 
         <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
@@ -788,13 +716,8 @@ document.write(`
 <p>Now, let’s initialize Jelmer’s car which is just standing still in the parking lot. We can do this by calling the class (just like we’d call a function) with arguments. This way, we indirectly call its <code class="docutils literal notranslate"><span class="pre">__init__</span></code> function. Also, we use the built-in <code class="docutils literal notranslate"><span class="pre">print</span></code> function to print its current speed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jelmers_car</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">brand</span><span class="o">=</span><span class="s1">&#39;skoda&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">jelmers_car</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">brand</span><span class="o">=</span><span class="s1">&#39;skoda&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">jelmers_car</span><span class="o">.</span><span class="n">speed</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
 </pre></div>
 </div>
 </div>
@@ -802,7 +725,7 @@ document.write(`
 <p>Now, we can make the car go faster by calling its <code class="docutils literal notranslate"><span class="pre">accelerate</span></code> function, slow down using its <code class="docutils literal notranslate"><span class="pre">slow_down</span></code> function (note how the speed stays non-negative), and honk it’s horn via its <code class="docutils literal notranslate"><span class="pre">__call__</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jelmers_car</span><span class="o">.</span><span class="n">accelerate</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">jelmers_car</span><span class="o">.</span><span class="n">accelerate</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">jelmers_car</span><span class="o">.</span><span class="n">speed</span><span class="p">)</span>
 <span class="n">jelmers_car</span><span class="o">.</span><span class="n">slow_down</span><span class="p">()</span>
 <span class="n">jelmers_car</span><span class="o">.</span><span class="n">slow_down</span><span class="p">()</span>
@@ -813,18 +736,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
-0
-Toot toot, I am the fastest skoda
-</pre></div>
-</div>
-</div>
 </div>
 <p>The nice thing with classes is that if we want to represent Dieuwertje’s car driving on the A35, we can just make another object using the same class.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dieuwertjes_car</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;gold&#39;</span><span class="p">,</span> <span class="n">brand</span><span class="o">=</span><span class="s1">&#39;hyundai&#39;</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dieuwertjes_car</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;gold&#39;</span><span class="p">,</span> <span class="n">brand</span><span class="o">=</span><span class="s1">&#39;hyundai&#39;</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -832,7 +748,7 @@ Toot toot, I am the fastest skoda
 <p>We have now created variables which are just objects of the type <code class="docutils literal notranslate"><span class="pre">Car</span></code>, similarly to variables of built-in types <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">str</span></code> that you have seen before. Which means that we can also write functions that take these objects as inputs. Let’s define a function that determines which car would win a race:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">racing_time</span><span class="p">(</span><span class="n">car_a</span><span class="p">,</span> <span class="n">car_b</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">racing_time</span><span class="p">(</span><span class="n">car_a</span><span class="p">,</span> <span class="n">car_b</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">car_a</span><span class="o">.</span><span class="n">speed</span> <span class="o">&gt;</span> <span class="n">car_b</span><span class="o">.</span><span class="n">speed</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The first car wins!&#39;</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">car_b</span><span class="o">.</span><span class="n">speed</span> <span class="o">&gt;</span> <span class="n">car_a</span><span class="o">.</span><span class="n">speed</span><span class="p">:</span>
@@ -841,11 +757,6 @@ Toot toot, I am the fastest skoda
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Everyone is a winner&#39;</span><span class="p">)</span>
         
 <span class="n">racing_time</span><span class="p">(</span><span class="n">jelmers_car</span><span class="p">,</span> <span class="n">dieuwertjes_car</span><span class="p">)</span>      
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The second car wins!
 </pre></div>
 </div>
 </div>
@@ -869,7 +780,7 @@ Toot toot, I am the fastest skoda
 <p>There are many nice things you can do with classes, and we’re not going to go into too many details here, but one thing that is useful to know is ‘inheritance’. Let’s say we want to make a very specific class for red Fiat cars and we’re also interested in the year that they were built. We can either make a completely new class, or reuse/inherit from our existing <code class="docutils literal notranslate"><span class="pre">car</span></code> class.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">FiatCar</span><span class="p">(</span><span class="n">Car</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">FiatCar</span><span class="p">(</span><span class="n">Car</span><span class="p">):</span>
        
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">year</span><span class="p">):</span>
         <span class="n">Car</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">brand</span><span class="o">=</span><span class="s1">&#39;fiat&#39;</span><span class="p">)</span>        
@@ -881,20 +792,12 @@ Toot toot, I am the fastest skoda
 <p>We can now just instantiate an object of this class and as you see below, it has all the same attributes and methods as its parent class <code class="docutils literal notranslate"><span class="pre">Car</span></code>, plus a new one, <code class="docutils literal notranslate"><span class="pre">year</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_fiat</span> <span class="o">=</span> <span class="n">FiatCar</span><span class="p">(</span><span class="mi">1922</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_fiat</span> <span class="o">=</span> <span class="n">FiatCar</span><span class="p">(</span><span class="mi">1922</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">my_fiat</span><span class="o">.</span><span class="n">color</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">my_fiat</span><span class="o">.</span><span class="n">brand</span><span class="p">)</span>
 <span class="n">my_fiat</span><span class="o">.</span><span class="n">accelerate</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">my_fiat</span><span class="o">.</span><span class="n">speed</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">my_fiat</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>red
-fiat
-1
-1922
 </pre></div>
 </div>
 </div>
@@ -944,7 +847,7 @@ fiat
 <p>Now let’s make a tuple, list, and set and see these differences in action.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
 <span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
 <span class="n">a_set</span> <span class="o">=</span> <span class="p">{</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">}</span>
 </pre></div>
@@ -954,7 +857,7 @@ fiat
 <p>Let’s first look at mutability. We can change the list and set by appending values. This works slightly differently for lists and sets, but is impossible for tuples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_list</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a_list</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span>
 
 <span class="n">a_set</span> <span class="o">|=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
@@ -962,35 +865,13 @@ fiat
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[12, 4, 8, 3, 4, 5]
-{3, 4, 5, 8, 12}
-</pre></div>
-</div>
-</div>
 </div>
 <p>As you probably notice, the elements have been added to the list as well as to the set, but the order of the set has changed. A set is an unordered data structure, so it does not preserve any order we give to its elements. Instead, if we print the set, we just get its element, sorted in ascending order. For the list, the order that we give is preserved. Similarly for the tuple. This also affects indexing: because there is no order in the set, we cannot ask fo the <span class="math notranslate nohighlight">\(n\)</span>th item. However, we can do this for the list and tuple:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a_list</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a_list</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a_set</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
-4
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_17266</span><span class="o">/</span><span class="mf">292420057.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">a_list</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">a_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">a_set</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
-
-<span class="ne">TypeError</span>: &#39;set&#39; object is not subscriptable
 </pre></div>
 </div>
 </div>
@@ -998,7 +879,7 @@ fiat
 <p>Finally, as the table indicated, sets cannot have duplicate elements. Because there’s no order, there would be no way to keep two duplicated apart. This is not a problem for the list and tuple though:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">a_set</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
 
@@ -1008,23 +889,11 @@ fiat
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 1, 2, 3]
-(1, 2, 3, 1, 2, 3)
-{1, 2, 3}
-</pre></div>
-</div>
-</div>
 </div>
 <p>List, tuples, and sets have all kinds of built-in functions, and can also be cast into one another. One useful built-in function is <code class="docutils literal notranslate"><span class="pre">in</span></code>. For example, if we want to check if the value <code class="docutils literal notranslate"><span class="pre">3</span></code> appears in <code class="docutils literal notranslate"><span class="pre">a_list</span></code>, we can just write:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1035,13 +904,8 @@ fiat
 <p>One last Python thing that we want to tell you (for know) is about dictionaries. Dictionaries are a very convenient way to keep tracks of <em>keys</em> and <em>values</em>. In a way, you can think of dictionaries as a set with indexing, where you can define your own kinds of indices. A typical dictionary is defined as below, and as you see, we can ask for the value of specific elements in the dictionary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">}</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">}</span>
 <span class="n">a_dict</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
 </pre></div>
 </div>
 </div>
@@ -1049,13 +913,8 @@ fiat
 <p>For example, we can make a dictionary with the cars that we have just defined and use names as keys.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cars</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Jelmer&#39;</span><span class="p">:</span> <span class="n">jelmers_car</span><span class="p">,</span> <span class="s1">&#39;Dieuwertje&#39;</span><span class="p">:</span> <span class="n">dieuwertjes_car</span><span class="p">}</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cars</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Jelmer&#39;</span><span class="p">:</span> <span class="n">jelmers_car</span><span class="p">,</span> <span class="s1">&#39;Dieuwertje&#39;</span><span class="p">:</span> <span class="n">dieuwertjes_car</span><span class="p">}</span>
 <span class="n">racing_time</span><span class="p">(</span><span class="n">cars</span><span class="p">[</span><span class="s1">&#39;Jelmer&#39;</span><span class="p">],</span> <span class="n">cars</span><span class="p">[</span><span class="s1">&#39;Dieuwertje&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The second car wins!
 </pre></div>
 </div>
 </div>
@@ -1063,13 +922,8 @@ fiat
 <p>There is no reason to restrict the dictionary keys or values to a specific type, we can mix and match types.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mixed_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Jelmer&#39;</span><span class="p">:</span> <span class="n">jelmers_car</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;b&#39;</span><span class="p">}</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mixed_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Jelmer&#39;</span><span class="p">:</span> <span class="n">jelmers_car</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;b&#39;</span><span class="p">}</span>
 <span class="n">mixed_dict</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;b&#39;
 </pre></div>
 </div>
 </div>
@@ -1099,7 +953,7 @@ fiat
 <p>For example, to add a path in Jupyter, do the following</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;/Users/jmwolterink/Downloads/Tutorial_1&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;/Users/jmwolterink/Downloads/Tutorial_1&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -1107,23 +961,10 @@ fiat
 <p>To add a path in Google Colab, do the following</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
 
 <span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
 <span class="n">data_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;/content/drive/My Drive/WHEREDIDYOUPUTTHEDATA?&#39;</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_17266</span><span class="o">/</span><span class="mf">550177472.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">data_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;/content/drive/My Drive/WHEREDIDYOUPUTTHEDATA?&#39;</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;google.colab&#39;
 </pre></div>
 </div>
 </div>
@@ -1141,7 +982,7 @@ fiat
 <p>Because not all of these packages might be installed by default (depending on your Python distribution),  you first need to install some packages.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install SimpleITK</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install SimpleITK</span>
 <span class="c1"># !pip install matplotlib</span>
 </pre></div>
 </div>
@@ -1150,7 +991,7 @@ fiat
 <p>After that, we can import each package. This allows us to (significantly) extend the functionality of Python. Instead of just using its built-in functions, we now have access to a whole range of additional classes and functions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">SimpleITK</span> <span class="k">as</span> <span class="nn">sitk</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">SimpleITK</span> <span class="k">as</span> <span class="nn">sitk</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -1164,30 +1005,11 @@ fiat
 <p>We first load an image that is stored in MetaImage format. In this format, an image always consists of two files: one header file (.mhd) that contains the image information, and one data file (.raw or .zraw) that contains the actual image data. The header file is human readable. We can print its contents here. Take a look at the attributes that are included in the meta information for a typical image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;TEV1P1CTI.mhd&#39;</span><span class="p">)</span>  
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;TEV1P1CTI.mhd&#39;</span><span class="p">)</span>  
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">image_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ObjectType = Image
-NDims = 3
-BinaryData = True
-BinaryDataByteOrderMSB = False
-CompressedData = True
-CompressedDataSize = 16868163
-TransformMatrix = 1 0 0 0 1 0 0 0 1
-Offset = 0 0 0
-CenterOfRotation = 0 0 0
-AnatomicalOrientation = RAI
-ElementSpacing = 0.48828100000000002 0.48828100000000002 2.5
-ITK_InputFilterName = MetaImageIO
-DimSize = 512 512 64
-ElementType = MET_SHORT
-ElementDataFile = TEV1P1CTI.zraw
 </pre></div>
 </div>
 </div>
@@ -1206,7 +1028,7 @@ ElementDataFile = TEV1P1CTI.zraw
 <p>There are all kinds of tags in this header file that are relevant for the way in which the image is read. However, the nice thing is that we can also directly read this header file into a SimpleITK <code>Image</code> object. The image reader will read all meta information into the <code>Image</code> object and also load the pixel values from the data file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">sitk</span><span class="o">.</span><span class="n">ReadImage</span><span class="p">(</span><span class="n">image_file</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">sitk</span><span class="o">.</span><span class="n">ReadImage</span><span class="p">(</span><span class="n">image_file</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1214,18 +1036,10 @@ ElementDataFile = TEV1P1CTI.zraw
 <p>You can then use methods in this object to retrieve the properties that are in the header file. For example using the following queries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">GetSize</span><span class="p">())</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">GetSize</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">GetOrigin</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">GetSpacing</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">GetDirection</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(512, 512, 64)
-(0.0, 0.0, 0.0)
-(0.488281, 0.488281, 2.5)
-(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0)
 </pre></div>
 </div>
 </div>
@@ -1233,19 +1047,14 @@ ElementDataFile = TEV1P1CTI.zraw
 <p>Now we know that the image has a particular size, we can also find the value of a pixel in that image. For this, we can use the <code>GetPixel</code> method, and we can use <code>SetPixel</code> to change values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">GetPixel</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-49
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">GetPixel</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image</span><span class="o">.</span><span class="n">SetPixel</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image</span><span class="o">.</span><span class="n">SetPixel</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1253,7 +1062,7 @@ ElementDataFile = TEV1P1CTI.zraw
 <p>Of course, setting and getting individual pixels is all quite cumbersome and this is not the optimal way to work with the 3D image matrix. Luckily, we can also read the raw pixel values into a NumPy array. For this, we use the <code>GetArrayFromImage</code> method.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_array</span> <span class="o">=</span> <span class="n">sitk</span><span class="o">.</span><span class="n">GetArrayFromImage</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image_array</span> <span class="o">=</span> <span class="n">sitk</span><span class="o">.</span><span class="n">GetArrayFromImage</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1261,12 +1070,7 @@ ElementDataFile = TEV1P1CTI.zraw
 <p>This is where things become a little bit tricky. If you print the shape of the <code>image_array</code> array, you will see that it doesn’t match that of the SimpleITK Image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">image_array</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(64, 512, 512)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">image_array</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1278,7 +1082,7 @@ ElementDataFile = TEV1P1CTI.zraw
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">swapaxes</span><span class="p">(</span><span class="n">image_array</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">swapaxes</span><span class="p">(</span><span class="n">image_array</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1339,7 +1143,7 @@ Answer: The new shape is (512, 512, 64)</p>
 <p>The code below plots a sine wave on 100 values between 0 and 20.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
@@ -1349,62 +1153,47 @@ Answer: The new shape is (512, 512, 64)</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/ca3e0cc020a01ba1ef3ec53e039d62229d4293df55c42bf1e9c5d6b5da48a06a.png" src="../../_images/ca3e0cc020a01ba1ef3ec53e039d62229d4293df55c42bf1e9c5d6b5da48a06a.png" />
-</div>
 </div>
 <p>Matplotlib has many functions to display data. For images as 2D matrices, it doesn’t use the <code>plot</code> function, but the <code>imshow</code> function. If we visualize the 21st slice in our 64-slice CT image, we get the following image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">20</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/0b2ac74cd60bf4cbd2a44bf57bf0186f540f3b60b32e9d0306b06a00a15ff11a.png" src="../../_images/0b2ac74cd60bf4cbd2a44bf57bf0186f540f3b60b32e9d0306b06a00a15ff11a.png" />
-</div>
 </div>
 <p>Now we see what’s actually in the image. It’s a CT scan of a heart, where we see (on the left) the chest wall, in the center the heart, and on the right the spine. Surrounding the heart is lung tissue. However, if you would show the image like this to a radiologist, they would be confused. First of all, they are used to seeing CT images in grayscale. We can fix that by changing the <a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">Matplotlib colormap</a> to <code>gray</code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">20</span><span class="p">],</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/9f8a5602912cedbab57fd0d29f8f47482eb3a4e0eff2713c403465d992c46fe9.png" src="../../_images/9f8a5602912cedbab57fd0d29f8f47482eb3a4e0eff2713c403465d992c46fe9.png" />
-</div>
 </div>
 <p>A second problem is that the image is rotated 90 degrees counterclockwise. This is because when talking about images, we typically use different axes than when talking about plots. For example, coordinate (20, 10) in an image means 21st row (remember we start counting at 0), 11th column. In a plot, it would mean 21st <em>column</em>, 11th <em>row</em>. So to fix that, we need to swap axes in our visualization. Because the image slice is a 2D matrix, we can just use <code>transpose</code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">20</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/37781fb09713b28622b20aebe81ff4b0fb3fad132ac8051ca7723b2e72def9e7.png" src="../../_images/37781fb09713b28622b20aebe81ff4b0fb3fad132ac8051ca7723b2e72def9e7.png" />
-</div>
 </div>
 <p>That’s more like it! Now, you may notice that the image does not show a lot of contrast. First of all, let’s see which image values are present in the image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">image_array</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">20</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Hounsfield unit&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/69209d5708e55a69102c660df28bbb330ddad12f837521d4a7e329d56582d9ed.png" src="../../_images/69209d5708e55a69102c660df28bbb330ddad12f837521d4a7e329d56582d9ed.png" />
 </div>
 </div>
 <section id="image-intensities">
@@ -1417,14 +1206,11 @@ The latter option is preferable as it doesn’t change the data.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">20</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/167bed62f9d388bf5f538bd28668cd9a1cb64721ff982085ecce66654ba358c6.png" src="../../_images/167bed62f9d388bf5f538bd28668cd9a1cb64721ff982085ecce66654ba358c6.png" />
 </div>
 </div>
 <div class="tip admonition">

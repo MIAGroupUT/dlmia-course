@@ -427,7 +427,7 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-evaluate-the-trained-network">Part 2: Evaluate the trained network</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-the-trained-network">Evaluate the trained network</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-inspection">Visual inspection</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-evaluation-metrics">Compute evaluation metrics</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dice">Dice</a></li>
@@ -466,7 +466,7 @@ document.write(`
 <p>Set the data path to the “ribs” folder in the package that you have just downloaded in the code block beneath. If you’re running this on Colab, don’t forget to set a GPU runtime!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ add path:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ add path:</span>
 <span class="n">data_path</span> <span class="o">=</span> <span class="s2">&quot;../data/Tutorial_3/ribs&quot;</span>
 </pre></div>
 </div>
@@ -474,7 +474,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check if data_path exists:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># check if data_path exists:</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">data_path</span><span class="p">):</span>
@@ -486,73 +486,13 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Please update your data path to an existing folder.
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install additional packages required for this tutorial</span>
-<span class="o">!</span>pip install scikit-image
-<span class="o">!</span>pip install wandb
-<span class="o">!</span>pip install monai
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: scikit-image in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (0.19.3)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: PyWavelets&gt;=1.1.1 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from scikit-image) (1.3.0)
-Requirement already satisfied: scipy&gt;=1.4.1 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from scikit-image) (1.7.3)
-Requirement already satisfied: tifffile&gt;=2019.7.26 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from scikit-image) (2021.7.2)
-Requirement already satisfied: numpy&gt;=1.17.0 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from scikit-image) (1.21.5)
-Requirement already satisfied: imageio&gt;=2.4.1 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from scikit-image) (2.19.3)
-Requirement already satisfied: pillow!=7.1.0,!=7.1.1,!=8.3.0,&gt;=6.1.0 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from scikit-image) (9.4.0)
-Requirement already satisfied: packaging&gt;=20.0 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from scikit-image) (22.0)
-Requirement already satisfied: networkx&gt;=2.2 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from scikit-image) (2.6.3)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: wandb in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (0.16.6)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: setuptools in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from wandb) (65.6.3)
-Requirement already satisfied: GitPython!=3.1.29,&gt;=1.0.0 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from wandb) (3.1.43)
-Requirement already satisfied: sentry-sdk&gt;=1.0.0 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from wandb) (1.45.0)
-Requirement already satisfied: typing-extensions in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from wandb) (4.4.0)
-Requirement already satisfied: Click!=8.0.0,&gt;=7.1 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from wandb) (8.0.4)
-Requirement already satisfied: appdirs&gt;=1.4.3 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from wandb) (1.4.4)
-Requirement already satisfied: docker-pycreds&gt;=0.4.0 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from wandb) (0.4.0)
-Requirement already satisfied: protobuf!=4.21.0,&lt;5,&gt;=3.19.0 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from wandb) (4.24.4)
-Requirement already satisfied: requests&lt;3,&gt;=2.0.0 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from wandb) (2.28.1)
-Requirement already satisfied: setproctitle in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from wandb) (1.3.3)
-Requirement already satisfied: psutil&gt;=5.0.0 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from wandb) (5.9.0)
-Requirement already satisfied: PyYAML in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from wandb) (6.0)
-Requirement already satisfied: importlib-metadata in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from Click!=8.0.0,&gt;=7.1-&gt;wandb) (4.11.3)
-Requirement already satisfied: six&gt;=1.4.0 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from docker-pycreds&gt;=0.4.0-&gt;wandb) (1.16.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: gitdb&lt;5,&gt;=4.0.1 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from GitPython!=3.1.29,&gt;=1.0.0-&gt;wandb) (4.0.11)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from requests&lt;3,&gt;=2.0.0-&gt;wandb) (3.4)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from requests&lt;3,&gt;=2.0.0-&gt;wandb) (1.26.14)
-Requirement already satisfied: charset-normalizer&lt;3,&gt;=2 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from requests&lt;3,&gt;=2.0.0-&gt;wandb) (2.0.4)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from requests&lt;3,&gt;=2.0.0-&gt;wandb) (2022.12.7)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: smmap&lt;6,&gt;=3.0.1 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from gitdb&lt;5,&gt;=4.0.1-&gt;GitPython!=3.1.29,&gt;=1.0.0-&gt;wandb) (5.0.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: zipp&gt;=0.5 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from importlib-metadata-&gt;Click!=8.0.0,&gt;=7.1-&gt;wandb) (3.11.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: monai in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (1.1.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy&gt;=1.17 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from monai) (1.21.5)
-Requirement already satisfied: torch&gt;=1.8 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from monai) (1.13.1)
-Requirement already satisfied: typing-extensions in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from torch&gt;=1.8-&gt;monai) (4.4.0)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># Install additional packages required for this tutorial
+!pip install scikit-image
+!pip install wandb
+!pip install monai
 </pre></div>
 </div>
 </div>
@@ -569,16 +509,8 @@ Requirement already satisfied: typing-extensions in /Users/jmwolterink/opt/anaco
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wandb</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wandb</span>
 <span class="n">wandb</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>: Currently logged in as: <span class=" -Color -Color-Yellow">jelmerwolterink</span>. Use <span class=" -Color -Color-Bold">`wandb login --relogin`</span> to force relogin
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>
@@ -586,29 +518,7 @@ Requirement already satisfied: typing-extensions in /Users/jmwolterink/opt/anaco
 <p>Now, we can initialize a run in wandb with <code class="docutils literal notranslate"><span class="pre">wandb.init()</span></code>. You can specify the project and run name, as well as configuration settings, by passing these as additional arguments.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">run</span> <span class="o">=</span> <span class="n">wandb</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s1">&#39;Example project&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Example run&#39;</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;dataset&#39;</span><span class="p">:</span> <span class="s1">&#39;VinDr-RibCXR&#39;</span><span class="p">})</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>: wandb version 0.17.0 is available!  To upgrade, please run:
-<span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>:  $ pip install wandb --upgrade
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>: Tracking run with wandb version 0.16.6
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>: Run data is saved locally in <span class=" -Color -Color-Bold -Color-Bold-Magenta">/Users/jmwolterink/Library/CloudStorage/OneDrive-UniversityofTwente/Teaching/DLMIA_2023_2024/dlmia-course/notebooks/Tutorial3_Segmentation/wandb/run-20240515_100649-jqv58hq7</span>
-<span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>: Run <span class=" -Color -Color-Bold">`wandb offline`</span> to turn off syncing.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>: Syncing run <span class=" -Color -Color-Yellow">Example run</span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>: ⭐️ View project at <span class=" -Color -Color-Blue">https://wandb.ai/jelmerwolterink/Example%20project</span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>: 🚀 View run at <span class=" -Color -Color-Blue">https://wandb.ai/jelmerwolterink/Example%20project/runs/jqv58hq7</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">run</span> <span class="o">=</span> <span class="n">wandb</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s1">&#39;Example project&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Example run&#39;</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;dataset&#39;</span><span class="p">:</span> <span class="s1">&#39;VinDr-RibCXR&#39;</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -616,7 +526,7 @@ Requirement already satisfied: typing-extensions in /Users/jmwolterink/opt/anaco
 <p>By running the code above, a new run is created. Although we have not logged any information yet, it is possible to see the run on the wandb website. As soon as we will start logging information, it will become visible. It is possible to log information to your run with <code class="docutils literal notranslate"><span class="pre">wandb.log()</span></code>. When it’s time to complete the run, you can stop it with <code class="docutils literal notranslate"><span class="pre">run.finish()</span></code>. Run the cell below and see what happens on the run webpage.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
 <span class="c1"># time.sleep(1) makes the script wait for 1 second, so the full script takes about 60 seconds to finish</span>
@@ -625,33 +535,6 @@ Requirement already satisfied: typing-extensions in /Users/jmwolterink/opt/anaco
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     
 <span class="n">run</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>: - 0.015 MB of 0.015 MB uploaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>:                                                                                
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>: 
-<span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>: Run history:
-<span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>: Accuracy ▃▅▂▄▅▃▇▄▄█▇▅▅▂▄▂▆▂▆▅▃█▁▄▂▂▆▅▁▅█▁██▃▅▃█▃▄
-<span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>:     Loss ▆▂▄▅▃▇▇▄▇▃▂▂▁▄▁▆▃▆█▂▂▇▇▂▇▇█▆▃▇▃▇▃▃▄▇▆█▂▆
-<span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>: 
-<span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>: Run summary:
-<span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>: Accuracy 0.38454
-<span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>:     Loss 0.7066
-<span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>: 
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>: 🚀 View run <span class=" -Color -Color-Yellow">Example run</span> at: <span class=" -Color -Color-Blue">https://wandb.ai/jelmerwolterink/Example%20project/runs/jqv58hq7</span>
-<span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>: ⭐️ View project at: <span class=" -Color -Color-Blue">https://wandb.ai/jelmerwolterink/Example%20project</span>
-<span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>: Synced 5 W&amp;B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>: Find logs at: <span class=" -Color -Color-Bold -Color-Bold-Magenta">./wandb/run-20240515_100649-jqv58hq7/logs</span>
 </pre></div>
 </div>
 </div>
@@ -682,7 +565,7 @@ The data consists of an image and a label. However, the label is in this case no
 <p>As we don’t want to write this list of paths manually, we write the function <code class="docutils literal notranslate"><span class="pre">build_dict_ribs</span></code> which automatically computes it based on the root folder of the data directory <code class="docutils literal notranslate"><span class="pre">data_path</span></code>. This is possible because fortunately your teachers pre-organized the dataset for this tutorial, but be aware that most medical datasets require a lot of cleaning up prior to this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">glob</span>
@@ -756,7 +639,7 @@ The data consists of an image and a label. However, the label is in this case no
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># construct list of dictionaries</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># construct list of dictionaries</span>
 <span class="n">train_dict_list</span> <span class="o">=</span> <span class="n">build_dict_ribs</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">)</span>
 <span class="c1"># construct CacheDataset from list of paths + transform</span>
 <span class="n">train_dataset</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">CacheDataset</span><span class="p">(</span><span class="n">train_dict_list</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">LoadRibData</span><span class="p">())</span>
@@ -770,7 +653,7 @@ The data consists of an image and a label. However, the label is in this case no
 </div>
 <div class="cell tag_student docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ print the length of each subset here</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ print the length of each subset here</span>
 </pre></div>
 </div>
 </div>
@@ -781,7 +664,7 @@ The data consists of an image and a label. However, the label is in this case no
 </div>
 <div class="cell tag_student docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ print the dimensions of a bunch of images and masks</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ print the dimensions of a bunch of images and masks</span>
 </pre></div>
 </div>
 </div>
@@ -793,7 +676,7 @@ The data consists of an image and a label. However, the label is in this case no
 </div>
 <div class="cell tag_student docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code</span>
 </pre></div>
 </div>
 </div>
@@ -804,7 +687,7 @@ The data consists of an image and a label. However, the label is in this case no
 <p>We now build <code class="docutils literal notranslate"><span class="pre">visualize_rib_sample</span></code> to plot X-ray images on which we overlay their binary mask (in green).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">visualize_rib_sample</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">visualize_rib_sample</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="c1"># Visualize the x-ray and overlay the mask, using the dictionary as input</span>
     <span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">])</span>
     <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="s1">&#39;mask&#39;</span><span class="p">])</span>
@@ -825,7 +708,7 @@ The data consists of an image and a label. However, the label is in this case no
 </div>
 <div class="cell tag_student docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ visualize samples here.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ visualize samples here.</span>
 </pre></div>
 </div>
 </div>
@@ -853,7 +736,7 @@ The data consists of an image and a label. However, the label is in this case no
 <p>Lastly, most transforms expect a channel dimension for both 2D and 3D images. As we have only one channel, we should add this extra dimension using the <code class="docutils literal notranslate"><span class="pre">monai.transforms.AddChanneld</span></code> transform first.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load sample</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load sample</span>
 <span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">)))</span> <span class="c1"># This picks a random sample, but you can change this value</span>
 <span class="n">sample_dict</span> <span class="o">=</span> <span class="n">train_dataset</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
 <span class="n">visualize_rib_sample</span><span class="p">(</span><span class="n">sample_dict</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Original sample&quot;</span><span class="p">)</span>
@@ -883,22 +766,6 @@ The data consists of an image and a label. However, the label is in this case no
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_49750</span><span class="o">/</span><span class="mf">1625175677.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Load sample</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">)))</span> <span class="c1"># This picks a random sample, but you can change this value</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">sample_dict</span> <span class="o">=</span> <span class="n">train_dataset</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">visualize_rib_sample</span><span class="p">(</span><span class="n">sample_dict</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Original sample&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> 
-
-<span class="nn">mtrand.pyx</span> in <span class="ni">numpy.random.mtrand.RandomState.choice</span><span class="nt">()</span>
-
-<span class="ne">ValueError</span>: &#39;a&#39; cannot be empty unless no samples are taken
-</pre></div>
-</div>
-</div>
 </div>
 <p>Note how we concatenated the <code class="docutils literal notranslate"><span class="pre">AddChannelsd</span></code> transform with the flip and rotate transform by applying them after each other. If we have only two transforms, like here, this is an acceptable workflow. However, if we have a whole bunch of transforms that we have to call during training of the network, you can imagine that the code will become very messy. Therefore, we can combine multiple transforms into a single one using <a class="reference external" href="https://docs.monai.io/en/stable/transforms.html#compose"><code class="docutils literal notranslate"><span class="pre">monai.transforms.Compose</span></code></a>.</p>
 <p>Upon initialization, <code class="docutils literal notranslate"><span class="pre">Compose</span></code> takes a list of transforms as input and outputs a transform object that concatenates all the transforms. It can be applied in the same way as the transforms shown above.</p>
@@ -908,39 +775,11 @@ The data consists of an image and a label. However, the label is in this case no
 </div>
 <div class="cell tag_student docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_dict</span> <span class="o">=</span> <span class="n">train_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sample_dict</span> <span class="o">=</span> <span class="n">train_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="c1"># Create the composed transform</span>
 
 <span class="c1"># Apply this new single transform to sample_dict</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ZeroDivisionError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_49750</span><span class="o">/</span><span class="mf">330516906.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sample_dict</span> <span class="o">=</span> <span class="n">train_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Create the composed transform</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> 
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># Apply this new single transform to sample_dict</span>
-
-<span class="nn">~/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages/monai/data/dataset.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, index)</span>
-<span class="g g-Whitespace">    </span><span class="mi">105</span>             <span class="c1"># dataset[[1, 3, 4]]</span>
-<span class="g g-Whitespace">    </span><span class="mi">106</span>             <span class="k">return</span> <span class="n">Subset</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">107</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transform</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">108</span> 
-<span class="g g-Whitespace">    </span><span class="mi">109</span> 
-
-<span class="nn">~/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages/monai/data/dataset.py</span> in <span class="ni">_transform</span><span class="nt">(self, index)</span>
-<span class="g g-Whitespace">    </span><span class="mi">894</span>                 <span class="c1"># if existing in cache, try to get the index in cache</span>
-<span class="g g-Whitespace">    </span><span class="mi">895</span>                 <span class="n">cache_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hash_keys</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">896</span>         <span class="k">elif</span> <span class="n">index</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache_num</span><span class="p">:</span>  <span class="c1"># support negative index</span>
-<span class="g g-Whitespace">    </span><span class="mi">897</span>             <span class="n">cache_index</span> <span class="o">=</span> <span class="n">index</span>
-<span class="g g-Whitespace">    </span><span class="mi">898</span> 
-
-<span class="ne">ZeroDivisionError</span>: integer division or modulo by zero
 </pre></div>
 </div>
 </div>
@@ -960,7 +799,7 @@ The data consists of an image and a label. However, the label is in this case no
 </div>
 <div class="cell tag_student docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ code your answer here</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ code your answer here</span>
 </pre></div>
 </div>
 </div>
@@ -976,7 +815,7 @@ The data consists of an image and a label. However, the label is in this case no
 </div>
 <div class="cell tag_student docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ code your answer here</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ code your answer here</span>
 </pre></div>
 </div>
 </div>
@@ -998,7 +837,7 @@ The data consists of an image and a label. However, the label is in this case no
 </div>
 <div class="cell tag_student docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ code your answer here</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ code your answer here</span>
 </pre></div>
 </div>
 </div>
@@ -1011,13 +850,8 @@ The data consists of an image and a label. However, the label is in this case no
 <p>Now that we have the data loading process out of the way, we set up a U-Net, a loss function, and an optimizer. If possible, use a GPU to substantially speed up computing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The used device is </span><span class="si">{</span><span class="n">device</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The used device is cpu
 </pre></div>
 </div>
 </div>
@@ -1025,7 +859,7 @@ The data consists of an image and a label. However, the label is in this case no
 <p>Setting up a <a class="reference external" href="https://arxiv.org/abs/1505.04597">U-Net</a> for segmentation in MONAI is as easy as calling the <code class="docutils literal notranslate"><span class="pre">UNet</span></code> function and providing it with the number of input channels, output channels, and feature maps/channels in the intermediate layers. The following provides us with a model that is optimized during training to perform segmentation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">nets</span><span class="o">.</span><span class="n">UNet</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">nets</span><span class="o">.</span><span class="n">UNet</span><span class="p">(</span>
     <span class="n">spatial_dims</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
     <span class="n">in_channels</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
     <span class="n">out_channels</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
@@ -1043,7 +877,7 @@ The data consists of an image and a label. However, the label is in this case no
 </div>
 <div class="cell tag_student docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ code your answer here</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ code your answer here</span>
 </pre></div>
 </div>
 </div>
@@ -1055,7 +889,7 @@ For segmentation, a popular function to use for training the network is the <a c
 <p>We show how to implement the Dice function in this example. Our network only has one output channel. In order to have all the output values between 0 and 1, so we can compute the Dice, the function first applies a <a class="reference external" href="https://en.wikipedia.org/wiki/Sigmoid_function">logistic sigmoid</a>. The Dice loss is computed over the full mini-batch (<code class="docutils literal notranslate"><span class="pre">batch=True</span></code>) to avoid poorly defined loss in individual batch samples. This means that, in a sense, we compute the Dice loss in a 3D stack of 2D images.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loss_function</span> <span class="o">=</span>  <span class="n">monai</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">DiceLoss</span><span class="p">(</span><span class="n">sigmoid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">batch</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">loss_function</span> <span class="o">=</span>  <span class="n">monai</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">DiceLoss</span><span class="p">(</span><span class="n">sigmoid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">batch</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1066,7 +900,7 @@ For segmentation, a popular function to use for training the network is the <a c
 <p>An optimizer algorithm is chosen that performs gradient descent on the network parameters to minimize the loss function. Last week you have used SGD (stochastic gradient descent). In many cases, <a class="reference external" href="https://arxiv.org/abs/1412.6980">Adam</a> is a good default option. The optimizer operates on the parameters of the previously defined U-Net, i.e. <code class="docutils literal notranslate"><span class="pre">model</span></code>. A learning rate <code class="docutils literal notranslate"><span class="pre">lr</span></code> is provided to the optimizer, which defines how large the changes should be that are made to the network parameters in each iteration.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1076,9 +910,9 @@ For segmentation, a popular function to use for training the network is the <a c
 <h3>Setting up the training loop<a class="headerlink" href="#setting-up-the-training-loop" title="Permalink to this heading">#</a></h3>
 <p>In the previous tutorial, we explained how to set up a simple loop for training your network. For training this network, the loop can be set up in a similar way.
 Instead of keeping track of the train and validation loss on your computer, you can <a class="reference external" href="https://docs.wandb.ai/guides/track/log">log</a> everything in weights and biases.</p>
-<div style='background-color:rgba(80,255,80,0.4); padding:20px'>
-  ⌨ <b>Exercise</b>: 
-Set up a simple loop for training the network and log the following in weights and biases:
+<div class="tip admonition">
+<p class="admonition-title">Exercise</p>
+<p>Set up a simple loop for training the network and log the following in weights and biases:</p>
 <ul class="simple">
 <li><p>Loss function</p></li>
 <li><p>Learning rate</p></li>
@@ -1086,11 +920,11 @@ Set up a simple loop for training the network and log the following in weights a
 <li><p>Validation loss</p></li>
 <li><p>Some validation images, including segmentation masks that display model output and the ground truth (see <a class="reference external" href="https://docs.wandb.ai/guides/track/log/media#image-overlays">W&amp;B documentation</a>).</p></li>
 </ul>
-</div>
 <p>Below, we provide a <code class="docutils literal notranslate"><span class="pre">log_to_wandb()</span></code> function that you could use for this. Just call it once at the end of every epoch, with the right arguments.</p>
+</div>
 <div class="cell tag_student docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 <span class="kn">import</span> <span class="nn">wandb</span>
 
 <span class="n">run</span> <span class="o">=</span> <span class="n">wandb</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
@@ -1148,26 +982,12 @@ Set up a simple loop for training the network and log the following in weights a
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_49750</span><span class="o">/</span><span class="mf">3802791442.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>         <span class="s1">&#39;loss function&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">loss_function</span><span class="p">),</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>         <span class="s1">&#39;lr&#39;</span><span class="p">:</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">param_groups</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;lr&quot;</span><span class="p">],</span>
-<span class="ne">---&gt; </span><span class="mi">10</span>         <span class="s1">&#39;transform&#39;</span><span class="p">:</span> <span class="n">from_compose_to_list</span><span class="p">(</span><span class="n">train_transform</span><span class="p">),</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span>         <span class="s1">&#39;batch_size&#39;</span><span class="p">:</span> <span class="n">train_loader</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="p">}</span>
-
-<span class="ne">NameError</span>: name &#39;from_compose_to_list&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="part-2-evaluate-the-trained-network">
-<h1>Part 2: Evaluate the trained network<a class="headerlink" href="#part-2-evaluate-the-trained-network" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="evaluate-the-trained-network">
+<h1>Evaluate the trained network<a class="headerlink" href="#evaluate-the-trained-network" title="Permalink to this heading">#</a></h1>
 <section id="visual-inspection">
 <h2>Visual inspection<a class="headerlink" href="#visual-inspection" title="Permalink to this heading">#</a></h2>
 <p>We have trained the network on small patches of the image. In order to see how well it performs on the entire image, we can use the <code class="docutils literal notranslate"><span class="pre">monai.inferers.SlidingWindowInferer</span></code>. This ‘slides’ the network over patches of the input image. The overlap between patches can also be controlled.</p>
@@ -1175,7 +995,7 @@ Set up a simple loop for training the network and log the following in weights a
 <p>Moreover, we want our final mask to have discrete values (0 or 1). Then, we need to discretize the continuous output of the network. This is why we use <code class="docutils literal notranslate"><span class="pre">Sigmoid</span></code> (clipping the output values between 0 and 1) and <code class="docutils literal notranslate"><span class="pre">AsDiscrete</span></code> (mapping the continuous distribution on the {0, 1} set).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">visual_evaluation</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">visual_evaluation</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Allow the visual inspection of one sample by plotting the X-ray image, the ground truth (green)</span>
 <span class="sd">    and the segmentation map produced by the network (red).</span>
@@ -1212,7 +1032,7 @@ Set up a simple loop for training the network and log the following in weights a
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_dict</span> <span class="o">=</span> <span class="n">build_dict_ribs</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test_dict</span> <span class="o">=</span> <span class="n">build_dict_ribs</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
 <span class="n">test_transform</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
         <span class="n">LoadRibData</span><span class="p">(),</span>
         <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">AddChanneld</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">]),</span>
@@ -1228,12 +1048,6 @@ Set up a simple loop for training the network and log the following in weights a
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages/monai/utils/deprecate_utils.py:107: FutureWarning: &lt;class &#39;monai.transforms.utility.array.AddChannel&#39;&gt;: Class `AddChannel` has been deprecated since version 0.8. please use MetaTensor data type and monai.transforms.EnsureChannelFirst instead.
-  warn_deprecated(obj, msg, warning_category)
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="compute-evaluation-metrics">
@@ -1242,7 +1056,7 @@ Set up a simple loop for training the network and log the following in weights a
 <p>We provide the function <code class="docutils literal notranslate"><span class="pre">compute_metric</span></code> to evaluate the performance of the network on the segmentation task. Similar to the transforms and loss functions, Monai contains many <a class="reference external" href="https://docs.monai.io/en/stable/metrics.html">evaluation metrics</a> to assess the model’s performance. We show how to compute the Dice metric for the network.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_metric</span><span class="p">(</span><span class="n">dataloader</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">metric_fn</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_metric</span><span class="p">(</span><span class="n">dataloader</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">metric_fn</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This function computes the average value of a metric for a data set.</span>
 <span class="sd">    </span>
@@ -1276,19 +1090,8 @@ Set up a simple loop for training the network and log the following in weights a
 <p>As we want to log everything in the corresponding run with W&amp;B, we access to the corresponding run with <code class="docutils literal notranslate"><span class="pre">wandb.Api()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">api</span> <span class="o">=</span> <span class="n">wandb</span><span class="o">.</span><span class="n">Api</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">api</span> <span class="o">=</span> <span class="n">wandb</span><span class="o">.</span><span class="n">Api</span><span class="p">()</span>
 <span class="n">run</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;tutorial3_segmentation/</span><span class="si">{</span><span class="n">run_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_49750</span><span class="o">/</span><span class="mf">489699043.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">api</span> <span class="o">=</span> <span class="n">wandb</span><span class="o">.</span><span class="n">Api</span><span class="p">()</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">run</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;tutorial3_segmentation/</span><span class="si">{</span><span class="n">run_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;run_id&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1302,7 +1105,7 @@ Set up a simple loop for training the network and log the following in weights a
 </div>
 <div class="cell tag_student docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ code your answer here</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ code your answer here</span>
 </pre></div>
 </div>
 </div>
@@ -1318,7 +1121,7 @@ Set up a simple loop for training the network and log the following in weights a
 </div>
 <div class="cell tag_student docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ code your answer here</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ code your answer here</span>
 </pre></div>
 </div>
 </div>
@@ -1335,7 +1138,7 @@ Set up a simple loop for training the network and log the following in weights a
 <p>For our dummy baseline model, instead of rib-shaped segmentations, we let the model output square segmentation maps in the rib region.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">measure</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">measure</span>
 
 <span class="k">def</span> <span class="nf">make_dummy_sample</span><span class="p">(</span><span class="n">sample</span><span class="p">):</span>
     <span class="n">M</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;mask&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
@@ -1353,42 +1156,16 @@ Set up a simple loop for training the network and log the following in weights a
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="n">test_set</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="n">test_set</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">visualize_rib_sample</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;original mask&#39;</span><span class="p">)</span>
 <span class="n">visualize_rib_sample</span><span class="p">({</span><span class="s1">&#39;img&#39;</span><span class="p">:</span> <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">],</span> <span class="s1">&#39;mask&#39;</span><span class="p">:</span> <span class="n">make_dummy_sample</span><span class="p">(</span><span class="n">sample</span><span class="p">)},</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;dummy segmentation masks&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ZeroDivisionError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_49750</span><span class="o">/</span><span class="mf">2614710951.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sample</span> <span class="o">=</span> <span class="n">test_set</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">visualize_rib_sample</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;original mask&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">visualize_rib_sample</span><span class="p">({</span><span class="s1">&#39;img&#39;</span><span class="p">:</span> <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">],</span> <span class="s1">&#39;mask&#39;</span><span class="p">:</span> <span class="n">make_dummy_sample</span><span class="p">(</span><span class="n">sample</span><span class="p">)},</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;dummy segmentation masks&#39;</span><span class="p">)</span>
-
-<span class="nn">~/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages/monai/data/dataset.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, index)</span>
-<span class="g g-Whitespace">    </span><span class="mi">105</span>             <span class="c1"># dataset[[1, 3, 4]]</span>
-<span class="g g-Whitespace">    </span><span class="mi">106</span>             <span class="k">return</span> <span class="n">Subset</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">107</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transform</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">108</span> 
-<span class="g g-Whitespace">    </span><span class="mi">109</span> 
-
-<span class="nn">~/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages/monai/data/dataset.py</span> in <span class="ni">_transform</span><span class="nt">(self, index)</span>
-<span class="g g-Whitespace">    </span><span class="mi">894</span>                 <span class="c1"># if existing in cache, try to get the index in cache</span>
-<span class="g g-Whitespace">    </span><span class="mi">895</span>                 <span class="n">cache_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hash_keys</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">896</span>         <span class="k">elif</span> <span class="n">index</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache_num</span><span class="p">:</span>  <span class="c1"># support negative index</span>
-<span class="g g-Whitespace">    </span><span class="mi">897</span>             <span class="n">cache_index</span> <span class="o">=</span> <span class="n">index</span>
-<span class="g g-Whitespace">    </span><span class="mi">898</span> 
-
-<span class="ne">ZeroDivisionError</span>: integer division or modulo by zero
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_metric_dummy</span><span class="p">(</span><span class="n">dataloader</span><span class="p">,</span> <span class="n">metric_fn</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_metric_dummy</span><span class="p">(</span><span class="n">dataloader</span><span class="p">,</span> <span class="n">metric_fn</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This function computes the average value of a metric for a data set using the dummy segmentation masks</span>
 <span class="sd">    </span>
@@ -1416,22 +1193,7 @@ Set up a simple loop for training the network and log the following in weights a
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Mean Dice: </span><span class="si">{</span><span class="n">compute_metric_dummy</span><span class="p">(</span><span class="n">test_loader</span><span class="p">,</span> <span class="n">monai</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">compute_meandice</span><span class="p">)</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ZeroDivisionError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_49750</span><span class="o">/</span><span class="mf">2878529152.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Mean Dice: </span><span class="si">{</span><span class="n">compute_metric_dummy</span><span class="p">(</span><span class="n">test_loader</span><span class="p">,</span> <span class="n">monai</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">compute_meandice</span><span class="p">)</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-
-<span class="nn">/var/folders/07/x0gf6dj176dfjvrn357t5p6h0000gn/T/ipykernel_49750/797961195.py</span> in <span class="ni">compute_metric_dummy</span><span class="nt">(dataloader, metric_fn)</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span>         <span class="n">mean_value</span> <span class="o">+=</span> <span class="n">metric_fn</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="n">output</span><span class="p">)),</span> <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;mask&quot;</span><span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> 
-<span class="ne">---&gt; </span><span class="mi">22</span>     <span class="k">return</span> <span class="p">(</span><span class="n">mean_value</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataloader</span><span class="p">))</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
-
-<span class="ne">ZeroDivisionError</span>: division by zero
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Mean Dice: </span><span class="si">{</span><span class="n">compute_metric_dummy</span><span class="p">(</span><span class="n">test_loader</span><span class="p">,</span> <span class="n">monai</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">compute_meandice</span><span class="p">)</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1450,7 +1212,7 @@ Set up a simple loop for training the network and log the following in weights a
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ code your answer here</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ code your answer here</span>
 </pre></div>
 </div>
 </div>
@@ -1537,7 +1299,7 @@ Set up a simple loop for training the network and log the following in weights a
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-evaluate-the-trained-network">Part 2: Evaluate the trained network</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-the-trained-network">Evaluate the trained network</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-inspection">Visual inspection</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-evaluation-metrics">Compute evaluation metrics</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dice">Dice</a></li>
