@@ -6,5 +6,7 @@ parts:
   chapters:
   - file: notebooks/Tutorial1_NumpySimpleITK/Tutorial1_NumpySimpleITK_teacher
     title: Tutorial 1
-  - file: notebooks/Tutorial2_ConvolutionalNeuralNetworks/Tutorial2_ConvolutionalNeuralNetworks_student
+  - file: notebooks/Tutorial2_ConvolutionalNeuralNetworks/Tutorial2_ConvolutionalNeuralNetworks_teacher
     title: Tutorial 2
+  - file: notebooks/Tutorial3_Segmentation/Tutorial3_Segmentation_student
+    title: Tutorial 3

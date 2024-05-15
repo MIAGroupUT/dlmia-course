@@ -64,10 +64,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"TeX": {"Macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="canonical" href="https://utwente.mia.nl/template/notebooks/Tutorial1_NumpySimpleITK/Tutorial1_NumpySimpleITK_student.html" />
+    <link rel="canonical" href="https://utwente.mia.nl/template/notebooks/Tutorial1_NumpySimpleITK/Tutorial1_NumpySimpleITK_teacher.html" />
     <link rel="shortcut icon" href="https://www.utwente.nl/.utdesign/img/favicons/favicon-32x32.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tutorial 2" href="../Tutorial2_ConvolutionalNeuralNetworks/Tutorial2_ConvolutionalNeuralNetworks_student.html" />
+    <link rel="prev" title="Welcome" href="../../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -151,8 +153,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Tutorial1_NumpySimpleITK_teacher.html">Tutorial 1</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tutorial 1</a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="../Tutorial2_ConvolutionalNeuralNetworks/Tutorial2_ConvolutionalNeuralNetworks_student.html">Tutorial 2</a></li>
@@ -213,7 +215,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://jupyter.utwente.nl/hub/user-redirect/git-pull?repo=https%3A//github.com/MIAGroupUT/dlmia-course&urlpath=lab/tree/dlmia-course/jupyter-book/notebooks/Tutorial1_NumpySimpleITK/Tutorial1_NumpySimpleITK_student.ipynb&branch=main" target="_blank"
+      <li><a href="https://jupyter.utwente.nl/hub/user-redirect/git-pull?repo=https%3A//github.com/MIAGroupUT/dlmia-course&urlpath=lab/tree/dlmia-course/jupyter-book/notebooks/Tutorial1_NumpySimpleITK/Tutorial1_NumpySimpleITK_teacher.ipynb&branch=main" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onJupyterHub"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -231,7 +233,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/MIAGroupUT/dlmia-course/blob/main/jupyter-book/notebooks/Tutorial1_NumpySimpleITK/Tutorial1_NumpySimpleITK_student.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/MIAGroupUT/dlmia-course/blob/main/jupyter-book/notebooks/Tutorial1_NumpySimpleITK/Tutorial1_NumpySimpleITK_teacher.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -279,7 +281,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/MIAGroupUT/dlmia-course/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Tutorial1_NumpySimpleITK/Tutorial1_NumpySimpleITK_student.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/MIAGroupUT/dlmia-course/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Tutorial1_NumpySimpleITK/Tutorial1_NumpySimpleITK_teacher.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -309,7 +311,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/notebooks/Tutorial1_NumpySimpleITK/Tutorial1_NumpySimpleITK_student.ipynb" target="_blank"
+      <li><a href="../../_sources/notebooks/Tutorial1_NumpySimpleITK/Tutorial1_NumpySimpleITK_teacher.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -524,6 +526,13 @@ document.write(`
 <p class="admonition-title">Exercise</p>
 <p>What happens if you try to add variables <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">course</span></code>. Do you understand what it says in the output?</p>
 </div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<div class="seealso admonition">
+<p class="admonition-title">Answer</p>
+<p>The code will give an error, we cannot add <code class="docutils literal notranslate"><span class="pre">float</span></code> and <code class="docutils literal notranslate"><span class="pre">str</span></code> types.</p>
+</div>
+</div>
 <p>If you are not sure which type a variable has, you can always check it using <code class="docutils literal notranslate"><span class="pre">type</span></code>, as below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -542,9 +551,23 @@ document.write(`
 <p class="admonition-title">Exercise</p>
 <p>What is the type of the variable <code class="docutils literal notranslate"><span class="pre">year</span></code>?</p>
 </div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<div class="seealso admonition">
+<p class="admonition-title">Answer</p>
+<p>The type of the variable <code class="docutils literal notranslate"><span class="pre">year</span></code> is <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
+</div>
+</div>
 <div class="tip admonition">
 <p class="admonition-title">Exercise</p>
 <p>types are compatible with each other. Can you figure out what type the variable has that you get when you add <code class="docutils literal notranslate"><span class="pre">year</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>?.</p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<div class="seealso admonition">
+<p class="admonition-title">Answer</p>
+<p><code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">=</span> <span class="pre">b</span> <span class="pre">+</span> <span class="pre">year</span></code> gives a variable of type <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
+</div>
 </div>
 <p>If your variable has one type but you want it to have another type, you can ‘cast’ it to another type as follows</p>
 <div class="cell docutils container">
@@ -629,9 +652,12 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="tip admonition">
-<p class="admonition-title">Exercise</p>
-<p>Use the <code class="docutils literal notranslate"><span class="pre">add_numbers</span></code> function to add 45 and 1281.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<div class="seealso admonition">
+<p class="admonition-title">Answer</p>
+<p>Just call <code class="docutils literal notranslate"><span class="pre">add_numbers(45,</span> <span class="pre">1281)</span></code>.</p>
+</div>
 </div>
 <p>Of course, functions can be much more complex than this. We can make new variables within a function and call one function from another function. For example</p>
 <div class="cell docutils container">
@@ -823,6 +849,18 @@ Toot toot, I am the fastest skoda
 <p class="admonition-title">Exercise</p>
 <p>Use these classes and methods and change the code such that Jelmer’s car wins.</p>
 </div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<div class="seealso admonition">
+<p class="admonition-title">Answer</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">120</span><span class="p">):</span>
+    <span class="n">jelmers_car</span><span class="o">.</span><span class="n">accelerate</span><span class="p">()</span>
+    
+<span class="n">racing_time</span><span class="p">(</span><span class="n">jelmers_car</span><span class="p">,</span> <span class="n">dieuwertjes_car</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>There are many nice things you can do with classes, and we’re not going to go into too many details here, but one thing that is useful to know is ‘inheritance’. Let’s say we want to make a very specific class for red Fiat cars and we’re also interested in the year that they were built. We can either make a completely new class, or reuse/inherit from our existing <code class="docutils literal notranslate"><span class="pre">car</span></code> class.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -856,9 +894,35 @@ fiat
 </div>
 </div>
 </div>
-<div class="tip admonition">
-<p class="admonition-title">Exercise</p>
-<p><code class="docutils literal notranslate"><span class="pre">FiatCar</span></code> is a subclass of <code class="docutils literal notranslate"><span class="pre">Car</span></code>. Write another subclass of <code class="docutils literal notranslate"><span class="pre">Car</span></code> to represent Formula 1 cars, call it <code class="docutils literal notranslate"><span class="pre">FormulaOneCar</span></code> and give it some fitting attributes and methods.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<div class="seealso admonition">
+<p class="admonition-title">Answer</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># For example</span>
+<span class="k">class</span> <span class="nc">FormulaOneCar</span><span class="p">(</span><span class="n">Car</span><span class="p">):</span>
+       
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">brand</span><span class="p">,</span> <span class="n">driver</span><span class="p">,</span> <span class="n">tires</span><span class="p">):</span>
+        <span class="n">Car</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">brand</span><span class="o">=</span><span class="n">brand</span><span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="n">driver</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tires</span> <span class="o">=</span> <span class="n">tires</span>
+        
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Toot toot I am very fast&#39;</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">box</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Time for a pit stop&#39;</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">tire_change</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tires</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tires</span> <span class="o">=</span> <span class="n">tires</span>
+        
+<span class="n">race_car</span> <span class="o">=</span> <span class="n">FormulaOneCar</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">brand</span><span class="o">=</span><span class="s1">&#39;red bull&#39;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s1">&#39;verstappen&#39;</span><span class="p">,</span> <span class="n">tires</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">)</span>
+<span class="n">race_car</span><span class="p">()</span>
+<span class="n">race_car</span><span class="o">.</span><span class="n">box</span><span class="p">()</span>
+<span class="n">race_car</span><span class="o">.</span><span class="n">tire_change</span><span class="p">(</span><span class="s1">&#39;hard&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">race_car</span><span class="o">.</span><span class="n">tires</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="tuples-lists-and-sets">
@@ -1005,9 +1069,14 @@ fiat
 </div>
 </div>
 </div>
-<div class="tip admonition">
-<p class="admonition-title">Exercise</p>
-<p>Ask the three people closest to you right now which study programme they’re in. Make a Python dictionary in which there name is the key, and their study programme the value.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<div class="seealso admonition">
+<p class="admonition-title">Answer</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">study_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Pete&#39;</span><span class="p">:</span> <span class="s1">&#39;math&#39;</span><span class="p">,</span> <span class="s1">&#39;Derek&#39;</span><span class="p">:</span> <span class="s1">&#39;physics&#39;</span><span class="p">,</span> <span class="s1">&#39;Anne&#39;</span><span class="p">:</span> <span class="s1">&#39;bme&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1122,6 +1191,13 @@ ElementDataFile = TEV1P1CTI.zraw
 <p class="admonition-title">Exercise</p>
 <p>Infer from the header information if this is a 2D or a 3D image.</p>
 </div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<div class="seealso admonition">
+<p class="admonition-title">Answer</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">NDims</span></code> tag says that this is a 3D image. It’s also clear from, e.g., <code class="docutils literal notranslate"><span class="pre">DimSize</span></code> and <code class="docutils literal notranslate"><span class="pre">ElementSpacing</span></code>, which would otherwise have only two values.</p>
+</div>
+</div>
 <p>There are all kinds of tags in this header file that are relevant for the way in which the image is read. However, the nice thing is that we can also directly read this header file into a SimpleITK <code>Image</code> object. The image reader will read all meta information into the <code>Image</code> object and also load the pixel values from the data file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1206,6 +1282,14 @@ ElementDataFile = TEV1P1CTI.zraw
 <p class="admonition-title">Exercise</p>
 <p>What is the new shape of <code class="docutils literal notranslate"><span class="pre">image_array</span></code>?</p>
 </div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<div class="seealso admonition">
+<p class="admonition-title">Answer</p>
+<p><code class="docutils literal notranslate"><span class="pre">print(image_array.shape)</span></code>
+Answer: The new shape is (512, 512, 64)</p>
+</div>
+</div>
 <section id="physical-voxel-size">
 <h3>Physical voxel size<a class="headerlink" href="#physical-voxel-size" title="Permalink to this heading">#</a></h3>
 <p>The image that you have loaded has some peculiarities. It is a CT image of the heart which has been acquired with (relatively) thick slices.</p>
@@ -1213,9 +1297,34 @@ ElementDataFile = TEV1P1CTI.zraw
 <p class="admonition-title">Exercise</p>
 <p>Determine - based on the functions that you’ve seen here - what the ratio is between the slice spacing and the in-plane resolution?</p>
 </div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<div class="seealso admonition">
+<p class="admonition-title">Answer</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">spacing</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">GetSpacing</span><span class="p">()</span>
+<span class="n">ratio</span> <span class="o">=</span> <span class="n">spacing</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="n">spacing</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ratio</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="tip admonition">
 <p class="admonition-title">Exercise</p>
 <p>What is the volume (in ml) of a single voxel in the image?</p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<div class="seealso admonition">
+<p class="admonition-title">Answer</p>
+<p>Answer: To compute the volume in mm3, you multiply the spacing in three directions. To then get the volume in ml, you divide by 1000 (1 ml = 1 cm3). The answer then is ~0.0006 ml. Side note: this means that the full 3D CT image has a volume of ~10 liters.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">voxel_volume</span> <span class="o">=</span> <span class="mf">0.001</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">spacing</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Volume is </span><span class="si">{}</span><span class="s1"> ml&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">voxel_volume</span><span class="p">))</span>
+
+<span class="n">size</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">GetSize</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Full CT volume is </span><span class="si">{}</span><span class="s1"> l&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">size</span><span class="p">)</span><span class="o">*</span><span class="n">voxel_volume</span><span class="o">*</span><span class="mf">0.001</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1317,9 +1426,36 @@ The latter option is preferable as it doesn’t change the data.</p></li>
 <p class="admonition-title">Exercise</p>
 <p>A reasonable range for non-contrast cardiac CT images is between -300 and 450. Visualize the image with these limits.</p>
 </div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<div class="seealso admonition">
+<p class="admonition-title">Answer</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">20</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">300</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">450</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="tip admonition">
 <p class="admonition-title">Exercise</p>
 <p>The image that we have just visualized is an <em>axial</em> image slice. Can you also visualize a <em>sagittal</em> and a <em>coronal</em> image slice of the same 3D volume? Use the <a class="reference external" href="https://matplotlib.org/3.5.0/api/_as_gen/matplotlib.pyplot.imshow.html">aspect</a> option in Matplotlib to correct for the anisotropic pixel size.</p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<div class="seealso admonition">
+<p class="admonition-title">Answer</p>
+<p>Here, you should use the ratio between slice spacing and in-plane resolution as your aspect ratio in the visualization to exactly match the physical size. If the aspect value is too low, the image gets squashed, if its too high, the image gets stretched. To select a sagittal slice, you index along the first dimension. To select a coronal slice, index along the second dimension. To show the image in the right oriëntation, you have to flip along the third (z) dimension using ::-1. Finally, to rotate the image, you can use transpose(). An example implementation is shown below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array</span><span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:][:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">300</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">450</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">GetSpacing</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="n">image</span><span class="o">.</span><span class="n">GetSpacing</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array</span><span class="p">[:,</span> <span class="mi">255</span><span class="p">,</span> <span class="p">:][:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">300</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">450</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">GetSpacing</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="n">image</span><span class="o">.</span><span class="n">GetSpacing</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1361,6 +1497,24 @@ The latter option is preferable as it doesn’t change the data.</p></li>
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Welcome</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Tutorial2_ConvolutionalNeuralNetworks/Tutorial2_ConvolutionalNeuralNetworks_student.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tutorial 2</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
