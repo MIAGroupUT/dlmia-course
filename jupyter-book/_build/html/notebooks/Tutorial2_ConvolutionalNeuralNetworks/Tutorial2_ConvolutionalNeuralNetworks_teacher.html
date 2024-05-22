@@ -451,14 +451,14 @@ The images used in the different tutorials are available <a class="reference ext
 For this tutorial you only need to download the folder “Tutorial 1”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;&#39;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">SimpleITK</span> <span class="k">as</span> <span class="nn">sitk</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -475,16 +475,11 @@ For this tutorial you only need to download the folder “Tutorial 1”.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The image could not be found. Please check that the file TEV1P1CTI.mhd can be found in 
-</pre></div>
-</div>
-</div>
 </div>
 <p>To make life simple, we just consider a 2D image, and we downsample the image by a factor 4 so the effect of filters is more clear. There are many ways to do this, here we use the <a class="reference external" href="https://docs.scipy.org/doc/scipy/index.html">SciPy</a> package.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.ndimage</span> <span class="k">as</span> <span class="nn">scnd</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.ndimage</span> <span class="k">as</span> <span class="nn">scnd</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">clear_output</span>
 
 <span class="c1"># Only consider one image slice</span>
@@ -499,27 +494,13 @@ For this tutorial you only need to download the folder “Tutorial 1”.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_49704</span><span class="o">/</span><span class="mf">2552605338.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> 
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Only consider one image slice</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">image_slice</span> <span class="o">=</span> <span class="n">image_array</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">20</span><span class="p">]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> 
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># Use Scipy to downsample the image by a factor 4</span>
-
-<span class="ne">NameError</span>: name &#39;image_array&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <section id="correlation-and-convolution">
 <h2>Correlation and convolution<a class="headerlink" href="#correlation-and-convolution" title="Permalink to this heading">#</a></h2>
 <p>First, we’re going to visualize what the difference between convolution and cross-correlation is. You (hopefully) remember from the lecture that convolution of an image <span class="math notranslate nohighlight">\(h\)</span> with a kernel <span class="math notranslate nohighlight">\(g\)</span> is <span class="math notranslate nohighlight">\(f(i,j) = \sum_m\sum_n h(i-m, j-n)g(m,n)\)</span> whereas cross-correlation is defined as <span class="math notranslate nohighlight">\(f(i,j) = \sum_m\sum_n h(i+m, j+n)g(m,n)\)</span>. First define a <em>filter</em> or <em>kernel</em>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
               <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
               <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
 </pre></div>
@@ -537,7 +518,7 @@ For this tutorial you only need to download the folder “Tutorial 1”.</p>
 <p>Let’s first apply the kernel with cross-correlation <code class="docutils literal notranslate"><span class="pre">scnd.correlate</span></code> and see what it does. We apply the kernel a couple of times so you see what’s happening.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filtered_image</span> <span class="o">=</span> <span class="n">image_slice</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">filtered_image</span> <span class="o">=</span> <span class="n">image_slice</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> 
@@ -553,20 +534,6 @@ For this tutorial you only need to download the folder “Tutorial 1”.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_49704</span><span class="o">/</span><span class="mf">2050052134.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">filtered_image</span> <span class="o">=</span> <span class="n">image_slice</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> 
-
-<span class="ne">NameError</span>: name &#39;image_slice&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <div class="tip admonition">
 <p class="admonition-title">Exercise</p>
@@ -578,7 +545,7 @@ For this tutorial you only need to download the folder “Tutorial 1”.</p>
 </div>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filtered_image</span> <span class="o">=</span> <span class="n">image_slice</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">filtered_image</span> <span class="o">=</span> <span class="n">image_slice</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -591,20 +558,6 @@ For this tutorial you only need to download the folder “Tutorial 1”.</p>
     
     <span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">pause</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_49704</span><span class="o">/</span><span class="mf">3941258956.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">filtered_image</span> <span class="o">=</span> <span class="n">image_slice</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> 
-
-<span class="ne">NameError</span>: name &#39;image_slice&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -651,7 +604,7 @@ For this tutorial you only need to download the folder “Tutorial 1”.</p>
 <a class="reference external" href="https://pytorch.org/">PyTorch</a> is (along with TensorFlow) one of the two most commonly used Python libraries for deep learning and linear algebra on GPUs. Before we jump into any real deep learning, there is a couple of things that you should know. Like NumPy, PyTorch operates on matrices. However, while NumPy calls these <em>arrays</em>, PyTorch calls them <em>tensors</em>. We can easily go back and forth between NumPy arrays and PyTorch tensors. See for yourself:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
 
 <span class="c1"># Start with a NumPy array</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
@@ -670,21 +623,11 @@ For this tutorial you only need to download the folder “Tutorial 1”.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;numpy.ndarray&#39;&gt;
-[1 2 3]
-&lt;class &#39;torch.Tensor&#39;&gt;
-tensor([1, 2, 3])
-&lt;class &#39;numpy.ndarray&#39;&gt;
-[1 2 3]
-</pre></div>
-</div>
-</div>
 </div>
 <p>PyTorch is supported on CPUs, GPUs, TPUs and (newer) MacBooks. You can set your device as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
     <span class="c1"># CUDA</span>
     <span class="n">gpu</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda:0&#39;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
@@ -703,17 +646,7 @@ tensor([1, 2, 3])
 <p>Note that the tensor is now on the GPU, so we cannot add a tensor that’s on the CPU to it. For example, in the following line we initialize a new tensor on the CPU and try to add it but we get an error.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summed</span> <span class="o">=</span> <span class="n">a_t</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_49704</span><span class="o">/</span><span class="mf">1424124837.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">summed</span> <span class="o">=</span> <span class="n">a_t</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
-
-<span class="ne">RuntimeError</span>: Expected all tensors to be on the same device, but found at least two devices, mps:0 and cpu!
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">summed</span> <span class="o">=</span> <span class="n">a_t</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -728,7 +661,7 @@ tensor([1, 2, 3])
 </div>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summed</span> <span class="o">=</span> <span class="n">a_t</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">gpu</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">summed</span> <span class="o">=</span> <span class="n">a_t</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">gpu</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -736,29 +669,8 @@ tensor([1, 2, 3])
 <p>However, best practice is to initialize your tensors and objects directly on the GPU. For example, the code below will generate a random <span class="math notranslate nohighlight">\(1000\times 1000\)</span> matrix on the GPU.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rn</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">gpu</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rn</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">gpu</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">rn</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 4.5733e-01,  8.3332e-01,  1.6799e+00,  ..., -2.5142e+00,
-          2.0756e-01, -1.1494e+00],
-        [ 2.5139e-01, -1.0730e+00, -5.9246e-01,  ...,  7.0610e-04,
-         -4.5357e-01, -1.9172e+00],
-        [ 8.1169e-01,  1.7883e+00, -7.0340e-01,  ...,  9.0216e-01,
-         -1.2327e+00, -8.7903e-01],
-        ...,
-        [ 5.1994e-01, -1.6500e+00,  2.3617e-01,  ..., -6.8722e-01,
-         -1.2570e+00,  2.0804e-01],
-        [-6.2757e-01,  5.1785e-01, -1.7138e-01,  ..., -1.6879e-02,
-          6.6434e-01,  1.1214e+00],
-        [ 1.8146e+00,  4.1044e-01,  6.0555e-01,  ...,  1.5129e+00,
-          6.7483e-01,  4.6970e-01]], device=&#39;mps:0&#39;)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages/torch/_tensor_str.py:116: UserWarning: The operator &#39;aten::nonzero&#39; is not currently supported on the MPS backend and will fall back to run on the CPU. This may have performance implications. (Triggered internally at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/mps/MPSFallback.mm:11.)
-  tensor_view, torch.isfinite(tensor_view) &amp; tensor_view.ne(0)
 </pre></div>
 </div>
 </div>
@@ -766,7 +678,7 @@ tensor([1, 2, 3])
 <p>Now let’s perform <em>convolution</em> in PyTorch! For this, we use the <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.functional.conv2d.html"><code>conv2d</code></a> function. The code below is not very different from what we have done before, but now everything happens in PyTorch instead of NumPy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
 
 <span class="n">image_slice_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">image_slice</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
 
@@ -791,20 +703,6 @@ tensor([1, 2, 3])
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_49704</span><span class="o">/</span><span class="mf">1120085648.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">image_slice_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">image_slice</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> 
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">g_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-
-<span class="ne">NameError</span>: name &#39;image_slice&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <div class="tip admonition">
 <p class="admonition-title">Exercise</p>
@@ -824,7 +722,7 @@ tensor([1, 2, 3])
 </div>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_slice_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">image_slice</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image_slice_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">image_slice</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
 
 <span class="c1">### APPROACH ONE</span>
 <span class="n">g_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
@@ -861,20 +759,6 @@ tensor([1, 2, 3])
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_49704</span><span class="o">/</span><span class="mf">3457085804.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">image_slice_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">image_slice</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1">### APPROACH ONE</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">g_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>                     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-
-<span class="ne">NameError</span>: name &#39;image_slice&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
@@ -894,7 +778,7 @@ First, we will generate our ‘dataset’, consisting of <span class="math notra
 We here use PyTorch (torch) functions to initialize our data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generation of a data set including N samples</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generation of a data set including N samples</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">gpu</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span>
@@ -914,9 +798,6 @@ We here use PyTorch (torch) functions to initialize our data.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/c4e7fdc08ce71b9b1e5ec1bc3e0f03db6c7fc81f4159eb21319d4578ca76b117.png" src="../../_images/c4e7fdc08ce71b9b1e5ec1bc3e0f03db6c7fc81f4159eb21319d4578ca76b117.png" />
-</div>
 </div>
 <p>Here we want to learn a linear regression, so we don’t need a deep neural network with non-linear activations,
 but only one fully-connected layer. In PyTorch, this is called a
@@ -932,7 +813,7 @@ Take a look at the documentation to see which arguments this layer has.</p>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">gpu</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">gpu</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -940,7 +821,7 @@ Take a look at the documentation to see which arguments this layer has.</p>
 <p>Like any neural network in PyTorch, training this network requires an loss function. Because this is a regression problem, we use a mean squared error loss, or <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.MSELoss.html"><code>MSELoss</code></a> in PyTorch, with default settings.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loss_func</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">loss_func</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -961,7 +842,7 @@ Take a look at the documentation to see which arguments this layer has.</p>
 <p>These few lines are at the core of anything you’ll do in PyTorch. Note that this is only a very short description of the process, if you want to know more, take a look at <a class="reference external" href="https://pytorch.org/tutorials/beginner/basics/optimization_tutorial.html">this tutorial</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tqdm</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tqdm</span>
 
 <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">iterations</span><span class="p">,</span> <span class="n">lr</span><span class="p">,</span> <span class="n">loss_function</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="n">model</span><span class="o">.</span><span class="n">reset_parameters</span><span class="p">()</span>
@@ -1005,7 +886,7 @@ Take a look at the documentation to see which arguments this layer has.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using the code below, you can visualize the fitted line. </span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using the code below, you can visualize the fitted line. </span>
 
 <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
     <span class="n">output</span> <span class="o">=</span> <span class="n">model_trained</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
@@ -1020,20 +901,6 @@ Take a look at the documentation to see which arguments this layer has.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_49704</span><span class="o">/</span><span class="mf">3566162013.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
-<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="n">output</span> <span class="o">=</span> <span class="n">model_trained</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">output</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;prediction&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">y</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;training data&#39;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;model_trained&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <div class="tip admonition">
 <p class="admonition-title">Exercise</p>
@@ -1041,13 +908,8 @@ Take a look at the documentation to see which arguments this layer has.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This block counts the number of parameters in the model.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This block counts the number of parameters in the model.</span>
 <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
 </pre></div>
 </div>
 </div>
@@ -1058,19 +920,13 @@ Take a look at the documentation to see which arguments this layer has.</p>
 </div>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">gpu</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">gpu</span><span class="p">)</span>
 <span class="n">n_params</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The model with bias has </span><span class="si">{}</span><span class="s1"> parameters&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_params</span><span class="p">))</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">gpu</span><span class="p">)</span>
 <span class="n">n_params</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The model without bias has </span><span class="si">{}</span><span class="s1"> parameters&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_params</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The model with bias has 2 parameters
-The model without bias has 1 parameters
 </pre></div>
 </div>
 </div>
@@ -1090,54 +946,8 @@ The model without bias has 1 parameters
 <p>In this tutorial, we build a classification network for tumor classification, using datasets from <a class="reference external" href="https://medmnist.com/">MedMNIST</a>. This is a collection of datasets with binary (yes or no) or multiclass labels in 2D or 3D. Each sample in these datasets is a <span class="math notranslate nohighlight">\(28\times 28\)</span> pixel (2D) or <span class="math notranslate nohighlight">\(28\times 28\times 28\)</span> voxel (3D) image. To be able to use MONAI and this repository, we install the corresponding Python package using the following cell.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install monai
-<span class="o">!</span>pip install medmnist
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: monai in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (1.1.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy&gt;=1.17 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from monai) (1.21.5)
-Requirement already satisfied: torch&gt;=1.8 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from monai) (1.13.1)
-Requirement already satisfied: typing-extensions in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from torch&gt;=1.8-&gt;monai) (4.4.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: medmnist in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (3.0.1)
-Requirement already satisfied: tqdm in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from medmnist) (4.66.2)
-Requirement already satisfied: torch in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from medmnist) (1.13.1)
-Requirement already satisfied: torchvision in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from medmnist) (0.14.1)
-Requirement already satisfied: pandas in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from medmnist) (1.3.5)
-Requirement already satisfied: fire in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from medmnist) (0.6.0)
-Requirement already satisfied: numpy in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from medmnist) (1.21.5)
-Requirement already satisfied: Pillow in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from medmnist) (9.4.0)
-Requirement already satisfied: scikit-learn in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from medmnist) (1.0.2)
-Requirement already satisfied: scikit-image in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from medmnist) (0.19.3)
-Requirement already satisfied: termcolor in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from fire-&gt;medmnist) (2.3.0)
-Requirement already satisfied: six in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from fire-&gt;medmnist) (1.16.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: python-dateutil&gt;=2.7.3 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from pandas-&gt;medmnist) (2.8.2)
-Requirement already satisfied: pytz&gt;=2017.3 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from pandas-&gt;medmnist) (2022.7)
-Requirement already satisfied: imageio&gt;=2.4.1 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from scikit-image-&gt;medmnist) (2.19.3)
-Requirement already satisfied: networkx&gt;=2.2 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from scikit-image-&gt;medmnist) (2.6.3)
-Requirement already satisfied: scipy&gt;=1.4.1 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from scikit-image-&gt;medmnist) (1.7.3)
-Requirement already satisfied: tifffile&gt;=2019.7.26 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from scikit-image-&gt;medmnist) (2021.7.2)
-Requirement already satisfied: PyWavelets&gt;=1.1.1 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from scikit-image-&gt;medmnist) (1.3.0)
-Requirement already satisfied: packaging&gt;=20.0 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from scikit-image-&gt;medmnist) (22.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: joblib&gt;=0.11 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from scikit-learn-&gt;medmnist) (1.1.1)
-Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from scikit-learn-&gt;medmnist) (2.2.0)
-Requirement already satisfied: typing-extensions in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from torch-&gt;medmnist) (4.4.0)
-Requirement already satisfied: requests in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from torchvision-&gt;medmnist) (2.28.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: charset-normalizer&lt;3,&gt;=2 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from requests-&gt;torchvision-&gt;medmnist) (2.0.4)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from requests-&gt;torchvision-&gt;medmnist) (2022.12.7)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from requests-&gt;torchvision-&gt;medmnist) (1.26.14)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/jmwolterink/opt/anaconda3/envs/notebook_collaboration/lib/python3.7/site-packages (from requests-&gt;torchvision-&gt;medmnist) (3.4)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install monai
+!pip install medmnist
 </pre></div>
 </div>
 </div>
@@ -1145,13 +955,8 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/jmwolterink/opt/anac
 <p>After you’ve installed the <code class="docutils literal notranslate"><span class="pre">medmnist</span></code> package, import it and download the <code class="docutils literal notranslate"><span class="pre">train</span></code> segment of the pneumonia dataset. This is a binary task where patients either have pneumonia or don’t. Note that there is also a <code class="docutils literal notranslate"><span class="pre">validate</span></code> and <code class="docutils literal notranslate"><span class="pre">test</span></code> segment that we will download later.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">medmnist</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">medmnist</span>
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">medmnist</span><span class="o">.</span><span class="n">PneumoniaMNIST</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using downloaded and verified file: /Users/jmwolterink/.medmnist/pneumoniamnist.npz
 </pre></div>
 </div>
 </div>
@@ -1167,7 +972,7 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/jmwolterink/opt/anac
 <p>The <code class="docutils literal notranslate"><span class="pre">MedMNISTData</span></code> class below inherits from the MONAI <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> class, which in turn inherits from the PyTorch <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> class.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">monai</span>
 
 <span class="k">class</span> <span class="nc">MedMNISTData</span><span class="p">(</span><span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="p">):</span>
@@ -1198,7 +1003,7 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/jmwolterink/opt/anac
 <p>MONAI and other Python libraries like <a class="reference external" href="https://torchio.readthedocs.io/">TorchIO</a> contain many convenient functions to transform your images.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="k">as</span> <span class="nn">transforms</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="k">as</span> <span class="nn">transforms</span>
 
 <span class="n">data_transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
     <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
@@ -1211,7 +1016,7 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/jmwolterink/opt/anac
 <p>Then, using the cell below, we can initialize a <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> object based on the data that we have just downloaded.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_dataset</span> <span class="o">=</span> <span class="n">MedMNISTData</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">data_transform</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">train_dataset</span> <span class="o">=</span> <span class="n">MedMNISTData</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">data_transform</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1219,15 +1024,12 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/jmwolterink/opt/anac
 <p>The code below visualizes the first sample from the data set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;img&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Label </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;label&#39;</span><span class="p">]))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/8b4210ef2356a3ef3ebd3a7f0ba684102d20c38ba47e67b87c3c3110dc903ec3.png" src="../../_images/8b4210ef2356a3ef3ebd3a7f0ba684102d20c38ba47e67b87c3c3110dc903ec3.png" />
 </div>
 </div>
 <div class="tip admonition">
@@ -1269,7 +1071,7 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/jmwolterink/opt/anac
 <p>Now that we have a dataset, we can build a dataloader that automatically generates batches with given size. As input it uses one of the data sets constructed in the previous section. Here, the batch size is 32. We shuffle all samples so that each minibatch is different.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_dataloader</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">train_dataloader</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1300,7 +1102,7 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/jmwolterink/opt/anac
 Note that this network is built up from convolution layers, pooling layers, and the (fully connected) linear layers that we just used in the PyTorch section.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
 <span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
 
 <span class="k">class</span> <span class="nc">Net</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
@@ -1345,12 +1147,7 @@ Note that this network is built up from convolution layers, pooling layers, and 
 </div>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1198721
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1358,7 +1155,7 @@ Note that this network is built up from convolution layers, pooling layers, and 
 <p>Move the model to the GPU.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Net</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">gpu</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Net</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">gpu</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1370,7 +1167,7 @@ Note that this network is built up from convolution layers, pooling layers, and 
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">3e-4</span><span class="p">)</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">3e-4</span><span class="p">)</span> 
 <span class="n">loss_function</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">BCEWithLogitsLoss</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1382,7 +1179,7 @@ Note that this network is built up from convolution layers, pooling layers, and 
 <p>Now we have all the ingredients in place to start training our network. Easiest is to define a train function that performs the training procedure. In addition to a forward and backward pass with the training data, we want to perform a validation loop every <span class="math notranslate nohighlight">\(N\)</span> epochs, using unseen data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 
 <span class="k">def</span> <span class="nf">train_medmnist</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">train_dataloader</span><span class="p">,</span> <span class="n">val_dataloader</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">gpu</span><span class="p">,</span> <span class="n">val_freq</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="n">train_loss</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1428,21 +1225,9 @@ Note that this network is built up from convolution layers, pooling layers, and 
 <p>Train your (maybe?) first convolutional neural network! Time to get a coffee, this might take a few minutes.<br> <img src="https://i.redd.it/j586af7nxvu41.jpg" width="400px"></img></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">val_freq</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">val_freq</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">train_loss</span><span class="p">,</span> <span class="n">val_loss</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="n">train_medmnist</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">train_dataloader</span><span class="p">,</span> <span class="n">val_dataloader</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">n_epochs</span><span class="p">,</span> <span class="n">val_freq</span><span class="o">=</span><span class="n">val_freq</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_49704</span><span class="o">/</span><span class="mf">4140317621.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">val_freq</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">train_loss</span><span class="p">,</span> <span class="n">val_loss</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="n">train_medmnist</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">train_dataloader</span><span class="p">,</span> <span class="n">val_dataloader</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">n_epochs</span><span class="p">,</span> <span class="n">val_freq</span><span class="o">=</span><span class="n">val_freq</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;val_dataloader&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1472,14 +1257,14 @@ Note that this network is built up from convolution layers, pooling layers, and 
 <p>For this model, we will make an ROC curve to assess the performance.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">validation_results_ROC</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">validation_results_ROC</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">dataloader</span><span class="p">:</span>
         <span class="n">images</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">gpu</span><span class="p">)</span>
         <span class="n">labels</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span>
@@ -1509,7 +1294,7 @@ Note that this network is built up from convolution layers, pooling layers, and 
 <p>For improvement of the model, it is useful to visualize some inputs and the corresponding predictions of the network.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">validation_results_visualize</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">validation_results_visualize</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
     <span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span>
     <span class="n">image</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s1">&#39;img&#39;</span><span class="p">]</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
@@ -1524,17 +1309,7 @@ Note that this network is built up from convolution layers, pooling layers, and 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_results_visualize</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">val_dataset</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">x0gf6dj176dfjvrn357t5p6h0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_49704</span><span class="o">/</span><span class="mf">1104208159.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">validation_results_visualize</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">val_dataset</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;val_dataset&#39; is not defined
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">validation_results_visualize</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">val_dataset</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
