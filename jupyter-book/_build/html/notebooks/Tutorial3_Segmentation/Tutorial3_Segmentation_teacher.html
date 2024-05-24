@@ -62,10 +62,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://utwente.mia.nl/template/notebooks/Tutorial3_Segmentation/Tutorial3_Segmentation_student.html" />
+    <link rel="canonical" href="https://utwente.mia.nl/template/notebooks/Tutorial3_Segmentation/Tutorial3_Segmentation_teacher.html" />
     <link rel="shortcut icon" href="https://www.utwente.nl/.utdesign/img/favicons/favicon-32x32.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Tutorial 2" href="../Tutorial2_ConvolutionalNeuralNetworks/Tutorial2_ConvolutionalNeuralNetworks_teacher.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -149,7 +150,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../Tutorial1_NumpySimpleITK/Tutorial1_NumpySimpleITK_teacher.html">Tutorial 1</a></li>
 
 
@@ -157,7 +158,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="Tutorial3_Segmentation_teacher.html">Tutorial 3</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tutorial 3</a></li>
 
 
 
@@ -216,7 +217,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://jupyter.utwente.nl/hub/user-redirect/git-pull?repo=https%3A//github.com/MIAGroupUT/dlmia-course&urlpath=lab/tree/dlmia-course/jupyter-book/notebooks/Tutorial3_Segmentation/Tutorial3_Segmentation_student.ipynb&branch=main" target="_blank"
+      <li><a href="https://jupyter.utwente.nl/hub/user-redirect/git-pull?repo=https%3A//github.com/MIAGroupUT/dlmia-course&urlpath=lab/tree/dlmia-course/jupyter-book/notebooks/Tutorial3_Segmentation/Tutorial3_Segmentation_teacher.ipynb&branch=main" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onJupyterHub"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -234,7 +235,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/MIAGroupUT/dlmia-course/blob/main/jupyter-book/notebooks/Tutorial3_Segmentation/Tutorial3_Segmentation_student.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/MIAGroupUT/dlmia-course/blob/main/jupyter-book/notebooks/Tutorial3_Segmentation/Tutorial3_Segmentation_teacher.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -282,7 +283,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/MIAGroupUT/dlmia-course/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Tutorial3_Segmentation/Tutorial3_Segmentation_student.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/MIAGroupUT/dlmia-course/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Tutorial3_Segmentation/Tutorial3_Segmentation_teacher.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -312,7 +313,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/notebooks/Tutorial3_Segmentation/Tutorial3_Segmentation_student.ipynb" target="_blank"
+      <li><a href="../../_sources/notebooks/Tutorial3_Segmentation/Tutorial3_Segmentation_teacher.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -650,34 +651,49 @@ The data consists of an image and a label. However, the label is in this case no
 <p class="admonition-title">Exercise</p>
 <p>How many samples are in the training, validation, and test set?</p>
 </div>
-<div class="cell tag_student docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ print the length of each subset here</span>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">val_dict_list</span> <span class="o">=</span> <span class="n">build_dict_ribs</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;val&#39;</span><span class="p">)</span>
+<span class="n">test_dict_list</span> <span class="o">=</span> <span class="n">build_dict_ribs</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+<span class="n">val_dataset</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">CacheDataset</span><span class="p">(</span><span class="n">val_dict_list</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">LoadRibData</span><span class="p">())</span>
+<span class="n">test_dataset</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">CacheDataset</span><span class="p">(</span><span class="n">test_dict_list</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">LoadRibData</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">train_dataset</span><span class="o">.</span><span class="fm">__len__</span><span class="p">()</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">val_dataset</span><span class="o">.</span><span class="fm">__len__</span><span class="p">()</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">test_dataset</span><span class="o">.</span><span class="fm">__len__</span><span class="p">()</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
-</div>
 </div>
 </div>
 <div class="tip admonition">
 <p class="admonition-title">Exercise</p>
 <p>What are the dimensions of the images? Are they all equal? Will this a problem when training a CNN for segmentation?</p>
 </div>
-<div class="cell tag_student docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ print the dimensions of a bunch of images and masks</span>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">train_dataset</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">]</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;mask&#39;</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="si">=}</span><span class="s1">, </span><span class="si">{</span><span class="n">mask</span><span class="o">.</span><span class="n">shape</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
+<p>They are different, which means that we can’t stack them in mini-batches.</p>
 </div>
 <div class="tip admonition">
 <p class="admonition-title">Exercise</p>
 <p>What is the pixel intensity range of the images? Are they similar? Will this be a problem when training a CNN for segmentation?</p>
 <p>Visualize the pixel intensity range of a bunch of images. <strong>Hint</strong> Use Matplotlib <code class="docutils literal notranslate"><span class="pre">hist</span></code> (<a class="reference external" href="https://matplotlib.org/3.5.0/api/_as_gen/matplotlib.pyplot.hist.html">documentation</a>) and <code class="docutils literal notranslate"><span class="pre">.flatten()</span></code> your image (or you will get &gt;2000 histograms per image)</p>
 </div>
-<div class="cell tag_student docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code</span>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">train_dataset</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">]</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
-</div>
 </div>
 </div>
 </section>
@@ -705,11 +721,11 @@ The data consists of an image and a label. However, the label is in this case no
 <p class="admonition-title">Exercise</p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">visualize_rib_sample</span></code> to visualize samples from the training set.</p>
 </div>
-<div class="cell tag_student docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ visualize samples here.</span>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sample_dict</span> <span class="o">=</span> <span class="n">train_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">visualize_rib_sample</span><span class="p">(</span><span class="n">sample_dict</span><span class="p">)</span>
 </pre></div>
-</div>
 </div>
 </div>
 </section>
@@ -772,21 +788,37 @@ The data consists of an image and a label. However, the label is in this case no
 <p class="admonition-title">Exercise</p>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">Compose</span></code> class of Monai to compose <code class="docutils literal notranslate"><span class="pre">AddChanneld</span></code>, <code class="docutils literal notranslate"><span class="pre">RandFlipd</span></code> and <code class="docutils literal notranslate"><span class="pre">RandRotated</span></code> in a single transform. Then apply this composition to a data set sample.</p>
 </div>
-<div class="cell tag_student docutils container">
-<div class="cell_input docutils container">
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sample_dict</span> <span class="o">=</span> <span class="n">train_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="c1"># Create the composed transform</span>
+<span class="n">add_channels_transform</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">AddChanneld</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">])</span> <span class="c1"># Initialize the transform</span>
+<span class="n">random_flip_transform</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">RandFlipd</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">],</span> <span class="n">prob</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">spatial_axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">random_rotation_transform</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">RandRotated</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">],</span> <span class="n">range_x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">prob</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;bilinear&#39;</span><span class="p">,</span> <span class="s1">&#39;nearest&#39;</span><span class="p">])</span>
+
+<span class="n">transforms</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
+    <span class="n">add_channels_transform</span><span class="p">,</span>
+    <span class="n">random_flip_transform</span><span class="p">,</span>
+    <span class="n">random_rotation_transform</span>
+<span class="p">])</span>
 
 <span class="c1"># Apply this new single transform to sample_dict</span>
+<span class="n">transformed_sample</span> <span class="o">=</span> <span class="n">transforms</span><span class="p">(</span><span class="n">sample_dict</span><span class="p">)</span>
+<span class="n">visualize_rib_sample</span><span class="p">(</span><span class="n">transformed_sample</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Transformed sample&quot;</span><span class="p">)</span>
 </pre></div>
-</div>
 </div>
 </div>
 <div class="note admonition">
 <p class="admonition-title">Efficiency</p>
 <p>As mentioned before, there is a distinction between random and deterministic transforms. This distinction is important, as their order can have a huge influence on computational efficiency. The <a class="reference external" href="https://docs.monai.io/en/stable/data.html#cachedataset">CacheDataset</a> class stores the outcomes of all deterministic transforms in memory, and performs the random transforms on-the-fly. Therefore, placing the deterministic transforms before the random ones in combination with caching results in a training and inference procedure will result in higher computational efficiency.</p>
 </div>
+<p>We are going to use the following three transforms in the X-ray segmentation task</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Zoom</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RandomFlip</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RandSpatialCrop</span></code></p></li>
+</ul>
 <div class="tip admonition">
 <p class="admonition-title">Exercise</p>
 <p>Compose the <code class="docutils literal notranslate"><span class="pre">AddChannel</span></code>, <code class="docutils literal notranslate"><span class="pre">ScaleIntensity</span></code>, <code class="docutils literal notranslate"><span class="pre">Zoom</span></code>, <code class="docutils literal notranslate"><span class="pre">RandomFlip</span></code> and <code class="docutils literal notranslate"><span class="pre">RandSpatialCrop</span></code> transforms in a computationally efficient order and construct a new training dataset (with <code class="docutils literal notranslate"><span class="pre">CacheDataset</span></code>) using these transforms.</p>
@@ -796,11 +828,22 @@ The data consists of an image and a label. However, the label is in this case no
 <li><p>If you identified problems in the previous sections it is time to solve them!</p></li>
 </ol>
 </div>
-<div class="cell tag_student docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ code your answer here</span>
+<div class="admonition-answer-key admonition">
+<p class="admonition-title">Answer key</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">train_transform</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
+    <span class="n">LoadRibData</span><span class="p">(),</span>
+    <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">AddChanneld</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">]),</span>
+    <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">ScaleIntensityd</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">],</span><span class="n">minv</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">maxv</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">Zoomd</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">keep_size</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;bilinear&#39;</span><span class="p">,</span> <span class="s1">&#39;nearest&#39;</span><span class="p">]),</span>
+    <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">RandFlipd</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">],</span> <span class="n">prob</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">spatial_axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">RandSpatialCropd</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">],</span> <span class="n">roi_size</span><span class="o">=</span><span class="p">[</span><span class="mi">256</span><span class="p">,</span><span class="mi">256</span><span class="p">],</span> <span class="n">random_size</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="n">train_dataset</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">CacheDataset</span><span class="p">(</span><span class="n">train_dict_list</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">train_transform</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">visualize_rib_sample</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Transformed sample </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
-</div>
 </div>
 </div>
 </section>
@@ -812,11 +855,11 @@ The data consists of an image and a label. However, the label is in this case no
 <p class="admonition-title">Exercise</p>
 <p>Construct a dataloader with randomly sampled mini-batches of 16 images for the training set.</p>
 </div>
-<div class="cell tag_student docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ code your answer here</span>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">train_loader</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">train_loader</span><span class="p">))[</span><span class="s1">&#39;img&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
-</div>
 </div>
 </div>
 </section>
@@ -834,11 +877,20 @@ The data consists of an image and a label. However, the label is in this case no
 <p class="admonition-title">Exercise</p>
 <p>Build a validation dataset and dataloader using these steps. Create a separate validation transform.</p>
 </div>
-<div class="cell tag_student docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ code your answer here</span>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">validation_dict</span> <span class="o">=</span> <span class="n">build_dict_ribs</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;val&#39;</span><span class="p">)</span>
+
+<span class="n">validation_transforms</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
+    <span class="n">LoadRibData</span><span class="p">(),</span>
+    <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">AddChanneld</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">]),</span>
+    <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">ScaleIntensityd</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">],</span><span class="n">minv</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">maxv</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">Resized</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">],</span> <span class="n">spatial_size</span><span class="o">=</span><span class="p">[</span><span class="mi">256</span><span class="p">,</span><span class="mi">256</span><span class="p">])</span>
+<span class="p">])</span>
+<span class="n">validation_data</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">CacheDataset</span><span class="p">(</span><span class="n">validation_dict</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">validation_transforms</span><span class="p">)</span>
+<span class="n">validation_loader</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">validation_data</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">validation_loader</span><span class="p">))[</span><span class="s1">&#39;img&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
-</div>
 </div>
 </div>
 </section>
@@ -874,11 +926,11 @@ The data consists of an image and a label. However, the label is in this case no
 <p class="admonition-title">Exercise</p>
 <p>How many levels does the U-Net have? And how many parameters does it have (use the code from last tutorial)?</p>
 </div>
-<div class="cell tag_student docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ code your answer here</span>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">num_params</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;U-Net has 5 layers (see &quot;channels&quot; parameter) and </span><span class="si">{</span><span class="n">num_params</span><span class="si">}</span><span class="s1"> parameters&#39;</span><span class="p">)</span>
 </pre></div>
-</div>
 </div>
 </div>
 <section id="loss-function">
@@ -921,8 +973,8 @@ Instead of keeping track of the train and validation loss on your computer, you 
 </ul>
 <p>Below, we provide a <code class="docutils literal notranslate"><span class="pre">log_to_wandb()</span></code> function that you could use for this. Just call it once at the end of every epoch, with the right arguments.</p>
 </div>
-<div class="cell tag_student docutils container">
-<div class="cell_input docutils container">
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 <span class="kn">import</span> <span class="nn">wandb</span>
 
@@ -973,13 +1025,38 @@ Instead of keeping track of the train and validation loss on your computer, you 
     <span class="c1"># Send epoch, losses and images to W&amp;B</span>
     <span class="n">wandb</span><span class="o">.</span><span class="n">log</span><span class="p">({</span><span class="s1">&#39;epoch&#39;</span><span class="p">:</span> <span class="n">epoch</span><span class="p">,</span> <span class="s1">&#39;train_loss&#39;</span><span class="p">:</span> <span class="n">train_loss</span><span class="p">,</span> <span class="s1">&#39;val_loss&#39;</span><span class="p">:</span> <span class="n">val_loss</span><span class="p">,</span> <span class="s1">&#39;results&#39;</span><span class="p">:</span> <span class="n">log_imgs</span><span class="p">})</span>
     
-<span class="c1"># ⌨️ WRITE YOUR TRAINING LOOP HERE</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">)):</span>
+    
+    <span class="c1"># training</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>    
+    <span class="n">epoch_loss</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">step</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">batch_data</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span> 
+        <span class="n">step</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">batch_data</span><span class="p">[</span><span class="s2">&quot;img&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_function</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">batch_data</span><span class="p">[</span><span class="s2">&quot;mask&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">epoch_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="n">train_loss</span> <span class="o">=</span> <span class="n">epoch_loss</span><span class="o">/</span><span class="n">step</span>
+    
+    <span class="c1"># validation</span>
+    <span class="n">step</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">val_loss</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">batch_data</span> <span class="ow">in</span> <span class="n">validation_loader</span><span class="p">:</span>
+        <span class="n">step</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">batch_data</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_function</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">batch_data</span><span class="p">[</span><span class="s1">&#39;mask&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+        <span class="n">val_loss</span><span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="n">val_loss</span> <span class="o">=</span> <span class="n">val_loss</span> <span class="o">/</span> <span class="n">step</span>
+    <span class="n">log_to_wandb</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">train_loss</span><span class="p">,</span> <span class="n">val_loss</span><span class="p">,</span> <span class="n">batch_data</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
 
 <span class="c1"># Store the network parameters        </span>
 <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="sa">r</span><span class="s1">&#39;trainedUNet.pt&#39;</span><span class="p">)</span>
 <span class="n">run</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>
 </pre></div>
-</div>
 </div>
 </div>
 </section>
@@ -1102,11 +1179,13 @@ Instead of keeping track of the train and validation loss on your computer, you 
 <p class="admonition-title">Exercise</p>
 <p>Find the appropriate function in <a class="reference external" href="https://docs.monai.io/en/stable/metrics.html"><code class="docutils literal notranslate"><span class="pre">monai.metrics</span></code></a> to compute the mean Dice with <code class="docutils literal notranslate"><span class="pre">compute_metric</span></code>.</p>
 </div>
-<div class="cell tag_student docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ code your answer here</span>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">metric_fn</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">compute_meandice</span>
+<span class="n">dice</span> <span class="o">=</span> <span class="n">compute_metric</span><span class="p">(</span><span class="n">test_loader</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">metric_fn</span><span class="p">)</span>
+<span class="n">run</span><span class="o">.</span><span class="n">summary</span><span class="p">[</span><span class="s2">&quot;dice&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dice</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dice on test set: </span><span class="si">{</span><span class="n">dice</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
-</div>
 </div>
 </div>
 </section>
@@ -1118,11 +1197,13 @@ Instead of keeping track of the train and validation loss on your computer, you 
 <p class="admonition-title">Exercise</p>
 <p>Find the appropriate function in <a class="reference external" href="https://docs.monai.io/en/stable/metrics.html"><code class="docutils literal notranslate"><span class="pre">monai.metrics</span></code></a> to compute the Hausdorff distance with <code class="docutils literal notranslate"><span class="pre">compute_metric</span></code>.</p>
 </div>
-<div class="cell tag_student docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ code your answer here</span>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">metric_fn</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">compute_hausdorff_distance</span>
+<span class="n">Hausdorff_dist</span> <span class="o">=</span> <span class="n">compute_metric</span><span class="p">(</span><span class="n">test_loader</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">metric_fn</span><span class="p">)</span>
+<span class="n">run</span><span class="o">.</span><span class="n">summary</span><span class="p">[</span><span class="s2">&quot;Hausdorff_dist&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Hausdorff_dist</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hausdorff distance on test set: </span><span class="si">{</span><span class="n">Hausdorff_dist</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
-</div>
 </div>
 </div>
 <div class="tip admonition">
@@ -1249,6 +1330,15 @@ Instead of keeping track of the train and validation loss on your computer, you 
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../Tutorial2_ConvolutionalNeuralNetworks/Tutorial2_ConvolutionalNeuralNetworks_teacher.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tutorial 2</p>
+      </div>
+    </a>
 </div></div>
   
 </div>
