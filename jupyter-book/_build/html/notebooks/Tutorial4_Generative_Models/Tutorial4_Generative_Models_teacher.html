@@ -64,10 +64,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"TeX": {"Macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="canonical" href="https://utwente.mia.nl/template/notebooks/Tutorial4_Generative_Models/Tutorial4_Generative_Models_student.html" />
+    <link rel="canonical" href="https://utwente.mia.nl/template/notebooks/Tutorial4_Generative_Models/Tutorial4_Generative_Models_teacher.html" />
     <link rel="shortcut icon" href="https://www.utwente.nl/.utdesign/img/favicons/favicon-32x32.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tutorial 5" href="../Tutorial5_Reconstruction/Tutorial5_Reconstruction_student.html" />
+    <link rel="prev" title="Tutorial 3" href="../Tutorial3_Segmentation/Tutorial3_Segmentation_teacher.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -151,7 +153,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../Tutorial1_NumpySimpleITK/Tutorial1_NumpySimpleITK_teacher.html">Tutorial 1</a></li>
 
 
@@ -164,7 +166,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="Tutorial4_Generative_Models_teacher.html">Tutorial 4</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tutorial 4</a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="../Tutorial5_Reconstruction/Tutorial5_Reconstruction_student.html">Tutorial 5</a></li>
@@ -222,7 +224,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://jupyter.utwente.nl/hub/user-redirect/git-pull?repo=https%3A//github.com/MIAGroupUT/dlmia-course&urlpath=lab/tree/dlmia-course/jupyter-book/notebooks/Tutorial4_Generative_Models/Tutorial4_Generative_Models_student.ipynb&branch=main" target="_blank"
+      <li><a href="https://jupyter.utwente.nl/hub/user-redirect/git-pull?repo=https%3A//github.com/MIAGroupUT/dlmia-course&urlpath=lab/tree/dlmia-course/jupyter-book/notebooks/Tutorial4_Generative_Models/Tutorial4_Generative_Models_teacher.ipynb&branch=main" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onJupyterHub"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -240,7 +242,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/MIAGroupUT/dlmia-course/blob/main/jupyter-book/notebooks/Tutorial4_Generative_Models/Tutorial4_Generative_Models_student.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/MIAGroupUT/dlmia-course/blob/main/jupyter-book/notebooks/Tutorial4_Generative_Models/Tutorial4_Generative_Models_teacher.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -288,7 +290,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/MIAGroupUT/dlmia-course/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Tutorial4_Generative_Models/Tutorial4_Generative_Models_student.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/MIAGroupUT/dlmia-course/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Tutorial4_Generative_Models/Tutorial4_Generative_Models_teacher.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -318,7 +320,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/notebooks/Tutorial4_Generative_Models/Tutorial4_Generative_Models_student.ipynb" target="_blank"
+      <li><a href="../../_sources/notebooks/Tutorial4_Generative_Models/Tutorial4_Generative_Models_teacher.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -564,7 +566,20 @@ document.write(`
 <p class="admonition-title">Exercise</p>
 <p>In the lecture it was mentioned that the generator should be frozen when training the discriminator and vice versa. Do you see where this is happening?</p>
 </div>
-<p>Your answer goes here.</p>
+<p>In the block</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">generator</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
+    <span class="n">param</span><span class="o">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">discriminator</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
+    <span class="n">param</span><span class="o">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>and</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">generator</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
+    <span class="n">param</span><span class="o">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">discriminator</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
+    <span class="n">param</span><span class="o">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="kc">False</span>  
+</pre></div>
+</div>
 <p>Now run the cell. This could take a few minutes, but below the cell you will periodically see a plot of the current situation. The plot shows the fake and real data distribution and the discriminators predictions (in blue).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -672,10 +687,17 @@ document.write(`
 <p class="admonition-title">Exercise</p>
 <p>Can you explain what happened to the blue line during training? Why does it look like it does after training?</p>
 </div>
-<p>Your answer goes here.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<p>If all is well, the blue line becomes horizontal: the discriminator <span class="math notranslate nohighlight">\(D\)</span> predicts 0.5 for each sample. Hence, it can no longer distinguish between fake and real samples.</p>
+</div>
 <div class="tip admonition">
 <p class="admonition-title">Exercise</p>
 <p>Try training the GAN with different input noise distributions for <span class="math notranslate nohighlight">\(z\)</span>, e.g. a uniform distribution. See if you can find a distribution for the real samples for which the generator fails to generate samples.</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<p>In principle, a uniform distribution shouldn’t really be a problem. What could be a problem is if you move the distribution of real samples too far away from 0, by changing the <code class="docutils literal notranslate"><span class="pre">real_mean</span></code> parameter too much.</p>
 </div>
 <p>During training, we have stored the loss values for the discriminator and the generator. We can now plot these. In the neural networks that we’ve trained so far, we have tried to train a neural network such that the loss decreases until a minimum is reached.</p>
 <div class="cell docutils container">
@@ -700,7 +722,10 @@ document.write(`
 <p class="admonition-title">Exercise</p>
 <p>The loss curves that you get now look different. Can you explain why they’re not nicely dropping to zero? Can you explain the value in the loss in the discriminator based on the objective function of the discriminator? Consider that we actually let the discriminator optimize a binary cross-entropy loss.</p>
 </div>
-<p>Your answer goes here.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<p>If all is well, both loss curves converge to <span class="math notranslate nohighlight">\(-ln(0.5) ~ 0.69\)</span>. In binary cross-entropy, if the prediction is 0.5 for a sample for which the reference is either 0 or 1, the loss is <span class="math notranslate nohighlight">\(-ln(0.5)\)</span>.</p>
+</div>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="mnist-synthesis">
@@ -786,7 +811,10 @@ document.write(`
 <p class="admonition-title">Exercise</p>
 <p>Is this a convolutional neural network? Why (not)?</p>
 </div>
-<p>Your answer goes here.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<p>No, there’s no convolution layers.</p>
+</div>
 <p>You could argue that digits are a bit more complex than samples from a Gaussian distribution, so let’s set the latent space dimensionality for noise sampling a bit higher than 1. We will sample noise from a 10-dimensional distribution. It’s good to realize that this is still <em>much</em> lower than the 784 dimensions (28x28) that our original MNIST images have.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -824,7 +852,10 @@ document.write(`
 <p class="admonition-title">Exercise</p>
 <p>Consider the activation functions of the output layers of the generator and discriminator networks. How are they different?</p>
 </div>
-<p>Your answer goes here.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<p>The generator has a <code class="docutils literal notranslate"><span class="pre">Tanh</span></code> output, which means that all output values will be squashed between -1 and 1. The discriminator has a sigmoid output because it performs classification.</p>
+</div>
 </section>
 <section id="the-model">
 <h2>The model<a class="headerlink" href="#the-model" title="Permalink to this heading">#</a></h2>
@@ -889,7 +920,15 @@ document.write(`
 <p>Take a look at the code, it’s actually very similar to what we used in the first, 1D, GAN. See if you can find at least two differences.</p>
 <p>If you run the code, synthesized images should be shown periodically.</p>
 </div>
-<p>Your answer goes here.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<p>Some differences:</p>
+<ul class="simple">
+<li><p>We use label smoothing now (the real samples get label 0.9 instead of 1.0). This makes it more difficult for the discriminator to distinguish fake from real images, and is used to make GANs train better.</p></li>
+<li><p>The latent space dimensionality is larger</p></li>
+<li><p>We flatten the images before they go into the discriminator</p></li>
+</ul>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
@@ -983,7 +1022,10 @@ document.write(`
 <p>If all is well, your model has synthesized images of digits. How cool is that?! Are you satisfied with the quality of these images? What could be improved?</p>
 <p>Once again, we can plot the loss curves for the trained model.</p>
 </div>
-<p>Your answer goes here.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<p>It’s likely that the synthesized images are still a bit noisy, this could be improved.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
@@ -1006,7 +1048,10 @@ document.write(`
 <p class="admonition-title">Exercise</p>
 <p>Inspect the loss curves for this model and explain what happens.</p>
 </div>
-<p>Your answer goes here.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<p>Similarly to 1D synthesis, both loss terms converge to a value that indicates that the discriminator finds it hard to distinguish samples.</p>
+</div>
 </section>
 <section id="a-convolutional-model">
 <h2>A convolutional model<a class="headerlink" href="#a-convolutional-model" title="Permalink to this heading">#</a></h2>
@@ -1076,7 +1121,10 @@ document.write(`
 <p class="admonition-title">Exercise</p>
 <p>What are some differences between these samples and the ones generated by the multilayer perceptron GAN? Can you explain these differences?</p>
 </div>
-<p>Your answer goes here.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<p>The samples generated with convolutional layers are likely to be more smooth/complete than the ones made with MLPs.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dis_losses</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1190,17 +1238,17 @@ document.write(`
 <p class="admonition-title">Exercise</p>
 <p>Explain what you see in this figure.</p>
 </div>
-<p>Your answer goes here.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<p>You should see a smooth(ish) interpolation between two randomly generated digits.</p>
+</div>
 <div class="tip admonition">
 <p class="admonition-title">Exercise</p>
 <p>Interpolation works, but what happens when you extrapolate out of the latent space distribution? Consider how the noise vectors are drawn. Inspect generated samples that are further away from the mode of your latent space.</p>
 </div>
-<div class="cell tag_student docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code goes here</span>
-</pre></div>
-</div>
-</div>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<p>The further we move away from the mode of the noise distribution, the less realistic the samples become. The assumption in our model is that the samples follow a Gaussian distribution, and the generator will not know how to properly handle noise that is far away from the center.</p>
 </div>
 </section>
 </section>
@@ -1255,11 +1303,101 @@ document.write(`
 <p class="admonition-title">Exercise</p>
 <p>In this second-to-last part of the practical you’re going to repurpose the code that you have used so far to synthesize MedMNIST images. By now you should have sufficient experience with Python that you are able to fill in the block of code below and train your model. Reach out if you get stuck! <b>Good luck!</b></p>
 </div>
-<div class="cell tag_student docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## YOUR CODE GOES HERE</span>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># Get networks
+discriminator = Discriminator_CNN()
+generator = Generator_CNN()
+
+# Push networks to device
+discriminator.to(device)
+generator.to(device)
+
+# Configure optimizers and loss function
+optimizer_dis = torch.optim.Adam(discriminator.parameters(), lr=0.0002, betas=(0.5, 0.999))
+optimizer_gen = torch.optim.Adam(generator.parameters(), lr=0.0002, betas=(0.5, 0.999))
+loss = torch.nn.BCELoss()
+
+dis_losses = []
+gen_losses = []
+
+epochs = 50
+batch_size = 100
+
+for epoch in range(1, epochs + 1):
+    
+    # Wrap dataloader into tqdm such that we can print progress while training
+    with tqdm(train_loader, unit=&quot;iterations&quot;) as tqdm_iterator:
+        tqdm_iterator.set_description(&#39;Epoch {}&#39;.format(epoch))
+        
+        for i, batch in enumerate(tqdm_iterator):
+            # ========== Train Discriminator ==========
+            
+            # Freeze generator part
+            for param in generator.parameters():
+                param.requires_grad = False
+            for param in discriminator.parameters():
+                param.requires_grad = True
+            discriminator.zero_grad()
+
+            # Get a random set of input noise
+            batch_size = len(batch)
+            noise = torch.normal(0, 1, size=(batch_size, latent_dim), device=device)
+
+            # Get real images and flatten the image dimensions
+            real_images = batch.to(device)
+            
+            # Generate some fake MNIST images using the generator
+            with torch.no_grad():
+                fake_images = generator(noise)
+
+            # Concatenate the fake and real images
+            dis_input = torch.cat((real_images, fake_images))
+
+            # Labels for generated and real data
+            dis_labels = torch.zeros((2 * batch_size, 1), device=device)
+
+            # One-sided label smoothing
+            dis_labels[:batch_size] = 0.9
+
+            # Train discriminator with this batch of samples
+            predictions = discriminator(dis_input)
+            dis_loss = loss(predictions, dis_labels)
+            dis_loss.backward()
+            optimizer_dis.step()
+            dis_losses.append(dis_loss.detach().cpu().numpy())
+
+            # ========== Train Generator ==========
+            
+            # Freeze the discriminator part
+            for param in generator.parameters():
+                param.requires_grad = True
+            for param in discriminator.parameters():
+                param.requires_grad = False
+            generator.zero_grad()
+
+            # Train generator with a new batch of generated samples
+            noise = torch.normal(0, 1, size=(batch_size, latent_dim), device=device)
+
+            # From the generator&#39;s perspective, the discriminator should predict
+            # ones for all samples
+            gen_labels = torch.ones((batch_size, 1), device=device)
+
+            # Train the GAN to predict ones
+            fake_images = generator(noise)
+            predictions = discriminator(fake_images)
+            gen_loss = loss(predictions, gen_labels)
+            gen_loss.backward()
+            optimizer_gen.step()
+            gen_losses.append(gen_loss.detach().cpu().numpy())
+        
+    # Every 5th epoch, display generated images and save model
+    if epoch % 5 == 0:
+        clear_output(wait=True)
+        plotGeneratedImages(epoch)
+        saveModels(epoch, &#39;CNN_GAN&#39;)
+        ```
 </pre></div>
-</div>
 </div>
 </div>
 <section id="conditional-medmnist-synthesis">
@@ -1302,6 +1440,24 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../Tutorial3_Segmentation/Tutorial3_Segmentation_teacher.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tutorial 3</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Tutorial5_Reconstruction/Tutorial5_Reconstruction_student.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tutorial 5</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
