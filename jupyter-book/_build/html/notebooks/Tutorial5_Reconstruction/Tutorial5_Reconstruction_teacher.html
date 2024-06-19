@@ -64,10 +64,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"TeX": {"Macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="canonical" href="https://utwente.mia.nl/template/notebooks/Tutorial5_Reconstruction/Tutorial5_Reconstruction_student.html" />
+    <link rel="canonical" href="https://utwente.mia.nl/template/notebooks/Tutorial5_Reconstruction/Tutorial5_Reconstruction_teacher.html" />
     <link rel="shortcut icon" href="https://www.utwente.nl/.utdesign/img/favicons/favicon-32x32.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tutorial 6" href="../Tutorial6_Registration/Tutorial6_Registration_student.html" />
+    <link rel="prev" title="Tutorial 4" href="../Tutorial4_Generative_Models/Tutorial4_Generative_Models_teacher.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -151,7 +153,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../Tutorial1_NumpySimpleITK/Tutorial1_NumpySimpleITK_teacher.html">Tutorial 1</a></li>
 
 
@@ -167,7 +169,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../Tutorial4_Generative_Models/Tutorial4_Generative_Models_teacher.html">Tutorial 4</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="Tutorial5_Reconstruction_teacher.html">Tutorial 5</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tutorial 5</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Tutorial6_Registration/Tutorial6_Registration_student.html">Tutorial 6</a></li>
 </ul>
 
@@ -223,7 +225,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://jupyter.utwente.nl/hub/user-redirect/git-pull?repo=https%3A//github.com/MIAGroupUT/dlmia-course&urlpath=lab/tree/dlmia-course/jupyter-book/notebooks/Tutorial5_Reconstruction/Tutorial5_Reconstruction_student.ipynb&branch=main" target="_blank"
+      <li><a href="https://jupyter.utwente.nl/hub/user-redirect/git-pull?repo=https%3A//github.com/MIAGroupUT/dlmia-course&urlpath=lab/tree/dlmia-course/jupyter-book/notebooks/Tutorial5_Reconstruction/Tutorial5_Reconstruction_teacher.ipynb&branch=main" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onJupyterHub"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -241,7 +243,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/MIAGroupUT/dlmia-course/blob/main/jupyter-book/notebooks/Tutorial5_Reconstruction/Tutorial5_Reconstruction_student.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/MIAGroupUT/dlmia-course/blob/main/jupyter-book/notebooks/Tutorial5_Reconstruction/Tutorial5_Reconstruction_teacher.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -289,7 +291,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/MIAGroupUT/dlmia-course/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Tutorial5_Reconstruction/Tutorial5_Reconstruction_student.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/MIAGroupUT/dlmia-course/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Tutorial5_Reconstruction/Tutorial5_Reconstruction_teacher.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -319,7 +321,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/notebooks/Tutorial5_Reconstruction/Tutorial5_Reconstruction_student.ipynb" target="_blank"
+      <li><a href="../../_sources/notebooks/Tutorial5_Reconstruction/Tutorial5_Reconstruction_teacher.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -506,7 +508,10 @@ document.write(`
 <p class="admonition-title">Exercise</p>
 <p>What kind of CT reconstruction problem is this? Limited-view or sparse-angle CT? Why?</p>
 </div>
-<p>Answer:</p>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<p>This is a sparse-angle CT recontruction problem. The view spans 180 degrees, but the number of angles is low.</p>
+</div>
 <p>Not only does the sinogram contain few angles, it also contains added white noise. If we simply backproject the sinogram to the image domain we end up with a low-quality image. Let’s give it a try using the standard <a class="reference external" href="https://en.wikipedia.org/wiki/Radon_transform#Reconstruction_approaches">Filtered Backprojection</a> (FBP) algorithm for CT and its implementation in <a class="reference external" href="https://scikit-image.org/">scikit-image</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -543,14 +548,13 @@ document.write(`
 <p class="admonition-title">Exercise</p>
 <p>What do you think of the quality of the reconstructed FBP algorithm? Use the cell below to quantify the similarity between the images using the structural similarity index (SSIM). Does this reflect your intuition? Also compute the PSNR using the <a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.metrics.html#skimage.metrics.peak_signal_noise_ratio"><code class="docutils literal notranslate"><span class="pre">peak_signal_noise_ratio</span></code></a> method in <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code>.</p>
 </div>
-<div class="cell tag_student docutils container">
-<div class="cell_input docutils container">
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">skimage.metrics</span> <span class="k">as</span> <span class="nn">skme</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;SSIM = </span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">skme</span><span class="o">.</span><span class="n">structural_similarity</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">ground_truth</span><span class="p">),</span> <span class="n">fbp_recon</span><span class="p">,</span> <span class="n">data_range</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">ground_truth</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">ground_truth</span><span class="p">))))</span>
-<span class="c1"># ⌨ FILL IN</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;PSNR = </span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">skme</span><span class="o">.</span><span class="n">peak_signal_noise_ratio</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">ground_truth</span><span class="p">),</span> <span class="n">fbp_recon</span><span class="p">)))</span>
 </pre></div>
-</div>
 </div>
 </div>
 <section id="datasets-and-dataloaders">
@@ -605,24 +609,31 @@ document.write(`
 <p class="admonition-title">Exercise</p>
 <p>Also make a validation dataset and call it <code class="docutils literal notranslate"><span class="pre">val_dataset</span></code>. This dataset can be smaller, e.g., 64 or 128 samples.</p>
 </div>
-<div class="cell tag_student docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code goes here</span>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">val_gen</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">generator</span><span class="p">(</span><span class="n">part</span><span class="o">=</span><span class="s1">&#39;validation&#39;</span><span class="p">)</span>
+<span class="n">val_samples</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">val_transform</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
+    <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">AddChanneld</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;fbp&#39;</span><span class="p">,</span> <span class="s1">&#39;ground_truth&#39;</span><span class="p">])</span>
+<span class="p">])</span>
+<span class="k">for</span> <span class="n">ns</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="o">.</span><span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">128</span><span class="p">)):</span>
+    <span class="n">sinogram</span><span class="p">,</span> <span class="n">ground_truth</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">val_gen</span><span class="p">)</span>
+    <span class="n">sinogram</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">sinogram</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+    <span class="n">fbp_recon</span> <span class="o">=</span> <span class="n">sktr</span><span class="o">.</span><span class="n">iradon</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">,</span> <span class="n">filter_name</span><span class="o">=</span><span class="s1">&#39;ramp&#39;</span><span class="p">)[</span><span class="mi">28</span><span class="p">:</span><span class="o">-</span><span class="mi">27</span><span class="p">,</span> <span class="mi">28</span><span class="p">:</span><span class="o">-</span><span class="mi">27</span><span class="p">]</span>
+    <span class="n">val_samples</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;fbp&#39;</span><span class="p">:</span> <span class="n">fbp_recon</span><span class="p">,</span> <span class="s1">&#39;ground_truth&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">ground_truth</span><span class="p">)})</span>
+<span class="n">val_dataset</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">CacheDataset</span><span class="p">(</span><span class="n">val_samples</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">val_transform</span><span class="p">)</span>  
 </pre></div>
-</div>
 </div>
 </div>
 <div class="tip admonition">
 <p class="admonition-title">Exercise</p>
 <p>Now, make a dataloader for both the validation and training data, called <code class="docutils literal notranslate"><span class="pre">train_loader</span></code> and <code class="docutils literal notranslate"><span class="pre">validation_loader</span></code>, that we can use for sampling batches during training of the network. Give them a reasonable batch size, e.g., 16.</p>
 </div>
-<div class="cell tag_student docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ FILL IN</span>
-<span class="n">train_loader</span> <span class="o">=</span> <span class="o">...</span>
-<span class="n">validation_loader</span> <span class="o">=</span> <span class="o">...</span>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">train_loader</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">validation_loader</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">val_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 </pre></div>
-</div>
 </div>
 </div>
 </section>
@@ -647,6 +658,20 @@ document.write(`
 <div class="tip admonition">
 <p class="admonition-title">Exercise</p>
 <p>Initialize a U-Net with the correct settings, e.g. channels and dimensions, and call it <code class="docutils literal notranslate"><span class="pre">model</span></code>. Here, it’s convenient to use the <a class="reference external" href="https://docs.monai.io/en/stable/networks.html#monai.networks.nets.BasicUNet"><code class="docutils literal notranslate"><span class="pre">BasicUNet</span></code></a> as implemented in MONAI.</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">nets</span><span class="o">.</span><span class="n">BasicUNet</span><span class="p">(</span>
+    <span class="n">spatial_dims</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">out_channels</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+<span class="c1"># model = monai.networks.nets.SegResNet(</span>
+<span class="c1">#     spatial_dims=2,</span>
+<span class="c1">#     out_channels=1</span>
+<span class="c1"># ).to(device)</span>
+</pre></div>
+</div>
 </div>
 </section>
 <section id="loss-function">
@@ -680,16 +705,15 @@ document.write(`
 <p>Complete the code below and train the U-Net.</p>
 <p>What does the model learn? Look carefully at how we determine the output of the model. Can you describe what happens in the following line: <code class="docutils literal notranslate"><span class="pre">outputs</span> <span class="pre">=</span> <span class="pre">model(batch_data['fbp'].float().to(device))</span> <span class="pre">+</span> <span class="pre">batch_data[&quot;fbp&quot;].float().to(device)</span></code>?</p>
 </div>
-<div class="cell tag_student docutils container">
-<div class="cell_input docutils container">
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
 <span class="kn">import</span> <span class="nn">wandb</span>
 <span class="kn">from</span> <span class="nn">skimage.metrics</span> <span class="kn">import</span> <span class="n">structural_similarity</span> <span class="k">as</span> <span class="n">ssim</span>
 
 
 <span class="n">run</span> <span class="o">=</span> <span class="n">wandb</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
-    <span class="n">project</span><span class="o">=</span><span class="s1">&#39;tutorial3_reconstruction&#39;</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+    <span class="n">project</span><span class="o">=</span><span class="s1">&#39;tutorial4_reconstruction&#39;</span><span class="p">,</span>
     <span class="n">config</span><span class="o">=</span><span class="p">{</span>
         <span class="s1">&#39;loss function&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">loss_function</span><span class="p">),</span> 
         <span class="s1">&#39;lr&#39;</span><span class="p">:</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">param_groups</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;lr&quot;</span><span class="p">],</span>
@@ -722,7 +746,11 @@ document.write(`
         <span class="n">step</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
         <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">batch_data</span><span class="p">[</span><span class="s2">&quot;fbp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span> <span class="o">+</span> <span class="n">batch_data</span><span class="p">[</span><span class="s2">&quot;fbp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-        <span class="c1"># FILL IN</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_function</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">batch_data</span><span class="p">[</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">epoch_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="n">train_loss</span> <span class="o">=</span> <span class="n">epoch_loss</span><span class="o">/</span><span class="n">step</span>
     <span class="c1"># validation part</span>
     <span class="n">step</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">val_loss</span> <span class="o">=</span> <span class="mi">0</span>
@@ -730,9 +758,10 @@ document.write(`
         <span class="n">step</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
         <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">batch_data</span><span class="p">[</span><span class="s1">&#39;fbp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span> <span class="o">+</span> <span class="n">batch_data</span><span class="p">[</span><span class="s2">&quot;fbp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-        <span class="c1"># FILL IN</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_function</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">batch_data</span><span class="p">[</span><span class="s1">&#39;ground_truth&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>   
+        <span class="n">val_loss</span><span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="n">val_loss</span> <span class="o">=</span> <span class="n">val_loss</span> <span class="o">/</span> <span class="n">step</span>
     <span class="n">log_to_wandb</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">train_loss</span><span class="p">,</span> <span class="n">val_loss</span><span class="p">,</span> <span class="n">batch_data</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
-    <span class="c1"># Scheduler also needs to make a step during training</span>
     <span class="n">scheduler</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
 
 <span class="c1"># Store the network parameters        </span>
@@ -741,22 +770,28 @@ document.write(`
 </pre></div>
 </div>
 </div>
-</div>
 <div class="tip admonition">
 <p class="admonition-title">Exercise</p>
 <p>Now make a <code class="docutils literal notranslate"><span class="pre">DataSet</span></code> and <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> for the test set. Just a handful of images should be enough.</p>
 </div>
-<div class="cell tag_student docutils container">
-<div class="cell_input docutils container">
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tqdm</span>
 
 <span class="n">test_gen</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">generator</span><span class="p">(</span><span class="n">part</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
-<span class="o">....</span>
-<span class="n">test_dataset</span> <span class="o">=</span> <span class="o">....</span>
+<span class="n">test_samples</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">test_transform</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
+    <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">AddChanneld</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;fbp&#39;</span><span class="p">,</span> <span class="s1">&#39;ground_truth&#39;</span><span class="p">])</span>
+<span class="p">])</span>
+<span class="k">for</span> <span class="n">ns</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="o">.</span><span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)):</span>
+    <span class="n">sinogram</span><span class="p">,</span> <span class="n">ground_truth</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">test_gen</span><span class="p">)</span>
+    <span class="n">sinogram</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">sinogram</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+    <span class="n">fbp_recon</span> <span class="o">=</span> <span class="n">sktr</span><span class="o">.</span><span class="n">iradon</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">,</span> <span class="n">filter_name</span><span class="o">=</span><span class="s1">&#39;ramp&#39;</span><span class="p">)[</span><span class="mi">28</span><span class="p">:</span><span class="o">-</span><span class="mi">27</span><span class="p">,</span> <span class="mi">28</span><span class="p">:</span><span class="o">-</span><span class="mi">27</span><span class="p">]</span>
+    <span class="n">test_samples</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;sinogram&#39;</span><span class="p">:</span> <span class="n">sinogram</span><span class="p">,</span> <span class="s1">&#39;fbp&#39;</span><span class="p">:</span> <span class="n">fbp_recon</span><span class="p">,</span> <span class="s1">&#39;ground_truth&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">ground_truth</span><span class="p">)})</span>
+<span class="n">test_dataset</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">CacheDataset</span><span class="p">(</span><span class="n">test_samples</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">val_transform</span><span class="p">)</span>
 
 <span class="n">test_loader</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
-</div>
 </div>
 </div>
 <div class="tip admonition">
@@ -791,11 +826,22 @@ document.write(`
 </div>
 </div>
 <div class="tip admonition">
+<p class="admonition-title">Answer key</p>
+<p>Some observations that you could make:</p>
+<ul class="simple">
+<li><p>The SSIM is definitely improved compared to the standard filtered back projection (FBP). CNN results should be in the order of ~0.8 SSIM.</p></li>
+<li><p>The output images of the CNN are less noisy than the FBP reconstructions. However, they’re also a bit more blotchy/cartoonish if you use the CNN.</p></li>
+</ul>
+</div>
+<div class="tip admonition">
 <p class="admonition-title">Exercise</p>
 <p>Instead of a U-Net, try a different model, e.g., a <a class="reference external" href="https://docs.monai.io/en/stable/networks.html#segresnet">SegResNet</a> in MONAI.
 Evaluate how the different loss functions affect the performance of the network. Notes that the SSIM on the validation set is also written to Weights &amp; Biases during training. Which loss leads to the best SSIM scores? Which loss results in the worst SSIM scores?</p>
 </div>
-<p>Answer:</p>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<p>In general, using an SSIM loss will lead to better SSIM scores. The L1 loss is also expected to lead to better then the MSE loss, as it’s less susceptible to outliers and will smooth the resulting images less.</p>
+</div>
 </section>
 </section>
 <section id="from-post-processing-to-pre-processing">
@@ -835,6 +881,24 @@ Evaluate how the different loss functions affect the performance of the network.
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../Tutorial4_Generative_Models/Tutorial4_Generative_Models_teacher.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tutorial 4</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Tutorial6_Registration/Tutorial6_Registration_student.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tutorial 6</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
