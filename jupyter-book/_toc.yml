@@ -12,5 +12,7 @@ parts:
     title: Tutorial 3
   - file: notebooks/Tutorial4_Generative_Models/Tutorial4_Generative_Models_teacher
     title: Tutorial 4
-  - file: notebooks/Tutorial5_Reconstruction/Tutorial5_Reconstruction_student
+  - file: notebooks/Tutorial5_Reconstruction/Tutorial5_Reconstruction_teacher
     title: Tutorial 5
+  - file: notebooks/Tutorial6_Registration/Tutorial6_Registration_student
+    title: Tutorial 6
