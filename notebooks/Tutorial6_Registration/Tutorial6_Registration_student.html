@@ -412,7 +412,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#june-18-2024">June 18, 2024</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#june-20-2024">June 20, 2024</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-registration">Part 1 - Registration</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-management">Data management</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model">Model</a></li>
@@ -439,8 +439,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tutorial-6">
 <h1>Tutorial 6<a class="headerlink" href="#tutorial-6" title="Permalink to this heading">#</a></h1>
-<section id="june-18-2024">
-<h2>June 18, 2024<a class="headerlink" href="#june-18-2024" title="Permalink to this heading">#</a></h2>
+<section id="june-20-2024">
+<h2>June 20, 2024<a class="headerlink" href="#june-20-2024" title="Permalink to this heading">#</a></h2>
 <p>In this tutorial you will develop, train, and evaluate a CNN that learns to perform deformable image registration in chest X-ray images.</p>
 <p>First, let’s take care of the necessities:</p>
 <ul class="simple">
@@ -461,9 +461,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install dival
-!pip install kornia
-!pip install monai
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install monai
 </pre></div>
 </div>
 </div>
@@ -495,7 +493,7 @@ data_path = &quot;ribs&quot;
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ONLY IF YOU USE JUPYTER: ADD PATH ⌨️</span>
-<span class="n">data_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;/Users/jmwolterink/Downloads/ribs&#39;</span><span class="c1"># WHEREDIDYOUPUTTHEDATA?</span>
+<span class="n">data_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;ribs&#39;</span><span class="c1"># WHEREDIDYOUPUTTHEDATA?</span>
 </pre></div>
 </div>
 </div>
@@ -528,9 +526,10 @@ data_path = &quot;ribs&quot;
 </div>
 <section id="data-management">
 <h3>Data management<a class="headerlink" href="#data-management" title="Permalink to this heading">#</a></h3>
-<p>In this part we prepare all the tools needed to load and visualize our samples. One thing we <em>could</em> do is perform <strong>inter</strong>-patient registration, i.e., register two chest X-ray images of different patients. However, this is a very challenging problem. Instead, to make our life a bit easier, we will perform <strong>intra</strong>-patient registration: register two images of the same patient. For each patient, we make a synthetic moving image by applying some random elastic deformations. To build this data set, we we used the <a class="reference external" href="https://docs.monai.io/en/stable/transforms.html#rand2delastic">Rand2DElasticd</a> transform on both the image and the mask. We will use a neural network to learn the deformation field between the fixed image and the moving image.
-<img src='https://i.imgur.com/OmoOZ5w.png'></img></p>
-<p>Similarly as in <strong>Tutorial 3</strong>, make a dictionary of the image file names.</p>
+<p>In this part we prepare all the tools needed to load and visualize our samples. One thing we <em>could</em> do is perform <strong>inter</strong>-patient registration, i.e., register two chest X-ray images of different patients. However, this is a very challenging problem. Instead, to make our life a bit easier, we will perform <strong>intra</strong>-patient registration: register two images of the same patient. For each patient, we make a synthetic moving image by applying some random elastic deformations. To build this data set, we we used the <a class="reference external" href="https://docs.monai.io/en/stable/transforms.html#rand2delastic">Rand2DElasticd</a> transform on both the image and the mask. We will use a neural network to learn the deformation field between the fixed image and the moving image.</p>
+<div>
+<img src="https://i.imgur.com/OmoOZ5w.png" width="200" />
+</div><p>Similarly as in <strong>Tutorial 3</strong>, make a dictionary of the image file names.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -734,7 +733,7 @@ data_path = &quot;ribs&quot;
 </div>
 <div class="tip admonition">
 <p class="admonition-title">Exercise</p>
-<p>Construct a U-Net with suitable settings and name it <code class="docutils literal notranslate"><span class="pre">model</span></code>. Check that you can correctly apply its output to the input moving image with the <code class="docutils literal notranslate"><span class="pre">warp_layer</span></code>!</p>
+<p>Construct a U-Net with suitable settings and name it <code class="docutils literal notranslate"><span class="pre">model</span></code>. Keep in mind that you want to be able to correctly apply its output to the input moving image with the <code class="docutils literal notranslate"><span class="pre">warp_layer</span></code>!</p>
 </div>
 <div class="cell tag_student docutils container">
 <div class="cell_input docutils container">
@@ -1058,6 +1057,13 @@ data_path = &quot;ribs&quot;
 If you already downloaded the data set but not the model, the model file is available <a class="reference external" href="https://surfdrive.surf.nl/files/index.php/s/613zrvr0RDYZDqp">here</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!wget -O trainedUNet.pt https://surfdrive.surf.nl/files/index.php/s/613zrvr0RDYZDqp/download
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pretrained_file</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="s2">&quot;trainedUNet.pt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1068,6 +1074,7 @@ If you already downloaded the data set but not the model, the model file is avai
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">monai</span>
+<span class="kn">import</span> <span class="nn">random</span>
 
 <span class="c1"># Check whether we&#39;re using a GPU</span>
 <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
@@ -1302,7 +1309,7 @@ If you already downloaded the data set but not the model, the model file is avai
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#june-18-2024">June 18, 2024</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#june-20-2024">June 20, 2024</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-registration">Part 1 - Registration</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-management">Data management</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model">Model</a></li>
