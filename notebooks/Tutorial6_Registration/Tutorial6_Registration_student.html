@@ -526,10 +526,9 @@ data_path = &quot;ribs&quot;
 </div>
 <section id="data-management">
 <h3>Data management<a class="headerlink" href="#data-management" title="Permalink to this heading">#</a></h3>
-<p>In this part we prepare all the tools needed to load and visualize our samples. One thing we <em>could</em> do is perform <strong>inter</strong>-patient registration, i.e., register two chest X-ray images of different patients. However, this is a very challenging problem. Instead, to make our life a bit easier, we will perform <strong>intra</strong>-patient registration: register two images of the same patient. For each patient, we make a synthetic moving image by applying some random elastic deformations. To build this data set, we we used the <a class="reference external" href="https://docs.monai.io/en/stable/transforms.html#rand2delastic">Rand2DElasticd</a> transform on both the image and the mask. We will use a neural network to learn the deformation field between the fixed image and the moving image.</p>
-<div>
-<img src="https://i.imgur.com/OmoOZ5w.png" width="200" />
-</div><p>Similarly as in <strong>Tutorial 3</strong>, make a dictionary of the image file names.</p>
+<p>In this part we prepare all the tools needed to load and visualize our samples. One thing we <em>could</em> do is perform <strong>inter</strong>-patient registration, i.e., register two chest X-ray images of different patients. However, this is a very challenging problem. Instead, to make our life a bit easier, we will perform <strong>intra</strong>-patient registration: register two images of the same patient. For each patient, we make a synthetic moving image by applying some random elastic deformations. To build this data set, we we used the <a class="reference external" href="https://docs.monai.io/en/stable/transforms.html#rand2delastic">Rand2DElasticd</a> transform on both the image and the mask. We will use a neural network to learn the deformation field between the fixed image and the moving image.
+<img alt="fig" src="https://surfdrive.surf.nl/files/index.php/s/CHpuUieKKHf3PZw/download" /></p>
+<p>Similarly as in <strong>Tutorial 3</strong>, make a dictionary of the image file names.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -707,11 +706,11 @@ data_path = &quot;ribs&quot;
 <li><p>the network takes as input two images: the <em>moving</em> and <em>fixed</em> images.</p></li>
 <li><p>it outputs one tensor representing the <em>deformation field</em>.</p></li>
 </ul>
-<p><img src='https://i.imgur.com/rvZfwr2.png' width=600></img></p>
+<p><img alt="img" src="https://surfdrive.surf.nl/files/index.php/s/tbNgovhCnaU44Ws/download" /></p>
 <p>This <em>deformation field</em> can be applied to the <em>moving</em> image with the <code class="docutils literal notranslate"><span class="pre">monai.networks.blocks.Warp</span></code> block of Monai.</p>
-<p><img src='https://i.imgur.com/gj7JnOy.png' width=500></img></p>
+<p><img alt="fig" src="https://surfdrive.surf.nl/files/index.php/s/bdZjOna8RalyWSL/download" /></p>
 <p>This deformed moving image is then compared to the <em>fixed</em> image: if they are similar, the deformation field is correctly registering the moving image on the fixed image. Keep in mind that this is done on <strong>training</strong> data, and we want the U-Net to learn to predict a proper deformation field given two new and unseen images. So we’re not optimizing for a pair of images as would be done in conventional iterative registration, but training a model that can generalize.</p>
-<p><img src='https://i.imgur.com/aM7OrR4.png' width=300></img></p>
+<p><img alt="fig" src="https://surfdrive.surf.nl/files/index.php/s/7uIJ3E8uZooQjpx/download" /></p>
 <p>Before starting, let’s check that you can work on a GPU by runnning the following cell:</p>
 <ul class="simple">
 <li><p>if the device is “cuda” you are working on a GPU,</p></li>
