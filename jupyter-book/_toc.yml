@@ -14,5 +14,5 @@ parts:
     title: Tutorial 4
   - file: notebooks/Tutorial5_Reconstruction/Tutorial5_Reconstruction_teacher
     title: Tutorial 5
-  - file: notebooks/Tutorial6_Registration/Tutorial6_Registration_student
+  - file: notebooks/Tutorial6_Registration/Tutorial6_Registration_teacher
     title: Tutorial 6
