@@ -68,6 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="https://www.utwente.nl/.utdesign/img/favicons/favicon-32x32.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Welcome" href="../../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -151,24 +152,10 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Tutorial1_NumpySimpleITK_teacher.html">Tutorial 1</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tutorial 1</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="../Tutorial2_ConvolutionalNeuralNetworks/Tutorial2_ConvolutionalNeuralNetworks_teacher.html">Tutorial 2</a></li>
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Tutorial3_Segmentation/Tutorial3_Segmentation_teacher.html">Tutorial 3</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Tutorial4_Generative_Models/Tutorial4_Generative_Models_teacher.html">Tutorial 4</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Tutorial5_Reconstruction/Tutorial5_Reconstruction_teacher.html">Tutorial 5</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Tutorial6_Registration/Tutorial6_Registration_teacher.html">Tutorial 6</a></li>
 </ul>
 
     </div>
@@ -412,7 +399,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tutorial 1</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#may-2-2024">May 2, 2024</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#february-7-2024">February 7, 2024</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notebooks">Notebooks</a></li>
 </ul>
 </li>
@@ -453,8 +440,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tutorial-1">
 <h1>Tutorial 1<a class="headerlink" href="#tutorial-1" title="Permalink to this heading">#</a></h1>
-<section id="may-2-2024">
-<h2>May 2, 2024<a class="headerlink" href="#may-2-2024" title="Permalink to this heading">#</a></h2>
+<section id="february-7-2024">
+<h2>February 7, 2024<a class="headerlink" href="#february-7-2024" title="Permalink to this heading">#</a></h2>
 <p>Throughout the course, you will be doing a lot of Python programming and working with medical images.  We have included this tutorial to get you started with some of the basics. You might find more materials in <a class="reference external" href="https://miagrouput.github.io/intro-programming/">this manual</a> for Python programming, including additional exercises.</p>
 <!-- In the past two lectures, we have looked at medical images, filters, neural networks, and convolutional neural networks. The purpose of this tutorial is to put the concepts that you have learned into practice and to get you acquainted with medical image formats and several useful Python packages to manipulate medical images. Moreover, you will get to train your first neural network for image analysis. -->
 <section id="notebooks">
@@ -474,7 +461,7 @@ document.write(`
 <li><p>A (preferred) alternative to Google Colab is to run the notebook on the <a class="reference external" href="https://jupyter.utwente.nl/">UT JupyterLab</a>. Here, you can log in with your s-number and you get your own hosted Jupyter environment.</p></li>
 <li><p>You can run a notebook in an IDE like Visual Studio Code.</p></li>
 </ul>
-<p>Throughout the tutorials, there are questions, which we indicate with ❓, and programming exercises, which we indicate with ⌨️.</p>
+<p>Throughout the tutorials, there are exercises, clearly indicated in green.</p>
 </section>
 </section>
 </section>
@@ -918,8 +905,8 @@ document.write(`
 <p>Because not all of these packages might be installed by default (depending on your Python distribution),  you first need to install some packages.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install SimpleITK</span>
-<span class="c1"># !pip install matplotlib</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">SimpleITK</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">matplotlib</span>
 </pre></div>
 </div>
 </div>
@@ -1121,7 +1108,7 @@ The latter option is preferable as it doesn’t change the data.</p></li>
 </section>
 <section id="mevislab">
 <h2>MeVisLab<a class="headerlink" href="#mevislab" title="Permalink to this heading">#</a></h2>
-<p>This is the end of this first Jupyter notebook. Notebooks are great for interactive Python programming, but not for medical image visualization. We have put a tutorial online to get started with MeVisLab. Follow this tutorial to visualize 3D medical images in an interactive way!</p>
+<p>This is the end of this first Jupyter notebook. Notebooks are great for interactive Python programming, but not for medical image visualization. We have put a tutorial on Canvas to get started with MeVisLab. Follow this tutorial to visualize 3D medical images in an interactive way!</p>
 <p><img src='https://i.imgur.com/W0ZYWg0.png'></img></p>
 </section>
 </section>
@@ -1157,6 +1144,15 @@ The latter option is preferable as it doesn’t change the data.</p></li>
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Welcome</p>
+      </div>
+    </a>
 </div></div>
   
 </div>
@@ -1176,7 +1172,7 @@ The latter option is preferable as it doesn’t change the data.</p></li>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tutorial 1</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#may-2-2024">May 2, 2024</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#february-7-2024">February 7, 2024</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notebooks">Notebooks</a></li>
 </ul>
 </li>
