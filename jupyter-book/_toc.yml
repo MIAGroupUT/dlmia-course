@@ -4,10 +4,10 @@ title: Deep Learning for Medical Imaging
 parts:
 - caption: Tutorials
   chapters:
-  - file: notebooks/Tutorial1_NumpySimpleITK/Tutorial1_NumpySimpleITK_student
+  - file: notebooks/Tutorial1_NumpySimpleITK/Tutorial1_NumpySimpleITK_teacher
     title: Tutorial 1
-#  - file: notebooks/Tutorial2_ConvolutionalNeuralNetworks/Tutorial2_ConvolutionalNeuralNetworks_teacher
-#    title: Tutorial 2
+  - file: notebooks/Tutorial2_ConvolutionalNeuralNetworks/Tutorial2_ConvolutionalNeuralNetworks_student
+    title: Tutorial 2
 #  - file: notebooks/Tutorial3_Segmentation/Tutorial3_Segmentation_teacher
 #    title: Tutorial 3
 #  - file: notebooks/Tutorial4_Generative_Models/Tutorial4_Generative_Models_teacher
