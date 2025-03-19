@@ -66,6 +66,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="https://www.utwente.nl/.utdesign/img/favicons/favicon-32x32.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tutorial 4" href="../Tutorial4_Generative_Models/Tutorial4_Generative_Models_teacher.html" />
+    <link rel="prev" title="Tutorial 2" href="../Tutorial2_ConvolutionalNeuralNetworks/Tutorial2_ConvolutionalNeuralNetworks_teacher.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -149,14 +151,23 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../Tutorial1_NumpySimpleITK/Tutorial1_NumpySimpleITK_teacher.html">Tutorial 1</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="../Tutorial2_ConvolutionalNeuralNetworks/Tutorial2_ConvolutionalNeuralNetworks_student.html">Tutorial 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial2_ConvolutionalNeuralNetworks/Tutorial2_ConvolutionalNeuralNetworks_teacher.html">Tutorial 2</a></li>
 
 
 
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tutorial 3</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial4_Generative_Models/Tutorial4_Generative_Models_teacher.html">Tutorial 4</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial5_Reconstruction/Tutorial5_Reconstruction_student.html">Tutorial 5</a></li>
 </ul>
 
     </div>
@@ -400,7 +411,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tutorial 3</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#may-16-2024">May 16, 2024</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#february-27-2025">February 27, 2025</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#weights-and-biases">Weights and Biases</a></li>
@@ -431,7 +442,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-to-baseline-masks">Comparison to baseline masks</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-multilabel-classification">Part 3: Multilabel classification</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-multiclass-classification">Part 3: Multiclass classification</a></li>
 </ul>
 
             </nav>
@@ -446,12 +457,12 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tutorial-3">
 <h1>Tutorial 3<a class="headerlink" href="#tutorial-3" title="Permalink to this heading">#</a></h1>
-<section id="may-16-2024">
-<h2>May 16, 2024<a class="headerlink" href="#may-16-2024" title="Permalink to this heading">#</a></h2>
+<section id="february-27-2025">
+<h2>February 27, 2025<a class="headerlink" href="#february-27-2025" title="Permalink to this heading">#</a></h2>
 <p>In the last two tutorials, you’ve taken your first steps in PyTorch and trained your first (convolutional) neural networks. You know now what convolution and cross-correlation do and what the essential steps in training a network are.</p>
-<p>This week, you will train convolutional neural networks for 2D image segmentation. Everything you do and learn here can be easily applied to 3D images. The data that we will be using today consists of chest X-ray images. The end goal in this dataset is to segment the ribs in these images, as in the image below. However, we will start a bit simpler and just segment every pixel that is a rib.</p>
+<p>This week, you will train convolutional neural networks for 2D image segmentation. Keep in mind that everything you do and learn here can also be easily applied to 3D images. The data that we will be using today consists of chest X-ray images. The end goal in this dataset is to segment the ribs in these images, as in the image below. However, instead of segmenting and labeling all individual ribs, we will start a bit simpler and just segment every pixel that is a rib.</p>
 <p><img src="https://vindr.ai/wp-content/uploads/2021/06/xrib-1.png.pagespeed.ic.yhPrlYfYEN.webp" width=600px></img></p>
-<p>First, we set the data path. You can get the required images by downloading the folder “Tutorial 3” <a class="reference external" href="https://surfdrive.surf.nl/files/index.php/s/vnA6J0xAhyzoYuz">here</a> and uploading the folder to your coding environment.</p>
+<p>First, we set the data path. You can get the required images by downloading <code class="docutils literal notranslate"><span class="pre">ribs.zip</span></code> from the folder “Tutorial 3” <a class="reference external" href="https://surfdrive.surf.nl/files/index.php/s/vnA6J0xAhyzoYuz">here</a> and uploading the folder to your coding environment.</p>
 <div class="attention admonition">
 <p class="admonition-title">Direct download</p>
 <p>You can also directly download the file to your programming environment. If you are using the UT Jupyter server (as most of you are), open a terminal window on the server and run</p>
@@ -624,7 +635,7 @@ The data consists of an image and a label. However, the label is in this case no
 </div>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p>Note that <code class="docutils literal notranslate"><span class="pre">LoadRibData</span></code> is now outputing a much more complex dictionary with two additional keys: <code class="docutils literal notranslate"><span class="pre">img_meta_dict</span></code> and <code class="docutils literal notranslate"><span class="pre">mask_meta_dict</span></code>. These contain respectively the meta data of <code class="docutils literal notranslate"><span class="pre">img</span></code> and <code class="docutils literal notranslate"><span class="pre">mask</span></code>: here we decided to add the resolution of the image, corresponding to the key <code class="docutils literal notranslate"><span class="pre">affine</span></code>. This will be useful for Monai to perform some transformations later.</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">LoadRibData</span></code> is now outputing a more complex dictionary with two additional keys: <code class="docutils literal notranslate"><span class="pre">img_meta_dict</span></code> and <code class="docutils literal notranslate"><span class="pre">mask_meta_dict</span></code>. These contain respectively the meta data of <code class="docutils literal notranslate"><span class="pre">img</span></code> and <code class="docutils literal notranslate"><span class="pre">mask</span></code>: here we decided to add the resolution of the image, corresponding to the key <code class="docutils literal notranslate"><span class="pre">affine</span></code>. This will be useful for Monai to perform some transformations later.</p>
 </div>
 <p>A <code class="docutils literal notranslate"><span class="pre">CacheDataset</span></code> needs two arguments to perform our procedure</p>
 <ol class="arabic simple">
@@ -1278,8 +1289,8 @@ Instead of keeping track of the train and validation loss on your computer, you 
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="part-3-multilabel-classification">
-<h1>Part 3: Multilabel classification<a class="headerlink" href="#part-3-multilabel-classification" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="part-3-multiclass-classification">
+<h1>Part 3: Multiclass classification<a class="headerlink" href="#part-3-multiclass-classification" title="Permalink to this heading">#</a></h1>
 <div class="tip admonition">
 <p class="admonition-title">Exercise</p>
 <p>In the data directory, we have also placed a folder called <code class="docutils literal notranslate"><span class="pre">mask_mc</span></code> for the train, val and test set. In these images, we have labeled the left and right 7th rib. This is one of the ribs that’s most prone to fracture, and identifying exactly that rib and the side that it’s on could be valuable. Thus, this is no longer a binary label segmentation problem, but a multiclass segmentation problem. Try to also segment these images, consider what you will have to change in your code for this to work.</p>
@@ -1324,6 +1335,24 @@ Instead of keeping track of the train and validation loss on your computer, you 
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../Tutorial2_ConvolutionalNeuralNetworks/Tutorial2_ConvolutionalNeuralNetworks_teacher.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tutorial 2</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Tutorial4_Generative_Models/Tutorial4_Generative_Models_teacher.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tutorial 4</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -1343,7 +1372,7 @@ Instead of keeping track of the train and validation loss on your computer, you 
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tutorial 3</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#may-16-2024">May 16, 2024</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#february-27-2025">February 27, 2025</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#weights-and-biases">Weights and Biases</a></li>
@@ -1374,7 +1403,7 @@ Instead of keeping track of the train and validation loss on your computer, you 
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-to-baseline-masks">Comparison to baseline masks</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-multilabel-classification">Part 3: Multilabel classification</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-multiclass-classification">Part 3: Multiclass classification</a></li>
 </ul>
 
   </nav></div>
