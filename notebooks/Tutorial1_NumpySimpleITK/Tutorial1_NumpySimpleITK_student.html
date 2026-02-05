@@ -414,7 +414,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tutorial 1</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#february-7-2025">February 7, 2025</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#february-6-2026">February 6, 2026</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notebooks">Notebooks</a></li>
 </ul>
 </li>
@@ -455,8 +455,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tutorial-1">
 <h1>Tutorial 1<a class="headerlink" href="#tutorial-1" title="Permalink to this heading">#</a></h1>
-<section id="february-7-2025">
-<h2>February 7, 2025<a class="headerlink" href="#february-7-2025" title="Permalink to this heading">#</a></h2>
+<section id="february-6-2026">
+<h2>February 6, 2026<a class="headerlink" href="#february-6-2026" title="Permalink to this heading">#</a></h2>
 <p>Throughout the course, you will be doing a lot of Python programming and working with medical images.  We have included this tutorial to get you started with some of the basics. You might find more materials in <a class="reference external" href="https://miagrouput.github.io/intro-programming/">this manual</a> for Python programming, including additional exercises.</p>
 <section id="notebooks">
 <h3>Notebooks<a class="headerlink" href="#notebooks" title="Permalink to this heading">#</a></h3>
@@ -723,10 +723,10 @@ document.write(`
 </div>
 </div>
 </div>
-<p>The nice thing with classes is that if we want to represent Dieuwertje’s car driving on the A35, we can just make another object using the same class.</p>
+<p>The nice thing with classes is that if we want to represent Amin’s car driving on the A35, we can just make another object using the same class.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dieuwertjes_car</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;gold&#39;</span><span class="p">,</span> <span class="n">brand</span><span class="o">=</span><span class="s1">&#39;hyundai&#39;</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">amins_car</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;gold&#39;</span><span class="p">,</span> <span class="n">brand</span><span class="o">=</span><span class="s1">&#39;hyundai&#39;</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -742,7 +742,7 @@ document.write(`
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Everyone is a winner&#39;</span><span class="p">)</span>
         
-<span class="n">racing_time</span><span class="p">(</span><span class="n">jelmers_car</span><span class="p">,</span> <span class="n">dieuwertjes_car</span><span class="p">)</span>      
+<span class="n">racing_time</span><span class="p">(</span><span class="n">jelmers_car</span><span class="p">,</span> <span class="n">amins_car</span><span class="p">)</span>      
 </pre></div>
 </div>
 </div>
@@ -861,8 +861,8 @@ document.write(`
 <p>For example, we can make a dictionary with the cars that we have just defined and use names as keys.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cars</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Jelmer&#39;</span><span class="p">:</span> <span class="n">jelmers_car</span><span class="p">,</span> <span class="s1">&#39;Dieuwertje&#39;</span><span class="p">:</span> <span class="n">dieuwertjes_car</span><span class="p">}</span>
-<span class="n">racing_time</span><span class="p">(</span><span class="n">cars</span><span class="p">[</span><span class="s1">&#39;Jelmer&#39;</span><span class="p">],</span> <span class="n">cars</span><span class="p">[</span><span class="s1">&#39;Dieuwertje&#39;</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cars</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Jelmer&#39;</span><span class="p">:</span> <span class="n">jelmers_car</span><span class="p">,</span> <span class="s1">&#39;Amin&#39;</span><span class="p">:</span> <span class="n">amins_car</span><span class="p">}</span>
+<span class="n">racing_time</span><span class="p">(</span><span class="n">cars</span><span class="p">[</span><span class="s1">&#39;Jelmer&#39;</span><span class="p">],</span> <span class="n">cars</span><span class="p">[</span><span class="s1">&#39;Amin&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1201,7 +1201,7 @@ The latter option is preferable as it doesn’t change the data.</p></li>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tutorial 1</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#february-7-2025">February 7, 2025</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#february-6-2026">February 6, 2026</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notebooks">Notebooks</a></li>
 </ul>
 </li>
