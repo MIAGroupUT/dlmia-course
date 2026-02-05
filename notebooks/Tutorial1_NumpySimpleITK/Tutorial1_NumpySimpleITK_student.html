@@ -513,7 +513,7 @@ document.write(`
 </div>
 <p>Python does not require you to explicitly declare the type of a variable. However, under the hood, variables do have a type. If you want to work with variables, be aware that they have to be of the same type.</p>
 <div class="tip admonition">
-<p class="admonition-title">Exercise</p>
+<p class="admonition-title">Exercise 1.1</p>
 <p>What happens if you try to add variables <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">course</span></code>. Do you understand what it says in the output?</p>
 </div>
 <p>If you are not sure which type a variable has, you can always check it using <code class="docutils literal notranslate"><span class="pre">type</span></code>, as below.</p>
@@ -526,11 +526,11 @@ document.write(`
 </div>
 <p>A <code class="docutils literal notranslate"><span class="pre">float</span></code> is one way to represent numbers. Floats have decimals, and hence, Python automatically turns your variable <code class="docutils literal notranslate"><span class="pre">b</span></code> with value 2.3 into a float.</p>
 <div class="tip admonition">
-<p class="admonition-title">Exercise</p>
+<p class="admonition-title">Exercise 1.2</p>
 <p>What is the type of the variable <code class="docutils literal notranslate"><span class="pre">year</span></code>?</p>
 </div>
 <div class="tip admonition">
-<p class="admonition-title">Exercise</p>
+<p class="admonition-title">Exercise 1.3</p>
 <p>types are compatible with each other. Can you figure out what type the variable has that you get when you add <code class="docutils literal notranslate"><span class="pre">year</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>?.</p>
 </div>
 <p>If your variable has one type but you want it to have another type, you can ‘cast’ it to another type as follows</p>
@@ -587,7 +587,7 @@ document.write(`
 </div>
 </div>
 <div class="tip admonition">
-<p class="admonition-title">Exercise</p>
+<p class="admonition-title">Exercise 1.4</p>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">add_numbers</span></code> function to add 45 and 1281.</p>
 </div>
 <p>Of course, functions can be much more complex than this. We can make new variables within a function and call one function from another function. For example</p>
@@ -733,7 +733,7 @@ document.write(`
 </div>
 </div>
 <div class="tip admonition">
-<p class="admonition-title">Exercise</p>
+<p class="admonition-title">Exercise 1.5</p>
 <p>Use these classes and methods and change the code such that Jelmer’s car wins.</p>
 </div>
 <p>There are many nice things you can do with classes, and we’re not going to go into too many details here, but one thing that is useful to know is ‘inheritance’. Let’s say we want to make a very specific class for red Fiat cars and we’re also interested in the year that they were built. We can either make a completely new class, or reuse/inherit from our existing <code class="docutils literal notranslate"><span class="pre">car</span></code> class.</p>
@@ -762,7 +762,7 @@ document.write(`
 </div>
 </div>
 <div class="tip admonition">
-<p class="admonition-title">Exercise</p>
+<p class="admonition-title">Exercise 1.6</p>
 <p><code class="docutils literal notranslate"><span class="pre">FiatCar</span></code> is a subclass of <code class="docutils literal notranslate"><span class="pre">Car</span></code>. Write another subclass of <code class="docutils literal notranslate"><span class="pre">Car</span></code> to represent Formula 1 cars, call it <code class="docutils literal notranslate"><span class="pre">FormulaOneCar</span></code> and give it some fitting attributes and methods.</p>
 </div>
 </section>
@@ -862,7 +862,7 @@ document.write(`
 </div>
 </div>
 <div class="tip admonition">
-<p class="admonition-title">Exercise</p>
+<p class="admonition-title">Exercise 1.7</p>
 <p>Ask the three people closest to you right now which study programme they’re in. Make a Python dictionary in which their name is the key, and their study programme the value.</p>
 </div>
 </section>
@@ -943,7 +943,7 @@ document.write(`
 </div>
 </div>
 <div class="tip admonition">
-<p class="admonition-title">Exercise</p>
+<p class="admonition-title">Exercise 1.8</p>
 <p>Use the header information to determine if this is a 2D or a 3D image.</p>
 </div>
 <p>There are all kinds of tags in this header file that are relevant for the way in which the image is read. However, the nice thing is that we can also directly read this header file into a SimpleITK <code class="docutils literal notranslate"><span class="pre">Image</span></code> object. The image reader will read all meta information into the <code class="docutils literal notranslate"><span class="pre">Image</span></code> object and also load the pixel values from the data file.</p>
@@ -1009,18 +1009,18 @@ document.write(`
 </div>
 </div>
 <div class="tip admonition">
-<p class="admonition-title">Exercise</p>
+<p class="admonition-title">Exercise 1.9</p>
 <p>What is the new shape of <code class="docutils literal notranslate"><span class="pre">image_array</span></code>?</p>
 </div>
 <section id="physical-voxel-size">
 <h3>Physical voxel size<a class="headerlink" href="#physical-voxel-size" title="Permalink to this heading">#</a></h3>
 <p>The image that you have loaded has some peculiarities. It is a CT image of the heart which has been acquired with (relatively) thick slices.</p>
 <div class="tip admonition">
-<p class="admonition-title">Exercise</p>
+<p class="admonition-title">Exercise 1.10</p>
 <p>Determine - based on the functions that you’ve seen here - what the ratio is between the slice spacing and the in-plane resolution?</p>
 </div>
 <div class="tip admonition">
-<p class="admonition-title">Exercise</p>
+<p class="admonition-title">Exercise 1.11</p>
 <p>What is the volume (in ml) of a single voxel in the image?</p>
 </div>
 </section>
@@ -1102,11 +1102,11 @@ The latter option is preferable as it doesn’t change the data.</p></li>
 </div>
 </div>
 <div class="tip admonition">
-<p class="admonition-title">Exercise</p>
+<p class="admonition-title">Exercise 1.12</p>
 <p>A reasonable range for non-contrast cardiac CT images is between -300 and 450. Visualize the image with these limits.</p>
 </div>
 <div class="tip admonition">
-<p class="admonition-title">Exercise</p>
+<p class="admonition-title">Exercise 1.13</p>
 <p>The image that we have just visualized is an <em>axial</em> image slice. Can you also visualize a <em>sagittal</em> and a <em>coronal</em> image slice of the same 3D volume? Use the <a class="reference external" href="https://matplotlib.org/3.5.0/api/_as_gen/matplotlib.pyplot.imshow.html">aspect</a> option in Matplotlib to correct for the anisotropic pixel size.</p>
 </div>
 </section>
