@@ -68,7 +68,6 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="https://www.utwente.nl/.utdesign/img/favicons/favicon-32x32.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Tutorial 2" href="../Tutorial2_ConvolutionalNeuralNetworks/Tutorial2_ConvolutionalNeuralNetworks_student.html" />
     <link rel="prev" title="Welcome" href="../../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -157,20 +156,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Tutorial 1</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="../Tutorial2_ConvolutionalNeuralNetworks/Tutorial2_ConvolutionalNeuralNetworks_student.html">Tutorial 2</a></li>
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Tutorial3_Segmentation/Tutorial3_Segmentation_student.html">Tutorial 3</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Tutorial4_Generative_Models/Tutorial4_Generative_Models_student.html">Tutorial 4</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Tutorial5_Reconstruction/Tutorial5_Reconstruction_student.html">Tutorial 5</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Tutorial6_Registration/Tutorial6_Registration_student.html">Tutorial 6</a></li>
 </ul>
 
     </div>
@@ -783,7 +768,7 @@ document.write(`
 </section>
 <section id="tuples-lists-and-sets">
 <h2>Tuples, lists and sets<a class="headerlink" href="#tuples-lists-and-sets" title="Permalink to this heading">#</a></h2>
-<p>Sometimes (or actually quite often), we want to store multiple values in one variable. In that case, Python has several options. We can make either a <code class="docutils literal notranslate"><span class="pre">tuple</span></code>, a <code class="docutils literal notranslate"><span class="pre">list</span></code> or a <code class="docutils literal notranslate"><span class="pre">set</span></code>. It’s good to realize that these are just built-in classes, which means that they also have attributed and methods. There are some important differences between tuples, lists and sets, and depending on the situation you might want to use one or the other. Differences are nicely explained in the figure below:</p>
+<p>Often, we want to store multiple values in one variable. In that case, Python has several options. We can make either a <code class="docutils literal notranslate"><span class="pre">tuple</span></code>, a <code class="docutils literal notranslate"><span class="pre">list</span></code> or a <code class="docutils literal notranslate"><span class="pre">set</span></code>. It’s good to realize that these are just built-in classes, which means that they also have attributed and methods. There are some important differences between tuples, lists and sets, and depending on the situation you might want to use one or the other. Differences are nicely explained in the figure below:</p>
 <ul class="simple">
 <li><p><strong>Mutable</strong>: Once the variable has been made, can we still change it?</p></li>
 <li><p><strong>Ordered</strong>: Is there a particular order of the elements that is kept?</p></li>
@@ -849,7 +834,7 @@ document.write(`
 </section>
 <section id="dictionaries">
 <h2>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this heading">#</a></h2>
-<p>One last Python thing that we want to tell you (for know) is about dictionaries. Dictionaries are a very convenient way to keep tracks of <em>keys</em> and <em>values</em>. In a way, you can think of dictionaries as a set with indexing, where you can define your own kinds of indices. A typical dictionary is defined as below, and as you see, we can ask for the value of specific elements in the dictionary.</p>
+<p>One last common container type in Python is a dictionary. Dictionaries are a very convenient way to keep tracks of <em>keys</em> and <em>values</em>. In a way, you can think of dictionaries as a set with indexing, where you can define your own kinds of indices. A typical dictionary is defined as below, and as you see, we can ask for the value of specific elements in the dictionary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">}</span>
@@ -878,7 +863,7 @@ document.write(`
 </div>
 <div class="tip admonition">
 <p class="admonition-title">Exercise</p>
-<p>Ask the three people closest to you right now which study programme they’re in. Make a Python dictionary in which there name is the key, and their study programme the value.</p>
+<p>Ask the three people closest to you right now which study programme they’re in. Make a Python dictionary in which their name is the key, and their study programme the value.</p>
 </div>
 </section>
 </section>
@@ -892,7 +877,7 @@ document.write(`
 <li><p>Convert the image to a NumPy <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> object</p></li>
 <li><p>Visualize the image</p></li>
 </ul>
-<p>Let’s first import some of the packages used in this part of the tutorial. A package is just a collection of Python classes and functions that extend the standard built-in Python functions and classes. You will need some medical images to do this tutorial. You can download these from the <a class="reference external" href="https://surfdrive.surf.nl/files/index.php/s/vnA6J0xAhyzoYuz">SURFdrive directory</a>. Once you have downloaded the data for Tutorial 1, add the path in the box below. Note that this is slightly different for Jupyter and Colab. In <strong>Jupyter</strong>, you just add the local path where you’re stored the data. In <strong>Colab</strong>, there are <a class="reference external" href="https://colab.research.google.com/notebooks/io.ipynb">several ways to use files</a>. It might be easiest to put the data on your Google Drive.</p>
+<p>Let’s first import some of the packages used in this part of the tutorial. A package is just a collection of Python classes and functions that extend the standard built-in Python functions and classes. You will need some medical images to do this tutorial. You can download these from the <a class="reference external" href="https://surfdrive.surf.nl/s/JFP4ypf4xmRg7iC">SURFdrive directory</a>. Once you have downloaded the data for Tutorial 1, add the path in the box below. Note that this is slightly different for Jupyter and Colab. In <strong>Jupyter</strong>, you just add the local path where you’re stored the data. In <strong>Colab</strong>, there are <a class="reference external" href="https://colab.research.google.com/notebooks/io.ipynb">several ways to use files</a>. It might be easiest to put the data on your Google Drive.</p>
 <p>For example, to add a path in Jupyter, do the following</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -959,9 +944,9 @@ document.write(`
 </div>
 <div class="tip admonition">
 <p class="admonition-title">Exercise</p>
-<p>Infer from the header information if this is a 2D or a 3D image.</p>
+<p>Use the header information to determine if this is a 2D or a 3D image.</p>
 </div>
-<p>There are all kinds of tags in this header file that are relevant for the way in which the image is read. However, the nice thing is that we can also directly read this header file into a SimpleITK <code>Image</code> object. The image reader will read all meta information into the <code>Image</code> object and also load the pixel values from the data file.</p>
+<p>There are all kinds of tags in this header file that are relevant for the way in which the image is read. However, the nice thing is that we can also directly read this header file into a SimpleITK <code class="docutils literal notranslate"><span class="pre">Image</span></code> object. The image reader will read all meta information into the <code class="docutils literal notranslate"><span class="pre">Image</span></code> object and also load the pixel values from the data file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">sitk</span><span class="o">.</span><span class="n">ReadImage</span><span class="p">(</span><span class="n">image_file</span><span class="p">)</span>
@@ -980,7 +965,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Now we know that the image has a particular size, we can also find the value of a pixel in that image. For this, we can use the <code>GetPixel</code> method, and we can use <code>SetPixel</code> to change values.</p>
+<p>Now we know that the image has a particular size, we can also find the value of a pixel in that image. For this, we can use the <code class="docutils literal notranslate"><span class="pre">GetPixel</span></code> method, and we can use <code class="docutils literal notranslate"><span class="pre">SetPixel</span></code> to change values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">GetPixel</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
@@ -995,7 +980,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Of course, setting and getting individual pixels is all quite cumbersome and this is not the optimal way to work with the 3D image matrix. Luckily, we can also read the raw pixel values into a NumPy array. For this, we use the <code>GetArrayFromImage</code> method.</p>
+<p>Of course, setting and getting individual pixels is all quite cumbersome and this is not the optimal way to work with the 3D image matrix. Luckily, we can also read the raw pixel values into a NumPy array. For this, we use the <code class="docutils literal notranslate"><span class="pre">GetArrayFromImage</span></code> method.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image_array</span> <span class="o">=</span> <span class="n">sitk</span><span class="o">.</span><span class="n">GetArrayFromImage</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
@@ -1003,7 +988,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>This is where things become a little bit tricky. If you print the shape of the <code>image_array</code> array, you will see that it doesn’t match that of the SimpleITK Image.</p>
+<p>This is where things become a little bit tricky. If you print the shape of the <code class="docutils literal notranslate"><span class="pre">image_array</span></code> array, you will see that it doesn’t match that of the SimpleITK Image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">image_array</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -1011,9 +996,9 @@ document.write(`
 </div>
 </div>
 </div>
-<p>While (Simple)ITK orders images as <code>(x, y, z)</code>, NumPy orders arrays as <code>(z, y, x)</code>. This is something to keep in mind and you can do two things:</p>
+<p>While (Simple)ITK orders images as <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code>, NumPy orders arrays as <code class="docutils literal notranslate"><span class="pre">(z,</span> <span class="pre">y,</span> <span class="pre">x)</span></code>. This is something to keep in mind and you can do two things:</p>
 <ul class="simple">
-<li><p>Just accept it and index your NumPy arrays in order <code>(z, y, x)</code>.</p></li>
+<li><p>Just accept it and index your NumPy arrays in order <code class="docutils literal notranslate"><span class="pre">(z,</span> <span class="pre">y,</span> <span class="pre">x)</span></code>.</p></li>
 <li><p>After you get your array, swap the x and y axes as follows</p></li>
 </ul>
 <div class="cell docutils container">
@@ -1057,7 +1042,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Matplotlib has many functions to display data. For images as 2D matrices, it doesn’t use the <code>plot</code> function, but the <code>imshow</code> function. If we visualize the 21st slice in our 64-slice CT image, we get the following image.</p>
+<p>Matplotlib has many functions to display data. For images as 2D matrices, it doesn’t use the <code class="docutils literal notranslate"><span class="pre">plot</span></code> function, but the <code class="docutils literal notranslate"><span class="pre">imshow</span></code> function. If we visualize the 21st slice in our 64-slice CT image, we get the following image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -1067,7 +1052,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Now we see what’s actually in the image. It’s a CT scan of a heart, where we see (on the left) the chest wall, in the center the heart, and on the right the spine. Surrounding the heart is lung tissue. However, if you would show the image like this to a radiologist, they would be confused. First of all, they are used to seeing CT images in grayscale. We can fix that by changing the <a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">Matplotlib colormap</a> to <code>gray</code>.</p>
+<p>Now we see what’s actually in the image. It’s a CT scan of a heart, where we see (on the left) the chest wall, in the center the heart, and on the right the spine. Surrounding the heart is lung tissue. However, if you would show the image like this to a radiologist, they would be confused. First of all, they are used to seeing CT images in grayscale. We can fix that by changing the <a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">Matplotlib colormap</a> to <code class="docutils literal notranslate"><span class="pre">gray</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -1077,7 +1062,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>A second problem is that the image is rotated 90 degrees counterclockwise. This is because when talking about images, we typically use different axes than when talking about plots. For example, coordinate (20, 10) in an image means 21st row (remember we start counting at 0), 11th column. In a plot, it would mean 21st <em>column</em>, 11th <em>row</em>. So to fix that, we need to swap axes in our visualization. Because the image slice is a 2D matrix, we can just use <code>transpose</code></p>
+<p>A second problem is that the image is rotated 90 degrees counterclockwise. This is because when talking about images, we typically use different axes than when talking about plots. For example, coordinate (20, 10) in an image means 21st row (remember we start counting at 0), 11th column. In a plot, it would mean 21st <em>column</em>, 11th <em>row</em>. So to fix that, we need to swap axes in our visualization. Because the image slice is a 2D matrix, we can just use <code class="docutils literal notranslate"><span class="pre">transpose</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -1103,8 +1088,8 @@ document.write(`
 <h3>Image intensities<a class="headerlink" href="#image-intensities" title="Permalink to this heading">#</a></h3>
 <p>The histogram shows a wide range of image intensities (<a class="reference external" href="https://en.wikipedia.org/wiki/Hounsfield_scale">Hounsfield units</a>) in the image. For visualization, you might only be interested in values between 0 and 100.There are several ways to focus on different parts of the image.</p>
 <ul class="simple">
-<li><p>You can change the values in the image using something like <code>image_array = np.clip(image_array, 0, 100)</code></p></li>
-<li><p>You can use the <code>vmin</code> and <code>vmax</code> options to limit the range of visible values.
+<li><p>You can change the values in the image using something like <code class="docutils literal notranslate"><span class="pre">image_array</span> <span class="pre">=</span> <span class="pre">np.clip(image_array,</span> <span class="pre">0,</span> <span class="pre">100)</span></code></p></li>
+<li><p>You can use the <code class="docutils literal notranslate"><span class="pre">vmin</span></code> and <code class="docutils literal notranslate"><span class="pre">vmax</span></code> options to limit the range of visible values.
 The latter option is preferable as it doesn’t change the data.</p></li>
 </ul>
 <div class="cell docutils container">
@@ -1128,8 +1113,9 @@ The latter option is preferable as it doesn’t change the data.</p></li>
 </section>
 <section id="mevislab">
 <h2>MeVisLab<a class="headerlink" href="#mevislab" title="Permalink to this heading">#</a></h2>
-<p>This is the end of this first Jupyter notebook. Notebooks are great for interactive Python programming, but not for medical image visualization. We have put a tutorial on Canvas to get started with MeVisLab. Follow this tutorial to visualize 3D medical images in an interactive way!</p>
+<p>Notebooks are great for interactive Python programming, but not for medical image visualization. We have put a tutorial on Canvas to get started with MeVisLab. Follow this tutorial to visualize 3D medical images in an interactive way!</p>
 <p><img src='https://i.imgur.com/W0ZYWg0.png'></img></p>
+<p>This is the end of this first Jupyter notebook.</p>
 </section>
 </section>
 
@@ -1172,15 +1158,6 @@ The latter option is preferable as it doesn’t change the data.</p></li>
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Welcome</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="../Tutorial2_ConvolutionalNeuralNetworks/Tutorial2_ConvolutionalNeuralNetworks_student.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tutorial 2</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   
