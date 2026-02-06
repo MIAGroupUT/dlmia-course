@@ -1,0 +1,79 @@
+\selectlanguage *{english}
+\contentsline {chapter}{\numberline {1}Tutorial 1}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}February 7, 2025}{3}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Notebooks}{3}{subsection.1.1.1}%
+\contentsline {chapter}{\numberline {2}Python essentials}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Variables}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Functions}{6}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Objects}{8}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Tuples, lists and sets}{10}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Dictionaries}{11}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Working with medical images}{13}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Python packages}{14}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Loading an image}{14}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Physical voxel size}{15}{subsection.3.2.1}%
+\contentsline {section}{\numberline {3.3}Visualizing an image}{16}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Image intensities}{17}{subsection.3.3.1}%
+\contentsline {section}{\numberline {3.4}MeVisLab}{17}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Tutorial 2}{19}{chapter.4}%
+\contentsline {section}{\numberline {4.1}February 13, 2025}{19}{section.4.1}%
+\contentsline {chapter}{\numberline {5}Convolution and cross\sphinxhyphen {}correlation}{21}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Correlation and convolution}{22}{section.5.1}%
+\contentsline {section}{\numberline {5.2}PyTorch}{23}{section.5.2}%
+\contentsline {chapter}{\numberline {6}Learning parameters from synthetic data}{27}{chapter.6}%
+\contentsline {chapter}{\numberline {7}A convolutional neural network}{31}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Datasets}{32}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Dataloaders}{33}{section.7.2}%
+\contentsline {section}{\numberline {7.3}The network}{34}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Training procedure for classification}{35}{section.7.4}%
+\contentsline {section}{\numberline {7.5}Part 5e: Performance evaluation}{36}{section.7.5}%
+\contentsline {chapter}{\numberline {8}Tutorial 3}{37}{chapter.8}%
+\contentsline {section}{\numberline {8.1}February 27, 2025}{37}{section.8.1}%
+\contentsline {chapter}{\numberline {9}Weights and Biases}{39}{chapter.9}%
+\contentsline {chapter}{\numberline {10}Segmentation of chest X\sphinxhyphen {}ray images}{41}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Data management}{41}{section.10.1}%
+\contentsline {subsection}{\numberline {10.1.1}Build a CacheDataset}{41}{subsection.10.1.1}%
+\contentsline {subsection}{\numberline {10.1.2}Image visualization}{44}{subsection.10.1.2}%
+\contentsline {subsection}{\numberline {10.1.3}Data transforms}{44}{subsection.10.1.3}%
+\contentsline {subsection}{\numberline {10.1.4}Dataloader}{46}{subsection.10.1.4}%
+\contentsline {subsection}{\numberline {10.1.5}Validation set}{47}{subsection.10.1.5}%
+\contentsline {section}{\numberline {10.2}Setting up the neural network, loss function, and optimizer}{47}{section.10.2}%
+\contentsline {subsection}{\numberline {10.2.1}Loss function}{48}{subsection.10.2.1}%
+\contentsline {subsection}{\numberline {10.2.2}Choose an optimizer}{48}{subsection.10.2.2}%
+\contentsline {subsection}{\numberline {10.2.3}Setting up the training loop}{48}{subsection.10.2.3}%
+\contentsline {chapter}{\numberline {11}Evaluate the trained network}{51}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Visual inspection}{51}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Compute evaluation metrics}{52}{section.11.2}%
+\contentsline {subsection}{\numberline {11.2.1}Dice}{53}{subsection.11.2.1}%
+\contentsline {subsection}{\numberline {11.2.2}Hausdorff distance}{53}{subsection.11.2.2}%
+\contentsline {section}{\numberline {11.3}Comparison to baseline masks}{54}{section.11.3}%
+\contentsline {chapter}{\numberline {12}Part 3: Multiclass classification}{57}{chapter.12}%
+\contentsline {chapter}{\numberline {13}Tutorial 4}{59}{chapter.13}%
+\contentsline {section}{\numberline {13.1}March 11, 2025}{59}{section.13.1}%
+\contentsline {section}{\numberline {13.2}1D generative adversarial network (GAN)}{60}{section.13.2}%
+\contentsline {chapter}{\numberline {14}MNIST synthesis}{65}{chapter.14}%
+\contentsline {section}{\numberline {14.1}The discriminator}{66}{section.14.1}%
+\contentsline {section}{\numberline {14.2}The generator}{67}{section.14.2}%
+\contentsline {section}{\numberline {14.3}The model}{67}{section.14.3}%
+\contentsline {section}{\numberline {14.4}A convolutional model}{70}{section.14.4}%
+\contentsline {section}{\numberline {14.5}Interpolation in the latent space}{73}{section.14.5}%
+\contentsline {chapter}{\numberline {15}MedMNIST image synthesis}{75}{chapter.15}%
+\contentsline {section}{\numberline {15.1}Conditional MedMNIST synthesis}{76}{section.15.1}%
+\contentsline {chapter}{\numberline {16}Tutorial 5}{77}{chapter.16}%
+\contentsline {section}{\numberline {16.1}March 20, 2025}{77}{section.16.1}%
+\contentsline {section}{\numberline {16.2}Reconstruction}{77}{section.16.2}%
+\contentsline {subsection}{\numberline {16.2.1}Datasets and dataloaders}{79}{subsection.16.2.1}%
+\contentsline {subsection}{\numberline {16.2.2}Model}{80}{subsection.16.2.2}%
+\contentsline {subsection}{\numberline {16.2.3}Loss function}{81}{subsection.16.2.3}%
+\contentsline {section}{\numberline {16.3}From post\sphinxhyphen {}processing to pre\sphinxhyphen {}processing}{84}{section.16.3}%
+\contentsline {chapter}{\numberline {17}Tutorial 6}{85}{chapter.17}%
+\contentsline {section}{\numberline {17.1}April 2, 2025}{85}{section.17.1}%
+\contentsline {section}{\numberline {17.2}Part 1 \sphinxhyphen {} Registration}{85}{section.17.2}%
+\contentsline {subsection}{\numberline {17.2.1}Data management}{86}{subsection.17.2.1}%
+\contentsline {subsection}{\numberline {17.2.2}Model}{90}{subsection.17.2.2}%
+\contentsline {subsection}{\numberline {17.2.3}Objective function}{91}{subsection.17.2.3}%
+\contentsline {subsection}{\numberline {17.2.4}Training time}{93}{subsection.17.2.4}%
+\contentsline {subsection}{\numberline {17.2.5}Evaluation of the trained model}{94}{subsection.17.2.5}%
+\contentsline {section}{\numberline {17.3}Part 2 \sphinxhyphen {} Equivariance}{95}{section.17.3}%
+\contentsline {subsection}{\numberline {17.3.1}Data loading}{95}{subsection.17.3.1}%
+\contentsline {subsection}{\numberline {17.3.2}Loading a pretrained model}{97}{subsection.17.3.2}%
