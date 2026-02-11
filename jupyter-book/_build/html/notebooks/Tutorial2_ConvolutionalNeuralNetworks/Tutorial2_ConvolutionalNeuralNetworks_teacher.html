@@ -402,7 +402,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tutorial 2</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#february-13-2025">February 13, 2025</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#february-12-2026">February 12, 2026</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#convolution-and-cross-correlation">Convolution and cross-correlation</a><ul class="visible nav section-nav flex-column">
@@ -433,8 +433,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tutorial-2">
 <h1>Tutorial 2<a class="headerlink" href="#tutorial-2" title="Permalink to this heading">#</a></h1>
-<section id="february-13-2025">
-<h2>February 13, 2025<a class="headerlink" href="#february-13-2025" title="Permalink to this heading">#</a></h2>
+<section id="february-12-2026">
+<h2>February 12, 2026<a class="headerlink" href="#february-12-2026" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="convolution-and-cross-correlation">
@@ -594,7 +594,7 @@ For this tutorial you only need to download the folder “Tutorial 1”.</p>
 <section id="pytorch">
 <h2>PyTorch<a class="headerlink" href="#pytorch" title="Permalink to this heading">#</a></h2>
 <p><img alt="PyTorch" src="https://upload.wikimedia.org/wikipedia/commons/9/96/Pytorch_logo.png?20211003060202" /><br>
-<a class="reference external" href="https://pytorch.org/">PyTorch</a> is (along with TensorFlow) one of the two most commonly used Python libraries for deep learning and linear algebra on GPUs. Before we jump into any real deep learning, there is a couple of things that you should know. Like NumPy, PyTorch operates on matrices. However, while NumPy calls these <em>arrays</em>, PyTorch calls them <em>tensors</em>. We can easily go back and forth between NumPy arrays and PyTorch tensors. See for yourself:</p>
+<a class="reference external" href="https://pytorch.org/">PyTorch</a> is (along with TensorFlow) one of the most commonly used Python libraries for deep learning and linear algebra on GPUs. Before we jump into any real deep learning, there is a couple of things that you should know. Like NumPy, PyTorch operates on matrices. However, while NumPy calls these <em>arrays</em>, PyTorch calls them <em>tensors</em>. We can easily go back and forth between NumPy arrays and PyTorch tensors. See for yourself:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
@@ -632,6 +632,7 @@ For this tutorial you only need to download the folder “Tutorial 1”.</p>
 <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No GPU was found on your machine.&quot;</span>
           <span class="s2">&quot;Use colab or JupyterLab to access a GPU.&quot;</span><span class="p">)</span>
+    <span class="n">gpu</span><span class="o">=</span><span class="s1">&#39;cpu&#39;</span> 
 </pre></div>
 </div>
 </div>
@@ -941,6 +942,7 @@ Take a look at the documentation to see which arguments this layer has.</p>
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install monai
 !pip install medmnist
+!pip install ml_dtypes==0.2.0
 </pre></div>
 </div>
 </div>
@@ -1364,7 +1366,7 @@ Note that this network is built up from convolution layers, pooling layers, and 
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tutorial 2</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#february-13-2025">February 13, 2025</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#february-12-2026">February 12, 2026</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#convolution-and-cross-correlation">Convolution and cross-correlation</a><ul class="visible nav section-nav flex-column">
