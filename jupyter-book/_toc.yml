@@ -10,7 +10,7 @@ parts:
     title: Tutorial 2
   - file: notebooks/Tutorial3_Segmentation/Tutorial3_Segmentation_teacher
     title: Tutorial 3
-  - file: notebooks/Tutorial4_Generative_Models/Tutorial4_Reconstruction_Registration_student
+  - file: notebooks/Tutorial4_Reconstruction_Registration/Tutorial4_Reconstruction_Registration_student
     title: Tutorial 4
 #  - file: notebooks/Tutorial5_Reconstruction/Tutorial5_Reconstruction_student
 #    title: Tutorial 5
