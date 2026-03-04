@@ -66,6 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="https://www.utwente.nl/.utdesign/img/favicons/favicon-32x32.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Tutorial 2" href="../Tutorial2_ConvolutionalNeuralNetworks/Tutorial2_ConvolutionalNeuralNetworks_teacher.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -149,7 +150,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../Tutorial1_NumpySimpleITK/Tutorial1_NumpySimpleITK_teacher.html">Tutorial 1</a></li>
 
 
@@ -157,7 +158,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="Tutorial3_Segmentation_student.html">Tutorial 3</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tutorial 3</a></li>
 
 
 
@@ -555,12 +556,12 @@ The data consists of an image and a label. However, the label is in this case no
 <li><p>everything is pre-built, so no need to code the <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> and <code class="docutils literal notranslate"><span class="pre">__len__</span></code> functions anymore.</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">CacheDataset</span></code> only needs the list of your data samples to work. As we are learning a segmentation task, one data sample is composed of two images: the chest X-ray (named <code class="docutils literal notranslate"><span class="pre">img</span></code>) and the mask of the ribs (named <code class="docutils literal notranslate"><span class="pre">mask</span></code>). With Python, we represent this data sample with a dictionary:</p>
-<img src="https://i.imgur.com/yLI4sJz.png" alt="sample" width="450"/>
+<p><img alt="fig" src="https://surfdrive.surf.nl/files/index.php/s/FfHcZ2cEKT7xkrc/download" /></p>
 <p>Then we could give this kind of list to <code class="docutils literal notranslate"><span class="pre">CacheDataset</span></code> to create our data set:</p>
-<img src="https://i.imgur.com/r7JJTgY.png" alt="list of samples" width="500"/>
+<p><img alt="fig" src="https://surfdrive.surf.nl/files/index.php/s/frgaxz5MfwxwXKD/download" /></p>
 <p>However, as this list contains all the images, it means that all the images are always in Python memory even though they are not currently used so this is very inefficient. This is why we don’t directly give  the images to <code class="docutils literal notranslate"><span class="pre">CacheDataset</span></code>, but the paths to find them on our disk. Then we also need to give a <code class="docutils literal notranslate"><span class="pre">Transform</span></code> object, <code class="docutils literal notranslate"><span class="pre">LoadRibData</span></code> which will transform these paths into the corresponding images only when they are needed.</p>
-<img src="https://i.imgur.com/JacrPFO.png" alt="list of paths" width="650"/>
-<img src="https://i.imgur.com/EUWJj4r.png" alt="transform path to image" width="430"/>
+<p><img alt="fig" src="https://surfdrive.surf.nl/files/index.php/s/rMwp9P6KEkxFPTW/download" /></p>
+<p><img alt="fig" src="https://surfdrive.surf.nl/files/index.php/s/oGGBnEs5mJ2CEqc/download" /></p>
 <p>As we don’t want to write this list of paths manually, we write the function <code class="docutils literal notranslate"><span class="pre">build_dict_ribs</span></code> which automatically computes it based on the root folder of the data directory <code class="docutils literal notranslate"><span class="pre">data_path</span></code>. This is possible because fortunately your teachers pre-organized the dataset for this tutorial, but be aware that most medical datasets require a lot of cleaning up prior to this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -741,13 +742,13 @@ The data consists of an image and a label. However, the label is in this case no
 <li><p><em>Random</em> transforms can be rotations or flips that do not have the same outcome each time they are called.</p></li>
 </ul>
 <p>The random transforms (for example flipping and rotation) need to be performed in the same way on the input image <code class="docutils literal notranslate"><span class="pre">'img'</span></code> as well as on the label <code class="docutils literal notranslate"><span class="pre">'mask'</span></code>. Monai has <a class="reference external" href="https://docs.monai.io/en/stable/transforms.html#dictionary-transforms">adapted transforms</a> that take dictionaries as an input, such that random transforms can be performed in the same way for both images: you don’t want a different angle of rotation for the image and the mask, as they will become misaligned! You can recognize these transforms as they end with a ‘d’, e.g. <code class="docutils literal notranslate"><span class="pre">Zoomd</span></code> instead of <code class="docutils literal notranslate"><span class="pre">Zoom</span></code>.</p>
-<img src="https://i.imgur.com/I7BErgj.png" alt="rotated sample" width="650"/>
+<p><img alt="fig" src="https://surfdrive.surf.nl/files/index.php/s/zN5cRTpCHsqyYcs/download" /></p>
 <p>The examples below show how to use one of these dictionary transforms to perform a random horizontal flip and a random rotation. The procedure of applying a transform from Monai consists of two steps:</p>
 <ol class="arabic simple">
 <li><p>Initialize the transform: here you build the object and pass the init variables, such as the probability or range of rotation, and in case of a dictionary transform the keys of the dictionary.</p></li>
 <li><p>Apply the transform on a data sample</p></li>
 </ol>
-<p>Lastly, most transforms expect a channel dimension for both 2D and 3D images. As we have only one channel, we should add this extra dimension using the <code class="docutils literal notranslate"><span class="pre">monai.transforms.AddChanneld</span></code> transform first.</p>
+<p>Lastly, most transforms expect a channel dimension for both 2D and 3D images. As we have only one channel, we should add this extra dimension using the <code class="docutils literal notranslate"><span class="pre">monai.transforms.EnsureChannelFirstd</span></code> transform first.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load sample</span>
@@ -756,10 +757,10 @@ The data consists of an image and a label. However, the label is in this case no
 <span class="n">visualize_rib_sample</span><span class="p">(</span><span class="n">sample_dict</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Original sample&quot;</span><span class="p">)</span>
 
 <span class="c1"># Add channels</span>
-<span class="n">add_channels_transform</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">AddChanneld</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">])</span> <span class="c1"># Initialize the transform</span>
+<span class="n">add_channels_transform</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">EnsureChannelFirstd</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">],</span> <span class="n">channel_dim</span><span class="o">=</span><span class="s2">&quot;no_channel&quot;</span><span class="p">)</span> <span class="c1"># Initialize the transform</span>
 <span class="n">channels_sample_dict</span> <span class="o">=</span> <span class="n">add_channels_transform</span><span class="p">(</span><span class="n">sample_dict</span><span class="p">)</span> <span class="c1"># Apply the transform</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Size of the image before AddChanneld transform&quot;</span><span class="p">,</span> <span class="n">sample_dict</span><span class="p">[</span><span class="s2">&quot;img&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Size of the image after AddChanneld transform&quot;</span><span class="p">,</span> <span class="n">channels_sample_dict</span><span class="p">[</span><span class="s2">&quot;img&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Size of the image before EnsureChannelFirstd transform&quot;</span><span class="p">,</span> <span class="n">sample_dict</span><span class="p">[</span><span class="s2">&quot;img&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Size of the image after EnsureChannelFirstd transform&quot;</span><span class="p">,</span> <span class="n">channels_sample_dict</span><span class="p">[</span><span class="s2">&quot;img&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
 <span class="c1"># Random flip</span>
 <span class="c1"># here we define the keys, the probability that the flip is performed and the axis to flip over</span>
@@ -781,18 +782,18 @@ The data consists of an image and a label. However, the label is in this case no
 </div>
 </div>
 </div>
-<p>Note how we concatenated the <code class="docutils literal notranslate"><span class="pre">AddChannelsd</span></code> transform with the flip and rotate transform by applying them after each other. If we have only two transforms, like here, this is an acceptable workflow. However, if we have a whole bunch of transforms that we have to call during training of the network, you can imagine that the code will become very messy. Therefore, we can combine multiple transforms into a single one using <a class="reference external" href="https://docs.monai.io/en/stable/transforms.html#compose"><code class="docutils literal notranslate"><span class="pre">monai.transforms.Compose</span></code></a>.</p>
+<p>Note how we concatenated the <code class="docutils literal notranslate"><span class="pre">EnsureChannelFirstd</span></code> transform with the flip and rotate transform by applying them after each other. If we have only two transforms, like here, this is an acceptable workflow. However, if we have a whole bunch of transforms that we have to call during training of the network, you can imagine that the code will become very messy. Therefore, we can combine multiple transforms into a single one using <a class="reference external" href="https://docs.monai.io/en/stable/transforms.html#compose"><code class="docutils literal notranslate"><span class="pre">monai.transforms.Compose</span></code></a>.</p>
 <p>Upon initialization, <code class="docutils literal notranslate"><span class="pre">Compose</span></code> takes a list of transforms as input and outputs a transform object that concatenates all the transforms. It can be applied in the same way as the transforms shown above.</p>
 <div class="tip admonition">
 <p class="admonition-title">Exercise</p>
-<p>Use the <code class="docutils literal notranslate"><span class="pre">Compose</span></code> class of Monai to compose <code class="docutils literal notranslate"><span class="pre">AddChanneld</span></code>, <code class="docutils literal notranslate"><span class="pre">RandFlipd</span></code> and <code class="docutils literal notranslate"><span class="pre">RandRotated</span></code> in a single transform. Then apply this composition to a data set sample.</p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">Compose</span></code> class of Monai to compose <code class="docutils literal notranslate"><span class="pre">EnsureChannelFirstd</span></code>, <code class="docutils literal notranslate"><span class="pre">RandFlipd</span></code> and <code class="docutils literal notranslate"><span class="pre">RandRotated</span></code> in a single transform. Then apply this composition to a data set sample.</p>
 </div>
 <div class="seealso admonition">
 <p class="admonition-title">Answer key</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sample_dict</span> <span class="o">=</span> <span class="n">train_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="c1"># Create the composed transform</span>
-<span class="n">add_channels_transform</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">AddChanneld</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">])</span> <span class="c1"># Initialize the transform</span>
+<span class="n">add_channels_transform</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">EnsureChannelFirstd</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">],</span> <span class="n">channel_dim</span><span class="o">=</span><span class="s2">&quot;no_channel&quot;</span><span class="p">)</span> <span class="c1"># Initialize the transform</span>
 <span class="n">random_flip_transform</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">RandFlipd</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">],</span> <span class="n">prob</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">spatial_axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">random_rotation_transform</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">RandRotated</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">],</span> <span class="n">range_x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">prob</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;bilinear&#39;</span><span class="p">,</span> <span class="s1">&#39;nearest&#39;</span><span class="p">])</span>
 
@@ -820,7 +821,7 @@ The data consists of an image and a label. However, the label is in this case no
 </ul>
 <div class="tip admonition">
 <p class="admonition-title">Exercise</p>
-<p>Compose the <code class="docutils literal notranslate"><span class="pre">AddChannel</span></code>, <code class="docutils literal notranslate"><span class="pre">ScaleIntensity</span></code>, <code class="docutils literal notranslate"><span class="pre">Zoom</span></code>, <code class="docutils literal notranslate"><span class="pre">RandomFlip</span></code> and <code class="docutils literal notranslate"><span class="pre">RandSpatialCrop</span></code> transforms in a computationally efficient order and construct a new training dataset (with <code class="docutils literal notranslate"><span class="pre">CacheDataset</span></code>) using these transforms.</p>
+<p>Compose the <code class="docutils literal notranslate"><span class="pre">EnsureChannelFirstd</span></code>, <code class="docutils literal notranslate"><span class="pre">ScaleIntensityd</span></code>, <code class="docutils literal notranslate"><span class="pre">Zoodm</span></code>, <code class="docutils literal notranslate"><span class="pre">RandomFlip</span></code> and <code class="docutils literal notranslate"><span class="pre">RandSpatialCropd</span></code> transforms in a computationally efficient order and construct a new training dataset (with <code class="docutils literal notranslate"><span class="pre">CacheDataset</span></code>) using these transforms.</p>
 <ol class="arabic simple">
 <li><p>Make sure to visualize some samples to see if the transforms are working as you expect.</p></li>
 <li><p>Don’t forget to put <code class="docutils literal notranslate"><span class="pre">LoadRibData</span></code> as your first transform or your dataset will try to rotate strings representing the paths of your images…</p></li>
@@ -831,7 +832,7 @@ The data consists of an image and a label. However, the label is in this case no
 <p class="admonition-title">Answer key</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">train_transform</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
     <span class="n">LoadRibData</span><span class="p">(),</span>
-    <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">AddChanneld</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">]),</span>
+    <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">EnsureChannelFirstd</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">],</span> <span class="n">channel_dim</span><span class="o">=</span><span class="s2">&quot;no_channel&quot;</span><span class="p">),</span>
     <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">ScaleIntensityd</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">],</span><span class="n">minv</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">maxv</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
     <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">Zoomd</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">keep_size</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;bilinear&#39;</span><span class="p">,</span> <span class="s1">&#39;nearest&#39;</span><span class="p">]),</span>
     <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">RandFlipd</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">],</span> <span class="n">prob</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">spatial_axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
@@ -882,7 +883,7 @@ The data consists of an image and a label. However, the label is in this case no
 
 <span class="n">validation_transforms</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
     <span class="n">LoadRibData</span><span class="p">(),</span>
-    <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">AddChanneld</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">]),</span>
+    <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">EnsureChannelFirstd</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">],</span> <span class="n">channel_dim</span><span class="o">=</span><span class="s2">&quot;no_channel&quot;</span><span class="p">),</span>
     <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">ScaleIntensityd</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">],</span><span class="n">minv</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">maxv</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
     <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">Resized</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">],</span> <span class="n">spatial_size</span><span class="o">=</span><span class="p">[</span><span class="mi">256</span><span class="p">,</span><span class="mi">256</span><span class="p">])</span>
 <span class="p">])</span>
@@ -896,7 +897,6 @@ The data consists of an image and a label. However, the label is in this case no
 </section>
 <section id="setting-up-the-neural-network-loss-function-and-optimizer">
 <h2>Setting up the neural network, loss function, and optimizer<a class="headerlink" href="#setting-up-the-neural-network-loss-function-and-optimizer" title="Permalink to this heading">#</a></h2>
-<img src="https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/u-net-architecture.png" alt="drawing" width="600"/>
 <p>Now that we have the data loading process out of the way, we set up a U-Net, a loss function, and an optimizer. If possible, use a GPU to substantially speed up computing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1108,7 +1108,7 @@ Instead of keeping track of the train and validation loss on your computer, you 
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test_dict</span> <span class="o">=</span> <span class="n">build_dict_ribs</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
 <span class="n">test_transform</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
         <span class="n">LoadRibData</span><span class="p">(),</span>
-        <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">AddChanneld</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">]),</span>
+        <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">EnsureChannelFirstd</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">],</span> <span class="n">channel_dim</span><span class="o">=</span><span class="s2">&quot;no_channel&quot;</span><span class="p">),</span>
         <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">ScaleIntensityd</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">],</span><span class="n">minv</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">maxv</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
         <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">Zoomd</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">keep_size</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;bilinear&#39;</span><span class="p">,</span> <span class="s1">&#39;nearest&#39;</span><span class="p">]),</span>
     <span class="p">]</span>
@@ -1256,7 +1256,7 @@ Instead of keeping track of the train and validation loss on your computer, you 
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="n">mean_value</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">A</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">AddChannel</span><span class="p">()</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">EnsureChannelFirst</span><span class="p">()</span>
     
     <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataloader</span><span class="p">:</span>
         <span class="n">output</span> <span class="o">=</span> <span class="n">make_dummy_sample</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
@@ -1326,6 +1326,15 @@ Instead of keeping track of the train and validation loss on your computer, you 
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../Tutorial2_ConvolutionalNeuralNetworks/Tutorial2_ConvolutionalNeuralNetworks_teacher.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tutorial 2</p>
+      </div>
+    </a>
 </div></div>
   
 </div>
