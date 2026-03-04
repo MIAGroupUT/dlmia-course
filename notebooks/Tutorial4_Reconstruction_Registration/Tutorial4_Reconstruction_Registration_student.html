@@ -458,18 +458,18 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import os
-import wandb
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">wandb</span>
 
-os.environ[&quot;KMP_DUPLICATE_LIB_OK&quot;]=&quot;TRUE&quot;
-wandb.login()
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;KMP_DUPLICATE_LIB_OK&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;TRUE&quot;</span>
+<span class="n">wandb</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!pip install dival
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install dival
 !pip install kornia
 </pre></div>
 </div>
@@ -484,10 +484,10 @@ wandb.login()
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Tomographic_fig1.png" width="400px"></img></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import dival
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dival</span>
 
-dataset = dival.get_standard_dataset(&#39;ellipses&#39;, impl=&#39;skimage&#39;)
-dat_gen = dataset.generator(part=&#39;train&#39;)
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">dival</span><span class="o">.</span><span class="n">get_standard_dataset</span><span class="p">(</span><span class="s1">&#39;ellipses&#39;</span><span class="p">,</span> <span class="n">impl</span><span class="o">=</span><span class="s1">&#39;skimage&#39;</span><span class="p">)</span>
+<span class="n">dat_gen</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">generator</span><span class="p">(</span><span class="n">part</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -495,25 +495,25 @@ dat_gen = dataset.generator(part=&#39;train&#39;)
 <p>Run the cell below to show a sinogram and image in the dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import numpy as np
-import matplotlib.pyplot as plt
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-# Get a sample from the generator
-sinogram, ground_truth = next(dat_gen)
-fig, axs = plt.subplots(1, 2, figsize=(10, 5))
+<span class="c1"># Get a sample from the generator</span>
+<span class="n">sinogram</span><span class="p">,</span> <span class="n">ground_truth</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">dat_gen</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
-# Show the sinogram
-axs[0].imshow(sinogram, cmap=&#39;gray&#39;, extent=[0, 183, -90, 90])
-axs[0].set_title(&#39;Sinogram&#39;)
-axs[0].set_xlabel(&#39;$s$&#39;)
-axs[0].set_ylabel(&#39;$\Theta$&#39;)
+<span class="c1"># Show the sinogram</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">183</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Sinogram&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$s$&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$\Theta$&#39;</span><span class="p">)</span>
 
-# Show the ground truth image
-axs[1].imshow(ground_truth, cmap=&#39;gray&#39;)
-axs[1].set_title(&#39;Ground truth&#39;)
-axs[1].set_xlabel(&#39;$x$&#39;)
-axs[1].set_ylabel(&#39;$y$&#39;)
-plt.show()   
+<span class="c1"># Show the ground truth image</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ground_truth</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Ground truth&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$y$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   
 </pre></div>
 </div>
 </div>
@@ -521,31 +521,31 @@ plt.show()
 <p>Not only does the sinogram contain few angles, it also contains added white noise. If we simply backproject the sinogram to the image domain we end up with a low-quality image. Let’s give it a try using the standard <a class="reference external" href="https://en.wikipedia.org/wiki/Radon_transform#Reconstruction_approaches">Filtered Backprojection</a> (FBP) algorithm for CT and its implementation in <a class="reference external" href="https://scikit-image.org/">scikit-image</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import skimage.transform as sktr
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">skimage.transform</span> <span class="k">as</span> <span class="nn">sktr</span>
 
-# Get a sample from the generator
-sinogram, ground_truth = next(dat_gen)
-sinogram = np.asarray(sinogram).transpose()
+<span class="c1"># Get a sample from the generator</span>
+<span class="n">sinogram</span><span class="p">,</span> <span class="n">ground_truth</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">dat_gen</span><span class="p">)</span>
+<span class="n">sinogram</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">sinogram</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
 
-# This defines the projectiona angles
-theta = np.linspace(-90., 90., sinogram.shape[1], endpoint=True)
+<span class="c1"># This defines the projectiona angles</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">90.</span><span class="p">,</span> <span class="mf">90.</span><span class="p">,</span> <span class="n">sinogram</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-# Perform FBP
-fbp_recon = sktr.iradon(sinogram, theta=theta, filter_name=&#39;ramp&#39;)[28:-27, 28:-27]
-fig, axs = plt.subplots(1, 3, figsize=(12, 4))
-axs[0].imshow(sinogram.transpose(), cmap=&#39;gray&#39;, extent=[0, 183, -90, 90])
-axs[0].set_title(&#39;Sinogram&#39;)
-axs[0].set_xlabel(&#39;$s$&#39;)
-axs[0].set_ylabel(&#39;$\Theta$&#39;)
-axs[1].imshow(ground_truth, cmap=&#39;gray&#39;, clim=[0, 1])
-axs[1].set_title(&#39;Ground truth&#39;)
-axs[1].set_xlabel(&#39;$x$&#39;)
-axs[1].set_ylabel(&#39;$y$&#39;)
-axs[2].imshow(fbp_recon, cmap=&#39;gray&#39;, clim=[0, 1])
-axs[2].set_title(&#39;FBP&#39;)
-axs[2].set_xlabel(&#39;$x$&#39;)
-axs[2].set_ylabel(&#39;$y$&#39;)
-plt.show()
+<span class="c1"># Perform FBP</span>
+<span class="n">fbp_recon</span> <span class="o">=</span> <span class="n">sktr</span><span class="o">.</span><span class="n">iradon</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">,</span> <span class="n">filter_name</span><span class="o">=</span><span class="s1">&#39;ramp&#39;</span><span class="p">)[</span><span class="mi">28</span><span class="p">:</span><span class="o">-</span><span class="mi">27</span><span class="p">,</span> <span class="mi">28</span><span class="p">:</span><span class="o">-</span><span class="mi">27</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">sinogram</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">183</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Sinogram&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$s$&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$\Theta$&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ground_truth</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">clim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Ground truth&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$y$&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fbp_recon</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">clim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;FBP&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$y$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -556,21 +556,12 @@ plt.show()
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import skimage.metrics as skme
-
-print(&#39;SSIM = {:.2f}&#39;.format(skme.structural_similarity(np.asarray(ground_truth), fbp_recon, data_range=np.max(ground_truth)-np.min(ground_truth))))
-# ⌨ FILL IN
-</pre></div>
-</div>
-</div>
-</div>
-<div class="seealso admonition">
-<p class="admonition-title">Answer key</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">skimage.metrics</span> <span class="k">as</span> <span class="nn">skme</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;SSIM = </span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">skme</span><span class="o">.</span><span class="n">structural_similarity</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">ground_truth</span><span class="p">),</span> <span class="n">fbp_recon</span><span class="p">,</span> <span class="n">data_range</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">ground_truth</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">ground_truth</span><span class="p">))))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;PSNR = </span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">skme</span><span class="o">.</span><span class="n">peak_signal_noise_ratio</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">ground_truth</span><span class="p">),</span> <span class="n">fbp_recon</span><span class="p">)))</span>
+<span class="c1"># ⌨ FILL IN</span>
 </pre></div>
+</div>
 </div>
 </div>
 <section id="datasets-and-dataloaders">
@@ -593,30 +584,30 @@ print(&#39;SSIM = {:.2f}&#39;.format(skme.structural_similarity(np.asarray(groun
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import tqdm
-import monai
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tqdm</span>
+<span class="kn">import</span> <span class="nn">monai</span>
 
-theta = np.linspace(-90., 90., sinogram.shape[1], endpoint=True)
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">90.</span><span class="p">,</span> <span class="mf">90.</span><span class="p">,</span> <span class="n">sinogram</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-# Make a generator for the training part of the dataset
-train_gen = dataset.generator(part=&#39;train&#39;)
-train_samples = []
+<span class="c1"># Make a generator for the training part of the dataset</span>
+<span class="n">train_gen</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">generator</span><span class="p">(</span><span class="n">part</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">)</span>
+<span class="n">train_samples</span> <span class="o">=</span> <span class="p">[]</span>
 
-# Make a list of (in this case) 512 random training samples. We store the filtered backprojection (FBP) and ground truth image
-# in a dictionary for each sample, and add these to a list.
-for ns in tqdm.tqdm(range(512)):
-    sinogram, ground_truth = next(train_gen)
-    sinogram = np.asarray(sinogram).transpose()
-    fbp_recon = sktr.iradon(sinogram, theta=theta, filter_name=&#39;ramp&#39;)[28:-27, 28:-27]
-    train_samples.append({&#39;fbp&#39;: fbp_recon, &#39;ground_truth&#39;: np.asarray(ground_truth)})
+<span class="c1"># Make a list of (in this case) 512 random training samples. We store the filtered backprojection (FBP) and ground truth image</span>
+<span class="c1"># in a dictionary for each sample, and add these to a list.</span>
+<span class="k">for</span> <span class="n">ns</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="o">.</span><span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">512</span><span class="p">)):</span>
+    <span class="n">sinogram</span><span class="p">,</span> <span class="n">ground_truth</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">train_gen</span><span class="p">)</span>
+    <span class="n">sinogram</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">sinogram</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+    <span class="n">fbp_recon</span> <span class="o">=</span> <span class="n">sktr</span><span class="o">.</span><span class="n">iradon</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">,</span> <span class="n">filter_name</span><span class="o">=</span><span class="s1">&#39;ramp&#39;</span><span class="p">)[</span><span class="mi">28</span><span class="p">:</span><span class="o">-</span><span class="mi">27</span><span class="p">,</span> <span class="mi">28</span><span class="p">:</span><span class="o">-</span><span class="mi">27</span><span class="p">]</span>
+    <span class="n">train_samples</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;fbp&#39;</span><span class="p">:</span> <span class="n">fbp_recon</span><span class="p">,</span> <span class="s1">&#39;ground_truth&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">ground_truth</span><span class="p">)})</span>
 
-# You can add or remove transforms here
-train_transform = monai.transforms.Compose([
-    monai.transforms.EnsureChannelFirstd(keys=[&#39;fbp&#39;, &#39;ground_truth&#39;], channel_dim=&quot;no_channel&quot;)    
-])    
+<span class="c1"># You can add or remove transforms here</span>
+<span class="n">train_transform</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
+    <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">EnsureChannelFirstd</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;fbp&#39;</span><span class="p">,</span> <span class="s1">&#39;ground_truth&#39;</span><span class="p">],</span> <span class="n">channel_dim</span><span class="o">=</span><span class="s2">&quot;no_channel&quot;</span><span class="p">)</span>    
+<span class="p">])</span>    
 
-# Use the list of dictionaries and the transform to initialize a MONAI CacheDataset
-train_dataset = monai.data.CacheDataset(train_samples, transform=train_transform)    
+<span class="c1"># Use the list of dictionaries and the transform to initialize a MONAI CacheDataset</span>
+<span class="n">train_dataset</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">CacheDataset</span><span class="p">(</span><span class="n">train_samples</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">train_transform</span><span class="p">)</span>    
 </pre></div>
 </div>
 </div>
@@ -627,25 +618,9 @@ train_dataset = monai.data.CacheDataset(train_samples, transform=train_transform
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Your code goes here
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code goes here</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="seealso admonition">
-<p class="admonition-title">Answer key</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">val_gen</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">generator</span><span class="p">(</span><span class="n">part</span><span class="o">=</span><span class="s1">&#39;validation&#39;</span><span class="p">)</span>
-<span class="n">val_samples</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">val_transform</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
-    <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">AddChanneld</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;fbp&#39;</span><span class="p">,</span> <span class="s1">&#39;ground_truth&#39;</span><span class="p">])</span>
-<span class="p">])</span>
-<span class="k">for</span> <span class="n">ns</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="o">.</span><span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">128</span><span class="p">)):</span>
-    <span class="n">sinogram</span><span class="p">,</span> <span class="n">ground_truth</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">val_gen</span><span class="p">)</span>
-    <span class="n">sinogram</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">sinogram</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
-    <span class="n">fbp_recon</span> <span class="o">=</span> <span class="n">sktr</span><span class="o">.</span><span class="n">iradon</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">,</span> <span class="n">filter_name</span><span class="o">=</span><span class="s1">&#39;ramp&#39;</span><span class="p">)[</span><span class="mi">28</span><span class="p">:</span><span class="o">-</span><span class="mi">27</span><span class="p">,</span> <span class="mi">28</span><span class="p">:</span><span class="o">-</span><span class="mi">27</span><span class="p">]</span>
-    <span class="n">val_samples</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;fbp&#39;</span><span class="p">:</span> <span class="n">fbp_recon</span><span class="p">,</span> <span class="s1">&#39;ground_truth&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">ground_truth</span><span class="p">)})</span>
-<span class="n">val_dataset</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">CacheDataset</span><span class="p">(</span><span class="n">val_samples</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">val_transform</span><span class="p">)</span>  
-</pre></div>
 </div>
 </div>
 <div class="tip admonition">
@@ -654,18 +629,11 @@ train_dataset = monai.data.CacheDataset(train_samples, transform=train_transform
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># ⌨️ FILL IN
-train_loader = ...
-validation_loader = ...
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⌨️ FILL IN</span>
+<span class="n">train_loader</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">validation_loader</span> <span class="o">=</span> <span class="o">...</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="seealso admonition">
-<p class="admonition-title">Answer key</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">train_loader</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">validation_loader</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">val_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-</pre></div>
 </div>
 </div>
 </section>
@@ -674,15 +642,15 @@ validation_loader = ...
 <p>Now that we have datasets and dataloaders, the next step is to define a model, optimizer and criterion. Because we want to improve the FBP-reconstructed image, we are dealing with an image-to-image task. A standard U-Net as implemented in MONAI is therefore a good starting point. First, make sure that you are using the GPU (CUDA), otherwise training will be extremely slow.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import torch
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
 
-if torch.cuda.is_available():
-    device = torch.device(&quot;cuda&quot;)
-elif torch.backends.mps.is_available():
-    device = torch.device(&quot;mps&quot;)
-else:
-    device = &quot;cpu&quot;
-print(f&#39;The used device is {device}&#39;)
+<span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+    <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">mps</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+    <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;mps&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">device</span> <span class="o">=</span> <span class="s2">&quot;cpu&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The used device is </span><span class="si">{</span><span class="n">device</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -691,20 +659,6 @@ print(f&#39;The used device is {device}&#39;)
 <p class="admonition-title">Exercise</p>
 <p>Initialize a U-Net with the correct settings, e.g. channels and dimensions, and call it <code class="docutils literal notranslate"><span class="pre">model</span></code>. Here, it’s convenient to use the <a class="reference external" href="https://monai.readthedocs.io/en/stable/networks.html#monai.networks.nets.BasicUNet"><code class="docutils literal notranslate"><span class="pre">BasicUNet</span></code></a> as implemented in MONAI.</p>
 </div>
-<div class="seealso admonition">
-<p class="admonition-title">Answer key</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">nets</span><span class="o">.</span><span class="n">BasicUNet</span><span class="p">(</span>
-    <span class="n">spatial_dims</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="n">out_channels</span><span class="o">=</span><span class="mi">1</span>
-<span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-
-<span class="c1"># model = monai.networks.nets.SegResNet(</span>
-<span class="c1">#     spatial_dims=2,</span>
-<span class="c1">#     out_channels=1</span>
-<span class="c1"># ).to(device)</span>
-</pre></div>
-</div>
-</div>
 </section>
 <section id="loss-function">
 <h2>Loss function<a class="headerlink" href="#loss-function" title="Permalink to this heading">#</a></h2>
@@ -712,14 +666,14 @@ print(f&#39;The used device is {device}&#39;)
 <p>Because this task is substantially different, we need to change our loss function. In the previous tutorial we used the Dice loss, which measures the overlap for each of the classes to segment. In this case, an L2 (mean squared error) or L1 (mean average error) loss suits our objective. Alternatively, we can use a loss that aims to maximize the structural similarity (SSIM). For this, we use the <a class="reference external" href="https://kornia.readthedocs.io/en/latest/">kornia</a> library.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import kornia 
-import torch
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">kornia</span> 
+<span class="kn">import</span> <span class="nn">torch</span>
 
-# Three loss functions, turn them on or off by commenting
+<span class="c1"># Three loss functions, turn them on or off by commenting</span>
 
-# loss_function = torch.nn.MSELoss()
-# loss_function = torch.nn.L1Loss()
-loss_function = kornia.losses.SSIMLoss(window_size=3)
+<span class="c1"># loss_function = torch.nn.MSELoss()</span>
+<span class="c1"># loss_function = torch.nn.L1Loss()</span>
+<span class="n">loss_function</span> <span class="o">=</span> <span class="n">kornia</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">SSIMLoss</span><span class="p">(</span><span class="n">window_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -727,8 +681,8 @@ loss_function = kornia.losses.SSIMLoss(window_size=3)
 <p>As in previous tutorials, we use an adaptive SGD (Adam) optimizer to train our network. This tutorial, we add a <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.optim.lr_scheduler.StepLR.html">learning rate scheduler</a>. This scheduler lowers the learning rate every <em>step_size</em> steps, meaning that the optimizer will take smaller steps in the direction of the gradient after a set amount of epochs. Therefore, the optimizer can potentially find a better local minimum for the weights of the neural network.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
-scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=50, gamma=0.1)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+<span class="n">scheduler</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">lr_scheduler</span><span class="o">.</span><span class="n">StepLR</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -740,68 +694,6 @@ scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=50, gamma=0.1)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>from tqdm.notebook import tqdm
-import wandb
-from skimage.metrics import structural_similarity as ssim
-
-
-run = wandb.init(
-    project=&#39;tutorial4_reconstruction&#39;,
-    name=&#39;test&#39;,
-    config={
-        &#39;loss function&#39;: str(loss_function), 
-        &#39;lr&#39;: optimizer.param_groups[0][&quot;lr&quot;],
-        &#39;batch_size&#39;: train_loader.batch_size,
-    }
-)
-# Do not hesitate to enrich this list of settings to be able to correctly keep track of your experiments!
-# For example you should include information on your model architecture
-
-run_id = run.id # We remember here the run ID to be able to write the evaluation metrics
-
-def log_to_wandb(epoch, train_loss, val_loss, batch_data, outputs):
-    &quot;&quot;&quot; Function that logs ongoing training variables to W&amp;B &quot;&quot;&quot;
-
-    # Create list of images that have segmentation masks for model output and ground truth
-    # log_imgs = [wandb.Image(PIL.Image.fromarray(img.detach().cpu().numpy())) for img in outputs]
-    val_ssim = []
-    for im_id in range(batch_data[&#39;ground_truth&#39;].shape[0]):
-        val_ssim.append(ssim(batch_data[&#39;ground_truth&#39;].detach().cpu().numpy()[im_id, 0, :, :].squeeze(), 
-                             outputs.detach().cpu().numpy()[im_id, 0, :, :].squeeze() ))
-    val_ssim = np.mean(np.asarray(val_ssim))
-    # Send epoch, losses and images to W&amp;B
-    wandb.log({&#39;epoch&#39;: epoch, &#39;train_loss&#39;: train_loss, &#39;val_loss&#39;: val_loss, &#39;val_ssim&#39;: val_ssim}) 
-    
-for epoch in tqdm(range(75)):
-    model.train()    
-    epoch_loss = 0
-    step = 0
-    for batch_data in train_loader: 
-        step += 1
-        optimizer.zero_grad()
-        outputs = model(batch_data[&quot;fbp&quot;].float().to(device)) + batch_data[&quot;fbp&quot;].float().to(device)
-        # FILL IN
-    # validation part
-    step = 0
-    val_loss = 0
-    for batch_data in validation_loader:
-        step += 1
-        model.eval()
-        outputs = model(batch_data[&#39;fbp&#39;].float().to(device)) + batch_data[&quot;fbp&quot;].float().to(device)
-        # FILL IN
-    log_to_wandb(epoch, train_loss, val_loss, batch_data, outputs)
-    # Scheduler also needs to make a step during training
-    scheduler.step()
-
-# Store the network parameters        
-torch.save(model.state_dict(), r&#39;trainedUNet.pt&#39;)
-run.finish()
-</pre></div>
-</div>
-</div>
-</div>
-<div class="seealso admonition">
-<p class="admonition-title">Answer key</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
 <span class="kn">import</span> <span class="nn">wandb</span>
 <span class="kn">from</span> <span class="nn">skimage.metrics</span> <span class="kn">import</span> <span class="n">structural_similarity</span> <span class="k">as</span> <span class="n">ssim</span>
@@ -809,6 +701,7 @@ run.finish()
 
 <span class="n">run</span> <span class="o">=</span> <span class="n">wandb</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
     <span class="n">project</span><span class="o">=</span><span class="s1">&#39;tutorial4_reconstruction&#39;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
     <span class="n">config</span><span class="o">=</span><span class="p">{</span>
         <span class="s1">&#39;loss function&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">loss_function</span><span class="p">),</span> 
         <span class="s1">&#39;lr&#39;</span><span class="p">:</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">param_groups</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;lr&quot;</span><span class="p">],</span>
@@ -841,11 +734,7 @@ run.finish()
         <span class="n">step</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
         <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">batch_data</span><span class="p">[</span><span class="s2">&quot;fbp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span> <span class="o">+</span> <span class="n">batch_data</span><span class="p">[</span><span class="s2">&quot;fbp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-        <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_function</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">batch_data</span><span class="p">[</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
-        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
-        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
-        <span class="n">epoch_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
-    <span class="n">train_loss</span> <span class="o">=</span> <span class="n">epoch_loss</span><span class="o">/</span><span class="n">step</span>
+        <span class="c1"># FILL IN</span>
     <span class="c1"># validation part</span>
     <span class="n">step</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">val_loss</span> <span class="o">=</span> <span class="mi">0</span>
@@ -853,10 +742,9 @@ run.finish()
         <span class="n">step</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
         <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">batch_data</span><span class="p">[</span><span class="s1">&#39;fbp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span> <span class="o">+</span> <span class="n">batch_data</span><span class="p">[</span><span class="s2">&quot;fbp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-        <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_function</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">batch_data</span><span class="p">[</span><span class="s1">&#39;ground_truth&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>   
-        <span class="n">val_loss</span><span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
-    <span class="n">val_loss</span> <span class="o">=</span> <span class="n">val_loss</span> <span class="o">/</span> <span class="n">step</span>
+        <span class="c1"># FILL IN</span>
     <span class="n">log_to_wandb</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">train_loss</span><span class="p">,</span> <span class="n">val_loss</span><span class="p">,</span> <span class="n">batch_data</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
+    <span class="c1"># Scheduler also needs to make a step during training</span>
     <span class="n">scheduler</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
 
 <span class="c1"># Store the network parameters        </span>
@@ -865,41 +753,22 @@ run.finish()
 </pre></div>
 </div>
 </div>
+</div>
 <div class="tip admonition">
 <p class="admonition-title">Exercise</p>
 <p>Now make a <code class="docutils literal notranslate"><span class="pre">DataSet</span></code> and <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> for the test set. Just a handful of images should be enough.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import tqdm
-
-test_gen = dataset.generator(part=&#39;test&#39;)
-....
-test_dataset = ....
-
-test_loader = monai.data.DataLoader(test_dataset, batch_size=1)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="seealso admonition">
-<p class="admonition-title">Answer key</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tqdm</span>
 
 <span class="n">test_gen</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">generator</span><span class="p">(</span><span class="n">part</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
-<span class="n">test_samples</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">test_transform</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
-    <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">AddChanneld</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;fbp&#39;</span><span class="p">,</span> <span class="s1">&#39;ground_truth&#39;</span><span class="p">])</span>
-<span class="p">])</span>
-<span class="k">for</span> <span class="n">ns</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="o">.</span><span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)):</span>
-    <span class="n">sinogram</span><span class="p">,</span> <span class="n">ground_truth</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">test_gen</span><span class="p">)</span>
-    <span class="n">sinogram</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">sinogram</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
-    <span class="n">fbp_recon</span> <span class="o">=</span> <span class="n">sktr</span><span class="o">.</span><span class="n">iradon</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">,</span> <span class="n">filter_name</span><span class="o">=</span><span class="s1">&#39;ramp&#39;</span><span class="p">)[</span><span class="mi">28</span><span class="p">:</span><span class="o">-</span><span class="mi">27</span><span class="p">,</span> <span class="mi">28</span><span class="p">:</span><span class="o">-</span><span class="mi">27</span><span class="p">]</span>
-    <span class="n">test_samples</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;sinogram&#39;</span><span class="p">:</span> <span class="n">sinogram</span><span class="p">,</span> <span class="s1">&#39;fbp&#39;</span><span class="p">:</span> <span class="n">fbp_recon</span><span class="p">,</span> <span class="s1">&#39;ground_truth&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">ground_truth</span><span class="p">)})</span>
-<span class="n">test_dataset</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">CacheDataset</span><span class="p">(</span><span class="n">test_samples</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">val_transform</span><span class="p">)</span>
+<span class="o">....</span>
+<span class="n">test_dataset</span> <span class="o">=</span> <span class="o">....</span>
 
 <span class="n">test_loader</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
+</div>
 </div>
 </div>
 <div class="tip admonition">
@@ -908,38 +777,30 @@ test_loader = monai.data.DataLoader(test_dataset, batch_size=1)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>model.eval()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
 
-for test_sample in test_loader:
-    output = model(test_sample[&#39;fbp&#39;].to(device)) + test_sample[&#39;fbp&#39;].to(device)
-    output = output.detach().cpu().numpy()[0, 0, :, :].squeeze()
-    ground_truth = test_sample[&#39;ground_truth&#39;][0, 0, :, :].squeeze()
-    fbp_recon = test_sample[&#39;fbp&#39;][0, 0, :, :].squeeze()
-    fig, axs = plt.subplots(1, 3, figsize=(12, 4))
-    axs[0].imshow(fbp_recon, cmap=&#39;gray&#39;, clim=[0, 1])
-    axs[0].set_title(&#39;FBP SSIM={:.2f}&#39;.format(ssim(ground_truth.cpu().numpy(), fbp_recon.cpu().numpy())))
-    axs[0].set_xlabel(&#39;$x$&#39;)
-    axs[0].set_ylabel(&#39;$y$&#39;)
-    axs[1].imshow(ground_truth, cmap=&#39;gray&#39;, clim=[0, 1])
-    axs[1].set_title(&#39;Ground truth&#39;)
-    axs[1].set_xlabel(&#39;$x$&#39;)
-    axs[1].set_ylabel(&#39;$y$&#39;)
-    axs[2].imshow(output, cmap=&#39;gray&#39;, clim=[0, 1])
-    axs[2].set_title(&#39;CNN SSIM={:.2f}&#39;.format(ssim(ground_truth.cpu().numpy(), output)))
-    axs[2].set_xlabel(&#39;$x$&#39;)
-    axs[2].set_ylabel(&#39;$y$&#39;)
-    plt.show()   
+<span class="k">for</span> <span class="n">test_sample</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">test_sample</span><span class="p">[</span><span class="s1">&#39;fbp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span> <span class="o">+</span> <span class="n">test_sample</span><span class="p">[</span><span class="s1">&#39;fbp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+    <span class="n">ground_truth</span> <span class="o">=</span> <span class="n">test_sample</span><span class="p">[</span><span class="s1">&#39;ground_truth&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+    <span class="n">fbp_recon</span> <span class="o">=</span> <span class="n">test_sample</span><span class="p">[</span><span class="s1">&#39;fbp&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fbp_recon</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">clim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;FBP SSIM=</span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ssim</span><span class="p">(</span><span class="n">ground_truth</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">fbp_recon</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())))</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$y$&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ground_truth</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">clim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Ground truth&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$y$&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">clim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;CNN SSIM=</span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ssim</span><span class="p">(</span><span class="n">ground_truth</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">output</span><span class="p">)))</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$y$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   
 </pre></div>
 </div>
 </div>
-</div>
-<div class="tip admonition">
-<p class="admonition-title">Answer key</p>
-<p>Some observations that you could make:</p>
-<ul class="simple">
-<li><p>The SSIM is definitely improved compared to the standard filtered back projection (FBP). CNN results should be in the order of ~0.8 SSIM.</p></li>
-<li><p>The output images of the CNN are less noisy than the FBP reconstructions. However, they’re also a bit more blotchy/cartoonish if you use the CNN.</p></li>
-</ul>
 </div>
 <div class="tip admonition">
 <p class="admonition-title">Exercise</p>
@@ -947,10 +808,6 @@ for test_sample in test_loader:
 Evaluate how the different loss functions affect the performance of the network. Notes that the SSIM on the validation set is also written to Weights &amp; Biases during training. Which loss leads to the best SSIM scores? Which loss results in the worst SSIM scores?</p>
 </div>
 <p>Answer:</p>
-<div class="seealso admonition">
-<p class="admonition-title">Answer key</p>
-<p>In general, using an SSIM loss will lead to better SSIM scores. The L1 loss is also expected to lead to better then the MSE loss, as it’s less susceptible to outliers and will smooth the resulting images less.</p>
-</div>
 </section>
 <section id="from-post-processing-to-pre-processing">
 <h2>From post-processing to pre-processing<a class="headerlink" href="#from-post-processing-to-pre-processing" title="Permalink to this heading">#</a></h2>
@@ -963,7 +820,7 @@ Evaluate how the different loss functions affect the performance of the network.
 <p>We will register chest X-ray images. We will reuse the data of <strong>Tutorial 3</strong>. As always, we first set the paths. This should be the path ending in ‘ribs’. If you don’t have the data set anymore, you can download it using the lines below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!wget https://surfdrive.surf.nl/files/index.php/s/Y4psc2pQnfkJuoT/download -O Tutorial_3.zip
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!wget https://surfdrive.surf.nl/files/index.php/s/Y4psc2pQnfkJuoT/download -O Tutorial_3.zip
 !unzip -qo Tutorial_3.zip
 data_path = &quot;ribs&quot;
 </pre></div>
@@ -972,34 +829,34 @@ data_path = &quot;ribs&quot;
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># ONLY IF YOU USE JUPYTER: ADD PATH ⌨️
-data_path = r&#39;ribs&#39;# WHEREDIDYOUPUTTHEDATA?
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ONLY IF YOU USE JUPYTER: ADD PATH ⌨️</span>
+<span class="n">data_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;ribs&#39;</span><span class="c1"># WHEREDIDYOUPUTTHEDATA?</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># ONLY IF YOU USE COLAB: ADD PATH ⌨️
-from google.colab import drive
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ONLY IF YOU USE COLAB: ADD PATH ⌨️</span>
+<span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
 
-drive.mount(&#39;/content/drive&#39;)
-data_path = r&#39;/content/drive/My Drive/Tutorial3&#39;
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+<span class="n">data_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;/content/drive/My Drive/Tutorial3&#39;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># check if data_path exists:
-import os
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># check if data_path exists:</span>
+<span class="kn">import</span> <span class="nn">os</span>
 
-if not os.path.exists(data_path):
-    print(&quot;Please update your data path to an existing folder.&quot;)
-elif not set([&quot;train&quot;, &quot;val&quot;, &quot;test&quot;]).issubset(set(os.listdir(data_path))):
-    print(&quot;Please update your data path to the correct folder (should contain train, val and test folders).&quot;)
-else:
-    print(&quot;Congrats! You selected the correct folder :)&quot;)
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">data_path</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please update your data path to an existing folder.&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="ow">not</span> <span class="nb">set</span><span class="p">([</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;val&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">data_path</span><span class="p">))):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please update your data path to the correct folder (should contain train, val and test folders).&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Congrats! You selected the correct folder :)&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1011,70 +868,70 @@ else:
 <p>Similarly as in <strong>Tutorial 3</strong>, make a dictionary of the image file names.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import os
-import numpy as np
-import matplotlib.pyplot as plt
-import glob
-import monai
-from PIL import Image
-import torch
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">monai</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">torch</span>
 
-def build_dict_ribs(data_path, mode=&#39;train&#39;):
-    &quot;&quot;&quot;
-    This function returns a list of dictionaries, each dictionary containing the keys &#39;img&#39; and &#39;mask&#39; 
-    that returns the path to the corresponding image.
+<span class="k">def</span> <span class="nf">build_dict_ribs</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function returns a list of dictionaries, each dictionary containing the keys &#39;img&#39; and &#39;mask&#39; </span>
+<span class="sd">    that returns the path to the corresponding image.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        data_path (str): path to the root folder of the data set.</span>
+<span class="sd">        mode (str): subset used. Must correspond to &#39;train&#39;, &#39;val&#39; or &#39;test&#39;.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        (List[Dict[str, str]]) list of the dictionnaries containing the paths of X-ray images and masks.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># test if mode is correct</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;val&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">]:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Please choose a mode in [&#39;train&#39;, &#39;val&#39;, &#39;test&#39;]. Current mode is </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
     
-    Args:
-        data_path (str): path to the root folder of the data set.
-        mode (str): subset used. Must correspond to &#39;train&#39;, &#39;val&#39; or &#39;test&#39;.
-        
-    Returns:
-        (List[Dict[str, str]]) list of the dictionnaries containing the paths of X-ray images and masks.
-    &quot;&quot;&quot;
-    # test if mode is correct
-    if mode not in [&quot;train&quot;, &quot;val&quot;, &quot;test&quot;]:
-        raise ValueError(f&quot;Please choose a mode in [&#39;train&#39;, &#39;val&#39;, &#39;test&#39;]. Current mode is {mode}.&quot;)
-    
-    # define empty dictionary
-    dicts = []
-    # list all .png files in directory, including the path
-    paths_xray = glob.glob(os.path.join(data_path, mode, &#39;img&#39;, &#39;*.png&#39;))
-    # make a corresponding list for all the mask files
-    for xray_path in paths_xray:
-        if mode == &#39;test&#39;:
-            suffix = &#39;val&#39;
-        else:
-            suffix = mode
-        # find the binary mask that belongs to the original image, based on indexing in the filename
-        image_index = os.path.split(xray_path)[1].split(&#39;_&#39;)[-1].split(&#39;.&#39;)[0]
-        # define path to mask file based on this index and add to list of mask paths
-        mask_path = os.path.join(data_path, mode, &#39;mask&#39;, f&#39;VinDr_RibCXR_{suffix}_{image_index}.png&#39;)
-        if os.path.exists(mask_path):
-            dicts.append({&#39;fixed&#39;: xray_path, &#39;moving&#39;: xray_path, &#39;fixed_mask&#39;: mask_path, &#39;moving_mask&#39;: mask_path})
-    return dicts
+    <span class="c1"># define empty dictionary</span>
+    <span class="n">dicts</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># list all .png files in directory, including the path</span>
+    <span class="n">paths_xray</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;*.png&#39;</span><span class="p">))</span>
+    <span class="c1"># make a corresponding list for all the mask files</span>
+    <span class="k">for</span> <span class="n">xray_path</span> <span class="ow">in</span> <span class="n">paths_xray</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;test&#39;</span><span class="p">:</span>
+            <span class="n">suffix</span> <span class="o">=</span> <span class="s1">&#39;val&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">suffix</span> <span class="o">=</span> <span class="n">mode</span>
+        <span class="c1"># find the binary mask that belongs to the original image, based on indexing in the filename</span>
+        <span class="n">image_index</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">xray_path</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># define path to mask file based on this index and add to list of mask paths</span>
+        <span class="n">mask_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;VinDr_RibCXR_</span><span class="si">{</span><span class="n">suffix</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">image_index</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">mask_path</span><span class="p">):</span>
+            <span class="n">dicts</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;fixed&#39;</span><span class="p">:</span> <span class="n">xray_path</span><span class="p">,</span> <span class="s1">&#39;moving&#39;</span><span class="p">:</span> <span class="n">xray_path</span><span class="p">,</span> <span class="s1">&#39;fixed_mask&#39;</span><span class="p">:</span> <span class="n">mask_path</span><span class="p">,</span> <span class="s1">&#39;moving_mask&#39;</span><span class="p">:</span> <span class="n">mask_path</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">dicts</span>
 
-class LoadRibData(monai.transforms.Transform):
-    &quot;&quot;&quot;
-    This custom Monai transform loads the data from the rib segmentation dataset.
-    Defining a custom transform is simple; just overwrite the __init__ function and __call__ function.
-    &quot;&quot;&quot;
-    def __init__(self, keys=None):
-        pass
+<span class="k">class</span> <span class="nc">LoadRibData</span><span class="p">(</span><span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">Transform</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This custom Monai transform loads the data from the rib segmentation dataset.</span>
+<span class="sd">    Defining a custom transform is simple; just overwrite the __init__ function and __call__ function.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">pass</span>
 
-    def __call__(self, sample):
-        fixed = Image.open(sample[&#39;fixed&#39;]).convert(&#39;L&#39;) # import as grayscale image
-        fixed = np.array(fixed, dtype=np.uint8)
-        moving = Image.open(sample[&#39;moving&#39;]).convert(&#39;L&#39;) # import as grayscale image
-        moving = np.array(moving, dtype=np.uint8)        
-        fixed_mask = Image.open(sample[&#39;fixed_mask&#39;]).convert(&#39;L&#39;) # import as grayscale image
-        fixed_mask = np.array(fixed_mask, dtype=np.uint8)
-        moving_mask = Image.open(sample[&#39;moving_mask&#39;]).convert(&#39;L&#39;) # import as grayscale image
-        moving_mask = np.array(moving_mask, dtype=np.uint8)        
-        # mask has value 255 on rib pixels. Convert to binary array
-        fixed_mask[np.where(fixed_mask==255)] = 1
-        moving_mask[np.where(moving_mask==255)] = 1        
-        return {&#39;fixed&#39;: fixed, &#39;moving&#39;: moving, &#39;fixed_mask&#39;: fixed_mask, &#39;moving_mask&#39;: moving_mask, &#39;img_meta_dict&#39;: {&#39;affine&#39;: np.eye(2)}, 
-                &#39;mask_meta_dict&#39;: {&#39;affine&#39;: np.eye(2)}}
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sample</span><span class="p">):</span>
+        <span class="n">fixed</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="s1">&#39;fixed&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">)</span> <span class="c1"># import as grayscale image</span>
+        <span class="n">fixed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fixed</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+        <span class="n">moving</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="s1">&#39;moving&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">)</span> <span class="c1"># import as grayscale image</span>
+        <span class="n">moving</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">moving</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>        
+        <span class="n">fixed_mask</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="s1">&#39;fixed_mask&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">)</span> <span class="c1"># import as grayscale image</span>
+        <span class="n">fixed_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fixed_mask</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+        <span class="n">moving_mask</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="s1">&#39;moving_mask&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">)</span> <span class="c1"># import as grayscale image</span>
+        <span class="n">moving_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">moving_mask</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>        
+        <span class="c1"># mask has value 255 on rib pixels. Convert to binary array</span>
+        <span class="n">fixed_mask</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">fixed_mask</span><span class="o">==</span><span class="mi">255</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">moving_mask</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">moving_mask</span><span class="o">==</span><span class="mi">255</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>        
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;fixed&#39;</span><span class="p">:</span> <span class="n">fixed</span><span class="p">,</span> <span class="s1">&#39;moving&#39;</span><span class="p">:</span> <span class="n">moving</span><span class="p">,</span> <span class="s1">&#39;fixed_mask&#39;</span><span class="p">:</span> <span class="n">fixed_mask</span><span class="p">,</span> <span class="s1">&#39;moving_mask&#39;</span><span class="p">:</span> <span class="n">moving_mask</span><span class="p">,</span> <span class="s1">&#39;img_meta_dict&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;affine&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)},</span> 
+                <span class="s1">&#39;mask_meta_dict&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;affine&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)}}</span>
 </pre></div>
 </div>
 </div>
@@ -1082,105 +939,7 @@ class LoadRibData(monai.transforms.Transform):
 <p>Then we make a training dataset like before. The <code class="docutils literal notranslate"><span class="pre">Rand2DElasticd</span></code> transform here determines how much deformation is in the ‘moving’ image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>train_dict_list = build_dict_ribs(data_path, mode=&#39;train&#39;)
-
-# constructDataset from list of paths + transform
-transform = monai.transforms.Compose(
-[
-    LoadRibData(),
-    monai.transforms.EnsureChannelFirstd(keys=[&#39;fixed&#39;, &#39;moving&#39;, &#39;fixed_mask&#39;, &#39;moving_mask&#39;], channel_dim=&#39;no_channel&#39;),
-    monai.transforms.Resized(keys=[&#39;fixed&#39;, &#39;moving&#39;, &#39;fixed_mask&#39;, &#39;moving_mask&#39;], spatial_size=(256, 256),  mode=[&#39;bilinear&#39;, &#39;bilinear&#39;, &#39;nearest&#39;, &#39;nearest&#39;]),
-    monai.transforms.HistogramNormalized(keys=[&#39;fixed&#39;, &#39;moving&#39;]),
-    monai.transforms.ScaleIntensityd(keys=[&#39;fixed&#39;, &#39;moving&#39;], minv=0.0, maxv=1.0),
-    monai.transforms.Rand2DElasticd(keys=[&#39;moving&#39;, &#39;moving_mask&#39;], spacing=(64, 64), 
-                                    magnitude_range=(-8, 8), prob=1, mode=[&#39;bilinear&#39;, &#39;nearest&#39;]),    
-])
-train_dataset = monai.data.Dataset(train_dict_list, transform=transform)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="tip admonition">
-<p class="admonition-title">Exercise</p>
-<p>Visualize fixed and moving training images associated to their comparison image with the <code class="docutils literal notranslate"><span class="pre">visualize_fmc_sample</span></code> function below.</p>
-<p>Try different methods to create the comparison image. How well do these different methods allow you to qualitatively assess the quality of the registration?</p>
-<p>More information on this method is available in  <a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.util.html#skimage.util.compare_images">the scikit-image documentation</a>.</p>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def visualize_fmc_sample(sample, method=&quot;checkerboard&quot;):
-    &quot;&quot;&quot;
-    Plot three images: fixed, moving and comparison.
-    
-    Args:
-        sample (dict): sample of dataset created with `build_dataset`.
-        method (str): method used by `skimage.util.compare_image`.
-    &quot;&quot;&quot;
-    import skimage.util as skut 
-    
-    skut_methods = [&quot;diff&quot;, &quot;blend&quot;, &quot;checkerboard&quot;]
-    if method not in skut_methods:
-        raise ValueError(f&quot;Method must be chosen in {skut_methods}.\n&quot;
-                         f&quot;Current value is {method}.&quot;)
-    
-    
-    fixed = np.squeeze(sample[&#39;fixed&#39;])
-    moving = np.squeeze(sample[&#39;moving&#39;])
-    comp_checker = skut.compare_images(fixed, moving, method=method)
-    axs = plt.figure(constrained_layout=True, figsize=(15, 5)).subplot_mosaic(&quot;FMC&quot;)
-    axs[&#39;F&#39;].imshow(fixed, cmap=&#39;gray&#39;)
-    axs[&#39;F&#39;].set_title(&#39;Fixed&#39;)
-    axs[&#39;M&#39;].imshow(moving, cmap=&#39;gray&#39;)
-    axs[&#39;M&#39;].set_title(&#39;Moving&#39;)
-    axs[&#39;C&#39;].imshow(comp_checker, cmap=&#39;gray&#39;)
-    axs[&#39;C&#39;].set_title(&#39;Comparison&#39;)
-    plt.show()
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sample = train_dataset[0]
-for method in [&quot;diff&quot;, &quot;blend&quot;, &quot;checkerboard&quot;]:
-    print(f&quot;Method {method}&quot;)
-    visualize_fmc_sample(sample, method=method)
-</pre></div>
-</div>
-</div>
-</div>
-<p>Now we apply a little trick. Because applying the random deformation in each training iteration will be very costly, we only apply the deformation once and we make a new dataset based on the deformed images. Running the cell below may take a few minutes.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import tqdm
-
-train_loader = monai.data.DataLoader(train_dataset, batch_size=1, shuffle=False)
-
-samples = []
-for train_batch in tqdm.tqdm(train_loader):
-    samples.append(train_batch)
-
-# Make a new dataset and dataloader using the transformed images
-train_dataset = monai.data.Dataset(samples, transform=monai.transforms.SqueezeDimd(keys=[&#39;fixed&#39;, &#39;moving&#39;, &#39;fixed_mask&#39;, &#39;moving_mask&#39;]))
-train_loader = monai.data.DataLoader(train_dataset, batch_size=16, shuffle=False)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="tip admonition">
-<p class="admonition-title">Exercise</p>
-<p>Create <code class="docutils literal notranslate"><span class="pre">val_dataset</span></code> and <code class="docutils literal notranslate"><span class="pre">val_loader</span></code>, corresponding to the <code class="docutils literal notranslate"><span class="pre">DataSet</span></code> and <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> for your validation set. The transforms can be the same as in the training set.</p>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Your code goes here
-</pre></div>
-</div>
-</div>
-</div>
-<div class="seealso admonition">
-<p class="admonition-title">Answer key</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">val_dict_list</span> <span class="o">=</span> <span class="n">build_dict_ribs</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;val&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">train_dict_list</span> <span class="o">=</span> <span class="n">build_dict_ribs</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">)</span>
 
 <span class="c1"># constructDataset from list of paths + transform</span>
 <span class="n">transform</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">(</span>
@@ -1193,17 +952,87 @@ train_loader = monai.data.DataLoader(train_dataset, batch_size=16, shuffle=False
     <span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">Rand2DElasticd</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;moving&#39;</span><span class="p">,</span> <span class="s1">&#39;moving_mask&#39;</span><span class="p">],</span> <span class="n">spacing</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span> 
                                     <span class="n">magnitude_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">prob</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;bilinear&#39;</span><span class="p">,</span> <span class="s1">&#39;nearest&#39;</span><span class="p">]),</span>    
 <span class="p">])</span>
-<span class="n">val_dataset</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">val_dict_list</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">)</span>
-<span class="n">val_loader</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">val_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">train_dataset</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">train_dict_list</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise</p>
+<p>Visualize fixed and moving training images associated to their comparison image with the <code class="docutils literal notranslate"><span class="pre">visualize_fmc_sample</span></code> function below.</p>
+<p>Try different methods to create the comparison image. How well do these different methods allow you to qualitatively assess the quality of the registration?</p>
+<p>More information on this method is available in  <a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.util.html#skimage.util.compare_images">the scikit-image documentation</a>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">visualize_fmc_sample</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;checkerboard&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot three images: fixed, moving and comparison.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        sample (dict): sample of dataset created with `build_dataset`.</span>
+<span class="sd">        method (str): method used by `skimage.util.compare_image`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">skimage.util</span> <span class="k">as</span> <span class="nn">skut</span> 
+    
+    <span class="n">skut_methods</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;diff&quot;</span><span class="p">,</span> <span class="s2">&quot;blend&quot;</span><span class="p">,</span> <span class="s2">&quot;checkerboard&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">skut_methods</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Method must be chosen in </span><span class="si">{</span><span class="n">skut_methods</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                         <span class="sa">f</span><span class="s2">&quot;Current value is </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    
+    
+    <span class="n">fixed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="s1">&#39;fixed&#39;</span><span class="p">])</span>
+    <span class="n">moving</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="s1">&#39;moving&#39;</span><span class="p">])</span>
+    <span class="n">comp_checker</span> <span class="o">=</span> <span class="n">skut</span><span class="o">.</span><span class="n">compare_images</span><span class="p">(</span><span class="n">fixed</span><span class="p">,</span> <span class="n">moving</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">)</span>
+    <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span><span class="o">.</span><span class="n">subplot_mosaic</span><span class="p">(</span><span class="s2">&quot;FMC&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fixed</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Fixed&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">moving</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Moving&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">comp_checker</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Comparison&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="n">train_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;diff&quot;</span><span class="p">,</span> <span class="s2">&quot;blend&quot;</span><span class="p">,</span> <span class="s2">&quot;checkerboard&quot;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Method </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">visualize_fmc_sample</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we apply a little trick. Because applying the random deformation in each training iteration will be very costly, we only apply the deformation once and we make a new dataset based on the deformed images. Running the cell below may take a few minutes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tqdm</span>
+
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="n">samples</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">val_batch</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="o">.</span><span class="n">tqdm</span><span class="p">(</span><span class="n">val_loader</span><span class="p">):</span>
-    <span class="n">samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val_batch</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">train_batch</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="o">.</span><span class="n">tqdm</span><span class="p">(</span><span class="n">train_loader</span><span class="p">):</span>
+    <span class="n">samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">train_batch</span><span class="p">)</span>
 
 <span class="c1"># Make a new dataset and dataloader using the transformed images</span>
-<span class="n">val_dataset</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">SqueezeDimd</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;fixed&#39;</span><span class="p">,</span> <span class="s1">&#39;moving&#39;</span><span class="p">,</span> <span class="s1">&#39;fixed_mask&#39;</span><span class="p">,</span> <span class="s1">&#39;moving_mask&#39;</span><span class="p">]))</span>
-<span class="n">val_loader</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">val_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">train_dataset</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">monai</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">SqueezeDimd</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;fixed&#39;</span><span class="p">,</span> <span class="s1">&#39;moving&#39;</span><span class="p">,</span> <span class="s1">&#39;fixed_mask&#39;</span><span class="p">,</span> <span class="s1">&#39;moving_mask&#39;</span><span class="p">]))</span>
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise</p>
+<p>Create <code class="docutils literal notranslate"><span class="pre">val_dataset</span></code> and <code class="docutils literal notranslate"><span class="pre">val_loader</span></code>, corresponding to the <code class="docutils literal notranslate"><span class="pre">DataSet</span></code> and <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> for your validation set. The transforms can be the same as in the training set.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code goes here</span>
+</pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -1226,14 +1055,14 @@ train_loader = monai.data.DataLoader(train_dataset, batch_size=16, shuffle=False
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if torch.cuda.is_available():
-    device = torch.device(&quot;cuda&quot;)
-elif torch.backends.mps.is_available():
-    device = torch.device(&quot;mps&quot;)
-    os.environ[&quot;PYTORCH_ENABLE_MPS_FALLBACK&quot;]=&quot;1&quot;
-else:
-    device = &quot;cpu&quot;
-print(f&#39;The used device is {device}&#39;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+    <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">mps</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+    <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;mps&quot;</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PYTORCH_ENABLE_MPS_FALLBACK&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">device</span> <span class="o">=</span> <span class="s2">&quot;cpu&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The used device is </span><span class="si">{</span><span class="n">device</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1244,26 +1073,11 @@ print(f&#39;The used device is {device}&#39;)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>model = # FILL IN
-
-warp_layer = monai.networks.blocks.Warp().to(device)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="seealso admonition">
-<p class="admonition-title">Answer key</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">nets</span><span class="o">.</span><span class="n">UNet</span><span class="p">(</span>
-    <span class="n">spatial_dims</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="n">in_channels</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="n">out_channels</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="n">channels</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">128</span><span class="p">),</span>
-    <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-    <span class="n">num_res_units</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="c1"># FILL IN</span>
 
 <span class="n">warp_layer</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">blocks</span><span class="o">.</span><span class="n">Warp</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
 </pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -1273,9 +1087,9 @@ warp_layer = monai.networks.blocks.Warp().to(device)
 <p>Finally, we pick an optimizer, in this case again an Adam optimizer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>image_loss = torch.nn.MSELoss()
-regularization = monai.losses.BendingEnergyLoss()
-optimizer = torch.optim.Adam(model.parameters(), 1e-3)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image_loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+<span class="n">regularization</span> <span class="o">=</span> <span class="n">monai</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">BendingEnergyLoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="mf">1e-3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1286,43 +1100,37 @@ optimizer = torch.optim.Adam(model.parameters(), 1e-3)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Your code goes here
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code goes here</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="seealso admonition">
-<p class="admonition-title">Answer key</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scheduler</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">lr_scheduler</span><span class="o">.</span><span class="n">StepLR</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
-</pre></div>
 </div>
 </div>
 <p>To warp the moving image using the predicted deformation field and <em>then</em> compute the loss between the deformed image and the fixed image, we define a forward function which does all this. The output of this function is <code class="docutils literal notranslate"><span class="pre">pred_image</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def forward(batch_data, model):
-    &quot;&quot;&quot;
-    Applies the model to a batch of data.
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">batch_data</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Applies the model to a batch of data.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        batch_data (dict): a batch of samples computed by a DataLoader.</span>
+<span class="sd">        model (Module): a model computing the deformation field.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        ddf (Tensor): batch of deformation fields.</span>
+<span class="sd">        pred_image (Tensor): batch of deformed moving images.</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">fixed_image</span> <span class="o">=</span> <span class="n">batch_data</span><span class="p">[</span><span class="s2">&quot;fixed&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
+    <span class="n">moving_image</span> <span class="o">=</span> <span class="n">batch_data</span><span class="p">[</span><span class="s2">&quot;moving&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
     
-    Args:
-        batch_data (dict): a batch of samples computed by a DataLoader.
-        model (Module): a model computing the deformation field.
-    
-    Returns:
-        ddf (Tensor): batch of deformation fields.
-        pred_image (Tensor): batch of deformed moving images.
-    
-    &quot;&quot;&quot;
-    fixed_image = batch_data[&quot;fixed&quot;].to(device).float()
-    moving_image = batch_data[&quot;moving&quot;].to(device).float()
-    
-    # predict DDF
-    ddf = model(torch.cat((moving_image, fixed_image), dim=1))
+    <span class="c1"># predict DDF</span>
+    <span class="n">ddf</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">moving_image</span><span class="p">,</span> <span class="n">fixed_image</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 
-    # warp moving image and label with the predicted ddf
-    pred_image = warp_layer(moving_image, ddf)
+    <span class="c1"># warp moving image and label with the predicted ddf</span>
+    <span class="n">pred_image</span> <span class="o">=</span> <span class="n">warp_layer</span><span class="p">(</span><span class="n">moving_image</span><span class="p">,</span> <span class="n">ddf</span><span class="p">)</span>
 
-    return ddf, pred_image
+    <span class="k">return</span> <span class="n">ddf</span><span class="p">,</span> <span class="n">pred_image</span>
 </pre></div>
 </div>
 </div>
@@ -1330,19 +1138,19 @@ optimizer = torch.optim.Adam(model.parameters(), 1e-3)
 <p>You can supervise the training process in W&amp;B, in which at each epoch a batch of validation images are used to compute the comparison images of your choice, based on the parameter <code class="docutils literal notranslate"><span class="pre">method</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def log_to_wandb(epoch, train_loss, val_loss, pred_batch, fixed_batch, method=&quot;checkerboard&quot;):
-    &quot;&quot;&quot; Function that logs ongoing training variables to W&amp;B &quot;&quot;&quot;
-    import skimage.util as skut
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">log_to_wandb</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">train_loss</span><span class="p">,</span> <span class="n">val_loss</span><span class="p">,</span> <span class="n">pred_batch</span><span class="p">,</span> <span class="n">fixed_batch</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;checkerboard&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Function that logs ongoing training variables to W&amp;B &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">skimage.util</span> <span class="k">as</span> <span class="nn">skut</span>
     
-    log_imgs = []
-    for fixed_pt, pred_pt in zip(pred_batch, fixed_batch):
-        fixed_np = np.squeeze(fixed_pt.cpu().detach())
-        pred_np = np.squeeze(pred_pt.cpu().detach())
-        comp_checker = skut.compare_images(fixed_np, pred_np, method=method)
-        log_imgs.append(wandb.Image(comp_checker))
+    <span class="n">log_imgs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">fixed_pt</span><span class="p">,</span> <span class="n">pred_pt</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">pred_batch</span><span class="p">,</span> <span class="n">fixed_batch</span><span class="p">):</span>
+        <span class="n">fixed_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">fixed_pt</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">detach</span><span class="p">())</span>
+        <span class="n">pred_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">pred_pt</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">detach</span><span class="p">())</span>
+        <span class="n">comp_checker</span> <span class="o">=</span> <span class="n">skut</span><span class="o">.</span><span class="n">compare_images</span><span class="p">(</span><span class="n">fixed_np</span><span class="p">,</span> <span class="n">pred_np</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">)</span>
+        <span class="n">log_imgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">wandb</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">comp_checker</span><span class="p">))</span>
 
-    # Send epoch, losses and images to W&amp;B
-    wandb.log({&#39;epoch&#39;: epoch, &#39;train_loss&#39;: train_loss, &#39;val_loss&#39;: val_loss, &#39;results&#39;: log_imgs})
+    <span class="c1"># Send epoch, losses and images to W&amp;B</span>
+    <span class="n">wandb</span><span class="o">.</span><span class="n">log</span><span class="p">({</span><span class="s1">&#39;epoch&#39;</span><span class="p">:</span> <span class="n">epoch</span><span class="p">,</span> <span class="s1">&#39;train_loss&#39;</span><span class="p">:</span> <span class="n">train_loss</span><span class="p">,</span> <span class="s1">&#39;val_loss&#39;</span><span class="p">:</span> <span class="n">val_loss</span><span class="p">,</span> <span class="s1">&#39;results&#39;</span><span class="p">:</span> <span class="n">log_imgs</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -1353,62 +1161,62 @@ optimizer = torch.optim.Adam(model.parameters(), 1e-3)
 <p>Use the following cells to train your network. You may choose different parameters to improve the performance!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Choose your parameters
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Choose your parameters</span>
 
-max_epochs = 200
-reg_weight = 0 # By default 0, but you can investigate what it does
+<span class="n">max_epochs</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">reg_weight</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># By default 0, but you can investigate what it does</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>from tqdm import tqdm
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 
-run = wandb.init(
-    project=&#39;tutorial4_registration&#39;,
-    config={
-        &#39;lr&#39;: optimizer.param_groups[0][&quot;lr&quot;],
-        &#39;batch_size&#39;: train_loader.batch_size,
-        &#39;regularization&#39;: reg_weight,
-        &#39;loss_function&#39;: str(image_loss)
-    }
-)
-# Do not hesitate to enrich this list of settings to be able to correctly keep track of your experiments!
-# For example you should add information on your model...
+<span class="n">run</span> <span class="o">=</span> <span class="n">wandb</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
+    <span class="n">project</span><span class="o">=</span><span class="s1">&#39;tutorial4_registration&#39;</span><span class="p">,</span>
+    <span class="n">config</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;lr&#39;</span><span class="p">:</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">param_groups</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;lr&quot;</span><span class="p">],</span>
+        <span class="s1">&#39;batch_size&#39;</span><span class="p">:</span> <span class="n">train_loader</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span>
+        <span class="s1">&#39;regularization&#39;</span><span class="p">:</span> <span class="n">reg_weight</span><span class="p">,</span>
+        <span class="s1">&#39;loss_function&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">image_loss</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="c1"># Do not hesitate to enrich this list of settings to be able to correctly keep track of your experiments!</span>
+<span class="c1"># For example you should add information on your model...</span>
 
-run_id = run.id # We remember here the run ID to be able to write the evaluation metrics
+<span class="n">run_id</span> <span class="o">=</span> <span class="n">run</span><span class="o">.</span><span class="n">id</span> <span class="c1"># We remember here the run ID to be able to write the evaluation metrics</span>
 
-for epoch in tqdm(range(max_epochs)):    
-    model.train()
-    epoch_loss = 0
-    for batch_data in train_loader:
-        optimizer.zero_grad()
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">max_epochs</span><span class="p">)):</span>    
+    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="n">epoch_loss</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">batch_data</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
 
-        ddf, pred_image = forward(batch_data, model)
+        <span class="n">ddf</span><span class="p">,</span> <span class="n">pred_image</span> <span class="o">=</span> <span class="n">forward</span><span class="p">(</span><span class="n">batch_data</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
 
-        fixed_image = batch_data[&quot;fixed&quot;].to(device).float()
-        reg = regularization(ddf)
-        loss = image_loss(pred_image, fixed_image) + reg_weight * reg
-        loss.backward()
-        optimizer.step()
-        epoch_loss += loss.item()
+        <span class="n">fixed_image</span> <span class="o">=</span> <span class="n">batch_data</span><span class="p">[</span><span class="s2">&quot;fixed&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
+        <span class="n">reg</span> <span class="o">=</span> <span class="n">regularization</span><span class="p">(</span><span class="n">ddf</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">image_loss</span><span class="p">(</span><span class="n">pred_image</span><span class="p">,</span> <span class="n">fixed_image</span><span class="p">)</span> <span class="o">+</span> <span class="n">reg_weight</span> <span class="o">*</span> <span class="n">reg</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">epoch_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
 
-    epoch_loss /= len(train_loader)
+    <span class="n">epoch_loss</span> <span class="o">/=</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_loader</span><span class="p">)</span>
 
-    model.eval()
-    val_epoch_loss = 0
-    for batch_data in val_loader:
-        ddf, pred_image = forward(batch_data, model)
-        fixed_image = batch_data[&quot;fixed&quot;].to(device).float()
-        reg = regularization(ddf)
-        loss = image_loss(pred_image, fixed_image) + reg_weight * reg
-        val_epoch_loss += loss.item()
-    val_epoch_loss /= len(val_loader)
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">val_epoch_loss</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">batch_data</span> <span class="ow">in</span> <span class="n">val_loader</span><span class="p">:</span>
+        <span class="n">ddf</span><span class="p">,</span> <span class="n">pred_image</span> <span class="o">=</span> <span class="n">forward</span><span class="p">(</span><span class="n">batch_data</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+        <span class="n">fixed_image</span> <span class="o">=</span> <span class="n">batch_data</span><span class="p">[</span><span class="s2">&quot;fixed&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
+        <span class="n">reg</span> <span class="o">=</span> <span class="n">regularization</span><span class="p">(</span><span class="n">ddf</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">image_loss</span><span class="p">(</span><span class="n">pred_image</span><span class="p">,</span> <span class="n">fixed_image</span><span class="p">)</span> <span class="o">+</span> <span class="n">reg_weight</span> <span class="o">*</span> <span class="n">reg</span>
+        <span class="n">val_epoch_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="n">val_epoch_loss</span> <span class="o">/=</span> <span class="nb">len</span><span class="p">(</span><span class="n">val_loader</span><span class="p">)</span>
 
-    log_to_wandb(epoch, epoch_loss, val_epoch_loss, pred_image, fixed_image)
+    <span class="n">log_to_wandb</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">epoch_loss</span><span class="p">,</span> <span class="n">val_epoch_loss</span><span class="p">,</span> <span class="n">pred_image</span><span class="p">,</span> <span class="n">fixed_image</span><span class="p">)</span>
     
-run.finish()    
+<span class="n">run</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>    
 </pre></div>
 </div>
 </div>
@@ -1422,63 +1230,59 @@ run.finish()
 <p>Are you satisfied with these registration results? Do they seem anatomically plausible? Try out different regularization factors (<code class="docutils literal notranslate"><span class="pre">reg_weight</span></code>) and see what they do to the registration.</p>
 </div>
 <p>Answer:</p>
-<div class="seealso admonition">
-<p class="admonition-title">Answer key</p>
-<p>Depending on the strength of the elastic deformation that was applied when generating the samples, registration may be successful. It could be that there is quite a bit of folding going on. In that case, setting a non-zero positive value for <code class="docutils literal notranslate"><span class="pre">reg_weight</span></code> will lead to more plausible deformations. If you set this value very high, you will see that the registration performance drops: the deformation vector field is very smooth, but doesn’t align the image any more.</p>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def visualize_prediction(sample, model, method=&quot;checkerboard&quot;):
-    &quot;&quot;&quot;
-    Plot three images: fixed, moving and comparison.
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">visualize_prediction</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;checkerboard&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot three images: fixed, moving and comparison.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        sample (dict): sample of dataset created with `build_dataset`.</span>
+<span class="sd">        model (Module): a model computing the deformation field.</span>
+<span class="sd">        method (str): method used by `skimage.util.compare_image`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">skimage.util</span> <span class="k">as</span> <span class="nn">skut</span> 
     
-    Args:
-        sample (dict): sample of dataset created with `build_dataset`.
-        model (Module): a model computing the deformation field.
-        method (str): method used by `skimage.util.compare_image`.
-    &quot;&quot;&quot;
-    import skimage.util as skut 
-    
-    skut_methods = [&quot;diff&quot;, &quot;blend&quot;, &quot;checkerboard&quot;]
-    if method not in skut_methods:
-        raise ValueError(f&quot;Method must be chosen in {skut_methods}.\n&quot;
-                         f&quot;Current value is {method}.&quot;)
+    <span class="n">skut_methods</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;diff&quot;</span><span class="p">,</span> <span class="s2">&quot;blend&quot;</span><span class="p">,</span> <span class="s2">&quot;checkerboard&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">skut_methods</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Method must be chosen in </span><span class="si">{</span><span class="n">skut_methods</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                         <span class="sa">f</span><span class="s2">&quot;Current value is </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
         
-    model.eval()
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
     
-    # Compute deformation field + deformed image
-    batch_data = {
-        &quot;fixed&quot;: sample[&quot;fixed&quot;].unsqueeze(0),
-        &quot;moving&quot;: sample[&quot;moving&quot;].unsqueeze(0),
-    }
-    ddf, pred_image = forward(batch_data, model)
-    ddf = ddf.detach().cpu().numpy().squeeze()
-    ddf = np.linalg.norm(ddf, axis=0).squeeze()
+    <span class="c1"># Compute deformation field + deformed image</span>
+    <span class="n">batch_data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;fixed&quot;</span><span class="p">:</span> <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;fixed&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+        <span class="s2">&quot;moving&quot;</span><span class="p">:</span> <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;moving&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+    <span class="p">}</span>
+    <span class="n">ddf</span><span class="p">,</span> <span class="n">pred_image</span> <span class="o">=</span> <span class="n">forward</span><span class="p">(</span><span class="n">batch_data</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+    <span class="n">ddf</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+    <span class="n">ddf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">ddf</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
     
-    # Squeeze images
-    fixed = np.squeeze(sample[&quot;fixed&quot;])
-    moving = np.squeeze(sample[&quot;moving&quot;])    
-    deformed = np.squeeze(pred_image.detach().cpu())
+    <span class="c1"># Squeeze images</span>
+    <span class="n">fixed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="s2">&quot;fixed&quot;</span><span class="p">])</span>
+    <span class="n">moving</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="s2">&quot;moving&quot;</span><span class="p">])</span>    
+    <span class="n">deformed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">pred_image</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">())</span>
     
-    # Generate comparison image
-    comp_checker = skut.compare_images(fixed, deformed, method=method, n_tiles=(4, 4))
+    <span class="c1"># Generate comparison image</span>
+    <span class="n">comp_checker</span> <span class="o">=</span> <span class="n">skut</span><span class="o">.</span><span class="n">compare_images</span><span class="p">(</span><span class="n">fixed</span><span class="p">,</span> <span class="n">deformed</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">n_tiles</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
     
-    # Plot everything
-    fig, axs = plt.subplots(1, 5, figsize=(18, 5))    
-    axs[0].imshow(fixed, cmap=&#39;gray&#39;)
-    axs[0].set_title(&#39;Fixed&#39;)
-    axs[1].imshow(moving, cmap=&#39;gray&#39;)
-    axs[1].set_title(&#39;Moving&#39;)
-    axs[2].imshow(deformed, cmap=&#39;gray&#39;)
-    axs[2].set_title(&#39;Deformed&#39;)
-    axs[3].imshow(comp_checker, cmap=&#39;gray&#39;)
-    axs[3].set_title(&#39;Comparison&#39;)    
-    dpl = axs[4].imshow(ddf, clim=(0, 10))
-    fig.colorbar(dpl, ax=axs[4])
-    plt.show()   
-    plt.show()
-for sample in val_dataset:
-    visualize_prediction(sample, model)
+    <span class="c1"># Plot everything</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>    
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fixed</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Fixed&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">moving</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Moving&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">deformed</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Deformed&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">comp_checker</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Comparison&#39;</span><span class="p">)</span>    
+    <span class="n">dpl</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ddf</span><span class="p">,</span> <span class="n">clim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">dpl</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">val_dataset</span><span class="p">:</span>
+    <span class="n">visualize_prediction</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1490,43 +1294,43 @@ for sample in val_dataset:
 <p>You can use the code below to compute the Jacobian of your deformation vector field and inspect it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def get_jacobian(sample, model):
-    &quot;&quot;&quot;
-    Computes the jacobian of the deformation field for a given sample
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_jacobian</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes the jacobian of the deformation field for a given sample</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        sample (dict): sample of dataset created with `build_dataset`.</span>
+<span class="sd">        model (Module): a model computing the deformation field.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        TODO</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
     
-    Args:
-        sample (dict): sample of dataset created with `build_dataset`.
-        model (Module): a model computing the deformation field.
-        
-    Returns:
-        TODO
-    &quot;&quot;&quot;
-    model.eval()
+    <span class="n">batch_data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;fixed&quot;</span><span class="p">:</span> <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;fixed&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+        <span class="s2">&quot;moving&quot;</span><span class="p">:</span> <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;moving&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+    <span class="p">}</span>
     
-    batch_data = {
-        &quot;fixed&quot;: sample[&quot;fixed&quot;].unsqueeze(0),
-        &quot;moving&quot;: sample[&quot;moving&quot;].unsqueeze(0),
-    }
+    <span class="n">ddf</span><span class="p">,</span> <span class="n">pred_image</span> <span class="o">=</span> <span class="n">forward</span><span class="p">(</span><span class="n">batch_data</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+    <span class="n">ddf</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+    <span class="n">ddf_dx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">ddf</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="n">ddf</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">256</span><span class="p">))</span><span class="o">/</span><span class="mi">256</span>
+    <span class="n">ddf_dy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">ddf</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="n">ddf</span><span class="p">[:,</span> <span class="p">:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="mi">256</span>
     
-    ddf, pred_image = forward(batch_data, model)
-    ddf = ddf.detach().cpu().numpy().squeeze()
-    ddf_dx = np.diff(ddf, axis=1, append=ddf[:, -1, :].reshape(2, 1, 256))/256
-    ddf_dy = np.diff(ddf, axis=2, append=ddf[:, :, -1].reshape(2, 256, 1))/256
-    
-    jacobian = ddf_dx[0, :, :] * ddf_dy[1, :, :] - ddf_dx[1, :, :] * ddf_dy[0, :, :]
-    return jacobian
+    <span class="n">jacobian</span> <span class="o">=</span> <span class="n">ddf_dx</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">ddf_dy</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">ddf_dx</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">ddf_dy</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
+    <span class="k">return</span> <span class="n">jacobian</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for sample in val_dataset:
-    jacobian = get_jacobian(sample, model)
-    plt.figure()
-    plt.imshow(jacobian, cmap=&#39;seismic&#39;, clim=(-0.003, 0.003))
-    plt.colorbar()
-    plt.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">val_dataset</span><span class="p">:</span>
+    <span class="n">jacobian</span> <span class="o">=</span> <span class="n">get_jacobian</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">jacobian</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;seismic&#39;</span><span class="p">,</span> <span class="n">clim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.003</span><span class="p">,</span> <span class="mf">0.003</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
