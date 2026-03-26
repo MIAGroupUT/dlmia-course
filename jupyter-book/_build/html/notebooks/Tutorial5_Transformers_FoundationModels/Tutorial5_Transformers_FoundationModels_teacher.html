@@ -64,10 +64,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"TeX": {"Macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="canonical" href="https://utwente.mia.nl/template/notebooks/Tutorial5_Transformers_FoundationModels/Tutorial5_Transformers_FoundationModels_student.html" />
+    <link rel="canonical" href="https://utwente.mia.nl/template/notebooks/Tutorial5_Transformers_FoundationModels/Tutorial5_Transformers_FoundationModels_teacher.html" />
     <link rel="shortcut icon" href="https://www.utwente.nl/.utdesign/img/favicons/favicon-32x32.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tutorial 6" href="../Tutorial6_Generative_Models/Tutorial6_Generative_Models_student.html" />
+    <link rel="prev" title="Tutorial 4" href="../Tutorial4_Reconstruction_Registration/Tutorial4_Reconstruction_Registration_teacher.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -151,7 +153,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../Tutorial1_NumpySimpleITK/Tutorial1_NumpySimpleITK_teacher.html">Tutorial 1</a></li>
 
 
@@ -167,7 +169,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../Tutorial4_Reconstruction_Registration/Tutorial4_Reconstruction_Registration_teacher.html">Tutorial 4</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="Tutorial5_Transformers_FoundationModels_teacher.html">Tutorial 5</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tutorial 5</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Tutorial6_Generative_Models/Tutorial6_Generative_Models_student.html">Tutorial 6</a></li>
 
 
@@ -225,7 +227,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://jupyter.utwente.nl/hub/user-redirect/git-pull?repo=https%3A//github.com/MIAGroupUT/dlmia-course&urlpath=lab/tree/dlmia-course/jupyter-book/notebooks/Tutorial5_Transformers_FoundationModels/Tutorial5_Transformers_FoundationModels_student.ipynb&branch=main" target="_blank"
+      <li><a href="https://jupyter.utwente.nl/hub/user-redirect/git-pull?repo=https%3A//github.com/MIAGroupUT/dlmia-course&urlpath=lab/tree/dlmia-course/jupyter-book/notebooks/Tutorial5_Transformers_FoundationModels/Tutorial5_Transformers_FoundationModels_teacher.ipynb&branch=main" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onJupyterHub"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -243,7 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/MIAGroupUT/dlmia-course/blob/main/jupyter-book/notebooks/Tutorial5_Transformers_FoundationModels/Tutorial5_Transformers_FoundationModels_student.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/MIAGroupUT/dlmia-course/blob/main/jupyter-book/notebooks/Tutorial5_Transformers_FoundationModels/Tutorial5_Transformers_FoundationModels_teacher.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -291,7 +293,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/MIAGroupUT/dlmia-course/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Tutorial5_Transformers_FoundationModels/Tutorial5_Transformers_FoundationModels_student.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/MIAGroupUT/dlmia-course/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Tutorial5_Transformers_FoundationModels/Tutorial5_Transformers_FoundationModels_teacher.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -321,7 +323,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/notebooks/Tutorial5_Transformers_FoundationModels/Tutorial5_Transformers_FoundationModels_student.ipynb" target="_blank"
+      <li><a href="../../_sources/notebooks/Tutorial5_Transformers_FoundationModels/Tutorial5_Transformers_FoundationModels_teacher.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -568,6 +570,10 @@ document.write(`
 <li><p>Explain the attention values that you see in this table, and the current predicted sequence.</p></li>
 </ul>
 </div>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<p>The columns show the keys, the rows the queries. Values in rows sum up to 1 due to the Softmax function.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_attention</span><span class="p">(</span><span class="n">input_seq</span><span class="p">,</span> <span class="n">output_seq</span><span class="p">,</span> <span class="n">attn_weights</span><span class="p">):</span>
@@ -635,6 +641,15 @@ document.write(`
 <p class="admonition-title">Exercise</p>
 <p>Pass <code class="docutils literal notranslate"><span class="pre">fixed_input</span></code> to the model and inspect with the <code class="docutils literal notranslate"><span class="pre">plot_attention</span></code> function whether the model has now learned to sort numbers. Explain what you’re seeing. Why did the model work or not work?</p>
 </div>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">output</span><span class="p">,</span> <span class="n">attn</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">fixed_input</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+<span class="n">plot_attention</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">attn_weights</span><span class="p">)</span>   
+</pre></div>
+</div>
+<p>The model predicts nonsense, because it doesn’t know where each value is in the sequence without positional encoding.</p>
+</div>
 </section>
 <section id="positional-encoding">
 <h3>Positional encoding<a class="headerlink" href="#positional-encoding" title="Permalink to this heading">#</a></h3>
@@ -699,6 +714,38 @@ Inspect its results.</p>
 <li><p>Does this match your expectation?</p></li>
 <li><p>Can you explain why the matrix has very high values in the top and bottom rows?</p></li>
 </ul>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Answer key</p>
+<p>If all is well, the attention matrix should now have the highest values in the relevant locations and look something like this
+<img alt="fig" src="https://surfdrive.surf.nl/files/index.php/s/RYmmLD4aEkWHSEd/download" />.</p>
+<p>The high values in the top and bottom rows are because the model is basically performing interpolation. As the top and bottom row in this task correspond to the lowest and highest values in the sequence (after sorting), there isn’t much to interpolate except for literally taking those low and high values.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">embed_dim</span> <span class="o">=</span> <span class="mi">16</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">Simple1DAttentionWithPE</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">)</span> 
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">L1Loss</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+
+    <span class="c1"># Forward pass</span>
+    <span class="n">predictions</span><span class="p">,</span> <span class="n">attn_weights</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">fixed_input</span><span class="p">)</span>
+
+    <span class="c1"># Calculate loss and optimize</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">fixed_target</span><span class="p">)</span>
+    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+    <span class="c1"># Visualize progress every 500 epochs</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2"> | Loss: </span><span class="si">{</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+<span class="n">output</span><span class="p">,</span> <span class="n">attn</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">fixed_input</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+<span class="n">plot_attention</span><span class="p">(</span><span class="n">fixed_input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">attn_weights</span><span class="p">)</span>    
+</pre></div>
+</div>
 </div>
 </section>
 </section>
@@ -1776,6 +1823,24 @@ We test both <strong>noiseless</strong> and <strong>noisy</strong> sparse‑view
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../Tutorial4_Reconstruction_Registration/Tutorial4_Reconstruction_Registration_teacher.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tutorial 4</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Tutorial6_Generative_Models/Tutorial6_Generative_Models_student.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tutorial 6</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
