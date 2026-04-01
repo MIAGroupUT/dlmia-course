@@ -14,5 +14,7 @@ parts:
     title: Tutorial 4
   - file: notebooks/Tutorial5_Transformers_FoundationModels/Tutorial5_Transformers_FoundationModels_teacher
     title: Tutorial 5
-  - file: notebooks/Tutorial6_Generative_Models/Tutorial6_Generative_Models_student
+  - file: notebooks/Tutorial6_Generative_Models/Tutorial6_Generative_Models_teacher
     title: Tutorial 6
+  - file: notebooks/Tutorial7_Explainability_GNNs/Tutorial7_Explainability_GNNs_student
+    title: Tutorial 7
